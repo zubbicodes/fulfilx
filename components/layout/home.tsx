@@ -195,7 +195,7 @@ const Home: React.FC = () => {
                     </div>
                 </div>
                 {/* Stats Section */}
-<div className="relative w-[1920px] min-h-[725px] -mt-[600px] bg-[#A31E1E]">
+<div className="relative w-full min-h-[725px] -mt-[600px] bg-[#A31E1E]">
   {/* Background Image */}
   <div className="absolute inset-0">
     <img 
@@ -273,6 +273,67 @@ const Home: React.FC = () => {
     </div>
   </div>
 </div>
+{/* Next Section */}
+<section className="relative w-full pt-24 lg:pt-32 pb-16 bg-white overflow-hidden">
+    <div className="absolute inset-0">
+    <img 
+      src="/bg.png"
+      alt="Background"
+      className="w-1920 h-1000 object-cover"
+    />
+  </div>
+  {/* Decorative rectangle image - Fixed positioning */}
+<div className="absolute hidden lg:block pointer-events-none" 
+  style={{ 
+    width: '700px',
+    height: '640px',
+    left: 'calc(50% - 480px/2 + 380px)',
+    top: '8rem',
+    backdropFilter: 'blur(12.5px)'
+  }}>
+  <img 
+    src="/px.png" 
+    alt="Decorative square" 
+    className="w-full h-full rounded-[34px] object-cover"
+  />
+</div>
+
+  {/* Content */}
+  <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+    {/* Badge */}
+    <div className="inline-flex items-center justify-center px-11 py-4 gap-2.5 rounded-[120px] bg-[#C10016]/10 mb-8">
+      <span className="text-[#C10016] font-normal text-[16px] tracking-[0.2em] uppercase">
+        We Respond In Real Time
+      </span>
+    </div>
+
+    {/* Heading */}
+    <h2 className="text-[64px] font-bold leading-[74px] -tracking-[0.01em] text-black max-w-2xl mb-6">
+      Do not hesitate to say <span className="text-[#C10016]">Bonjour</span>
+    </h2>
+
+    {/* Paragraph */}
+    <p className="text-[22px] font-normal leading-[44px] text-black max-w-3xl mb-10">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkown printer.
+    </p>
+    <p className="text-[22px] font-normal leading-[44px] text-black max-w-3xl mb-10">
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkown printer.
+    </p>
+
+    {/* CTA Button with icon */}
+    <a 
+      href="#contact"
+      className="inline-flex items-center px-6 py-2 gap-2.5 rounded-md bg-[#C10016] cursor-pointer transition duration-300 hover:brightness-110 mt-6"
+    >
+      <span className="text-white font-normal text-[18px] leading-[36px]">Let's Talk</span>
+      <img 
+        src="/arrow.svg" 
+        alt="Arrow icon" 
+        className="w-4 h-4 object-contain"
+      />
+    </a>
+  </div>
+</section>
 
             </div>
             
