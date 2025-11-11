@@ -3,3 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.slider-container:hover .animate-infinite-scroll,
+.slider-container:hover .animate-infinite-scroll-reverse {
+  animation-play-state: paused;
+}

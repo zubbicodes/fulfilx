@@ -43,6 +43,25 @@ const testimonials = [
   { image: '/pops.png', alt: 'Testimonial 4' },
   { image: '/har.png', alt: 'Testimonial 5' }
 ];
+const row1Logos = [
+    { src: "/amazon.png", alt: "Amazon" },
+    { src: "/shopify.png", alt: "Shopify" },
+    { src: "/tiktok.png", alt: "TikTok" }
+  ];
+
+  const row2Logos = [
+    { src: "/ebay.png", alt: "eBay" },
+    { src: "/magento.png", alt: "Magento" },
+    { src: "/etsy.png", alt: "Etsy" },
+    { src: "/woo.png", alt: "WooCommerce" }
+  ];
+
+  const row3Logos = [
+    { src: "/onbuy.png", alt: "OnBuy" },
+    { src: "/dpd.png", alt: "DPD" },
+    { src: "/shipstation.png", alt: "ShipStation" }
+  ];
+
 
   const nextSlide = () => {
     const nextIndex = (currentSlide + 1) % testimonials.length;
@@ -71,7 +90,7 @@ const testimonials = [
     return (
         <>
             {/* Navbar */}
-            <header className="fixed top-0 left-0 right-0 w-full py-4 md:py-6 lg:py-8 px-4 md:px-6 lg:px-8 z-50">
+            <header className="fixed top-0 left-0 right-0 w-full py-4 md:py-6 lg:py-8 px-4 md:px-6 lg:px-8 z-50 backdrop-blur-sm bg-white/10">
                 <div className="relative flex items-center justify-between">
                     
                     {/* Logo */}
@@ -538,6 +557,7 @@ const testimonials = [
       title: "Inventory Management",
       circleBg: "bg-[#C10016]",
       titleColor: "text-[#C10016]",
+      stepNumberBg: "bg-black",
       description: "We give you real-time visibility and control, helping you reduce stockouts, minimize overstock, and streamline your supply chain.",
       circleX: "40px",
       circleY: "20px",
@@ -562,6 +582,7 @@ const testimonials = [
       title: "Delivery",
       circleBg: "bg-[#C10016]",
       titleColor: "text-[#C10016]",
+      stepNumberBg: "bg-black",
       description: "Real-time tracking, multiple carrier options & automated processes. Delight customers with reliable logistics.",
       circleX: "240px",
       circleY: "5px",
@@ -578,7 +599,7 @@ const testimonials = [
         }}
       >
         {/* Step number */}
-        <span className="absolute -top-2.5 -right-2.5 z-10 text-white text-sm font-bold bg-[#C10016] rounded-full w-10 h-10 flex items-center justify-center border-4 border-white">
+        <span className={`absolute -top-2.5 -right-2.5 z-10 text-white text-sm font-bold ${item.stepNumberBg || 'bg-[#C10016]'} rounded-full w-10 h-10 flex items-center justify-center border-4 border-white`}>
           {`0${item.step}`}
         </span>
         
@@ -978,129 +999,57 @@ const testimonials = [
       Leading Brands...
     </h2>
 
-  {/* First Row - 3 Logos */}
-<div className="mt-20">
-  <div className="flex justify-center items-center gap-32">
-    {/* Logo 1 */}
-    <div className="group relative">
-      <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/amazon.png" 
-          alt="Brand 1" 
-          className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
+<div className="w-full overflow-hidden py-10">
+  {/* First Row - Scroll Left */}
+<div className="mt-20 slider-container">
+  <div className="flex animate-infinite-scroll">
+    {[...row1Logos, ...row1Logos].map((logo, index) => (
+      <div key={index} className="group relative flex-shrink-0 mx-16">
+        <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center transition-all duration-300 hover:bg-transparent hover:scale-105">
+          <img 
+            src={logo.src}
+            alt={logo.alt}
+            className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
       </div>
-    </div>
-
-    {/* Logo 2 */}
-    <div className="group relative">
-      <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/shopify.png" 
-          alt="Brand 2" 
-          className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
-
-    {/* Logo 3 */}
-    <div className="group relative">
-      <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/tiktok.png" 
-          alt="Brand 3" 
-          className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
+    ))}
   </div>
 </div>
 
-{/* Second Row - 4 Logos */}
-<div className="mt-12">
-  <div className="flex justify-center items-center gap-36">
-    {/* Logo 4 */}
-    <div className="group relative">
-      <div className="w-[200px] h-[80px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/ebay.png" 
-          alt="Brand 4" 
-          className="h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
+{/* Second Row - Scroll Right */}
+<div className="mt-12 slider-container">
+  <div className="flex animate-infinite-scroll-reverse">
+    {[...row2Logos, ...row2Logos].map((logo, index) => (
+      <div key={index} className="group relative flex-shrink-0 mx-16">
+        <div className="w-[200px] h-[80px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
+          <img 
+            src={logo.src}
+            alt={logo.alt}
+            className="h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
       </div>
-    </div>
-
-    {/* Logo 5 */}
-    <div className="group relative">
-      <div className="w-[200px] h-[80px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/magento.png" 
-          alt="Brand 5" 
-          className="h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
-
-    {/* Logo 6 */}
-    <div className="group relative">
-      <div className="w-[200px] h-[80px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/etsy.png" 
-          alt="Brand 6" 
-          className="h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
-
-    {/* Logo 7 */}
-    <div className="group relative">
-      <div className="w-[200px] h-[80px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/woo.png" 
-          alt="Brand 7" 
-          className="h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
+    ))}
   </div>
 </div>
 
-{/* Third Row - 3 Logos */}
-<div className="mt-12">
-  <div className="flex justify-center items-center gap-32">
-    {/* Logo 9 */}
-    <div className="group relative">
-      <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/onbuy.png" 
-          alt="Brand 9" 
-          className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
+{/* Third Row - Scroll Left */}
+<div className="mt-12 slider-container">
+  <div className="flex animate-infinite-scroll">
+    {[...row3Logos, ...row3Logos].map((logo, index) => (
+      <div key={index} className="group relative flex-shrink-0 mx-16">
+        <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
+          <img 
+            src={logo.src}
+            alt={logo.alt}
+            className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
       </div>
-    </div>
-
-    {/* Logo 10 */}
-    <div className="group relative">
-      <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/dpd.png" 
-          alt="Brand 10" 
-          className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
-
-    {/* Logo 11 */}
-    <div className="group relative">
-      <div className="w-[240px] h-[100px] rounded-lg flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:bg-transparent hover:scale-105">
-        <img 
-          src="/shipstation.png" 
-          alt="Brand 11" 
-          className="h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
-      </div>
-    </div>
+    ))}
   </div>
+</div>
 </div>
 
   </div>

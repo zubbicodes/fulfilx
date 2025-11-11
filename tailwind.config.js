@@ -11,15 +11,26 @@ module.exports = {
         'helvetica': ['HelveticaNowDisplay-Regular', 'sans-serif'],
         'helvetica-bold': ['HelveticaNowDisplay-Bold', 'sans-serif'],
         'helvetica-medium': ['HelveticaNowDisplay-Medium', 'sans-serif'],
-      }, // Missing this closing brace
+      },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
         },
-      }, // Missing this closing brace
+        'infinite-scroll': {
+          from: {transform: 'translateX(0)' },
+          to: {transform: 'translateX(calc(-100% - 4rem))'},
+        },
+        'infinite-scroll-reverse': {
+          from: { transform: 'translateX(calc(-100% - 4rem))' },
+          to: { transform: 'translateX(0)' },
+        },
+
+      },
       animation: {
         marquee: 'marquee 15s linear infinite',
+        'infinite-scroll': 'infinite-scroll 10s linear infinite',
+        'infinite-scroll-reverse': 'infinite-scroll-reverse 10s linear infinite'
       },
     },
   },
