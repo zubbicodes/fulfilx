@@ -1,4 +1,6 @@
+import { useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
+import Navbar from './navbar';
 
 interface NavItemProps {
     children: React.ReactNode;
@@ -86,72 +88,12 @@ const row1Logos = [
   };
   const [agreedToPolicy, setAgreedToPolicy] = useState(false);
     const primaryRed = 'bg-[#C10016]';
+    const router = useRouter();
     
     return (
         <>
-            {/* Navbar */}
-            <header className="fixed top-0 left-0 right-0 w-full py-4 md:py-6 lg:py-8 px-4 md:px-6 lg:px-8 z-50 backdrop-blur-sm bg-white/10">
-                <div className="relative flex items-center justify-between">
-                    
-                    {/* Logo */}
-                    <div className="flex-shrink-0 flex items-center">
-                        <img 
-                            src="/logo.png"
-                            alt="FULFILX Logo"
-                            className="w-32 h-8 md:w-40 md:h-10 lg:w-48 lg:h-12 object-contain"
-                        />
-                    </div>
-
-                    {/* Centered Navigation */}
-                    <div className="flex-1 flex justify-center">
-                        <nav className="hidden lg:flex space-x-6 xl:space-x-8 2xl:space-x-12">
-                            <NavItem isActive={true}>Home</NavItem>
-                            <NavItem>About Us</NavItem>
-                            <NavItem>Services</NavItem>
-                            <NavItem>Sectors</NavItem>
-                            <NavItem>Team</NavItem>
-                            <NavItem>News</NavItem>
-                            <NavItem>Contact</NavItem>
-                        </nav>
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="flex-shrink-0">
-                        <a 
-                            href="#"
-                            className={`
-                                flex items-center gap-2 
-                                px-4 py-2 md:px-5 md:py-3 lg:px-6 lg:py-3
-                                rounded-lg ${primaryRed} text-white 
-                                text-sm md:text-base lg:text[18px]
-                                transition duration-300 hover:brightness-110 
-                                whitespace-nowrap font-helvetica
-                            `}
-                        >
-                            <span>Let's Talk</span>
-                            <img 
-                                src="/arrow.svg"
-                                alt="Arrow icon"
-                                className="w-2 h-2 md:w-2 md:h-2 lg:w-3 lg:h-3 object-contain"
-                            />
-                        </a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="lg:hidden ml-4">
-                        <button 
-                            type="button" 
-                            className="p-2 rounded-md text-black hover:bg-gray-100 font-sans"
-                            aria-label="Toggle menu"
-                        >
-                            <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </header>
-
+            {/*Navbar*/}
+            <Navbar/>
             {/* Home Content */}
 <div className="min-h-screen relative bg-white pt-40 md:pt-60 lg:pt-80 overflow-auto">
     {/* PNG Background - MOVE ABOVE WHITE BACKGROUND */}
