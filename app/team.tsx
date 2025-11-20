@@ -16,27 +16,19 @@ export default function TeamScreen() {
     { id: 4, src: '/box.png' },
     { id: 5, src: '/happy.png' }
   ];
-
   useEffect(() => {
-    if (isPaused) return;
+  if (isPaused) return;
 
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % images.length);
-    }, 3000);
+  const interval = setInterval(() => {
+    setCurrentSlide((prev) => {
+      const nextSlide = prev + 1;
+      // Reset to 0 when we reach the end of original images for seamless loop
+      return nextSlide >= images.length ? 0 : nextSlide;
+    });
+  }, 3000);
 
-    return () => clearInterval(interval);
-  }, [isPaused, images.length]);
-
-  const getSlidePosition = (index: number) => {
-    const positions = [
-      'left-6',      // 24px
-      'left-[428px]', // 428px
-      'left-[832px]', // 832px
-      'left-[1236px]', // 1236px
-      'left-[1640px]' // 1640px
-    ];
-    return positions[index];
-  };
+  return () => clearInterval(interval);
+}, [isPaused, images.length]);
 
   return (
     <>
@@ -416,41 +408,38 @@ export default function TeamScreen() {
             </View>
           </View>
         </View>
-
-        {/* Auto-Sliding Image Gallery Section */}
-        <View className="relative w-full h-[380px] mt-20 mb-20 overflow-hidden">
-          <div 
-            className="relative w-full h-full"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {images.map((image, index) => (
-              <View
-                key={image.id}
-                className={`absolute top-0 transition-all duration-500 ease-in-out ${
-                  getSlidePosition((index + currentSlide) % images.length)
-                }`}
-              >
-                <View 
-                  className="w-[380px] h-[380px] rounded-[20px] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${image.src})` }}
-                />
-              </View>
-            ))}
-          </div>
-
-          {/* Progress Indicator */}
-          <View className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            {images.map((_, index) => (
-              <View
-                key={index}
-                className={`w-2 h-2 rounded-full ${
-                  index === currentSlide ? 'bg-[#C10016]' : 'bg-gray-400'
-                }`}
-              />
-            ))}
-          </View>
-        </View>
+        {/* Auto-Sliding Gallery with Infinite Loop */}
+<View className="relative w-full h-[380px] mt-20 mb-20 overflow-hidden">
+  <div 
+    className="relative w-full h-full"
+    onMouseEnter={() => setIsPaused(true)}
+    onMouseLeave={() => setIsPaused(false)}
+  >
+    <View 
+      className="flex flex-row absolute top-0 left-6 transition-transform duration-500 ease-in-out"
+      style={{ 
+        transform: `translateX(-${currentSlide * 404}px)` 
+      }}
+    >
+      {/* Original images */}
+      {images.map((image) => (
+        <View
+          key={image.id}
+          className="w-[380px] h-[380px] mr-6 rounded-[20px] bg-cover bg-center flex-shrink-0 hover:scale-105 transition-transform duration-300"
+          style={{ backgroundImage: `url(${image.src})` }}
+        />
+      ))}
+      {/* Duplicate images for seamless loop */}
+      {images.map((image) => (
+        <View
+          key={`${image.id}-duplicate`}
+          className="w-[380px] h-[380px] mr-6 rounded-[20px] bg-cover bg-center flex-shrink-0 hover:scale-105 transition-transform duration-300"
+          style={{ backgroundImage: `url(${image.src})` }}
+        />
+      ))}
+    </View>
+  </div>
+</View>
         {/* Accomplishments Section */}
         <section className="relative w-full">
           {/* Two Column Layout */}

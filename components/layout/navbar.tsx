@@ -63,18 +63,14 @@ const Navbar: React.FC = () => {
                         </NavItem>
                         <NavItem>About Us</NavItem>
                         <NavItem>Services</NavItem>
-                        <NavItem>Sectors</NavItem>
                         <NavItem onPress={() => router.push ('/team')}>Team</NavItem>
-                        <NavItem>News</NavItem>
-                        <NavItem onPress={() => router.push('/contact')}>
-                            Contact
-                        </NavItem>
                     </nav>
                 </div>
 
                 {/* CTA Button */}
                 <div className="flex-shrink-0">
                     <TouchableOpacity 
+                        onPress={() => router.push('/contact')}
                         className={`
                             flex flex-row items-center justify-center gap-2 
                             px-4 py-2 md:px-5 md:py-3 lg:px-6 lg:py-3
