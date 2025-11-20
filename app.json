@@ -5,13 +5,13 @@
     "version": "1.0.0",
     "platforms": ["web"],
     "orientation": "portrait",
-    "icon": "./assets/images/logo.png",
+    "icon": "./assets/images/favicon.png",
     "scheme": "fulfilx",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.ico"
+      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
