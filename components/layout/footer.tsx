@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React, { useState } from 'react';
 
 const Footer = () => {
@@ -168,49 +169,79 @@ const Footer = () => {
   <div className="grid grid-cols-1 md:grid-cols-3 gap-28 max-w-4xl">
     
     {/* Column 1 */}
-    <div 
-      className="text-white font-normal text-left"
-      style={{
-        fontSize: '18px',
-        lineHeight: '60px',
-      }}
-    >
-      <a href="/home" className="block hover:text-[#C10016] transition-colors cursor-pointer">Home</a>
-      <a href="/about" className="block hover:text-[#C10016] transition-colors cursor-pointer">About Us</a>
-      <a href="/services" className="block hover:text-[#C10016] transition-colors cursor-pointer">Services</a>
-      <a href="/sectors" className="block hover:text-[#C10016] transition-colors cursor-pointer">Sectors</a>
-      <a href="/news" className="block hover:text-[#C10016] transition-colors cursor-pointer">News</a>
-    </div>
+<div 
+  className="text-white font-normal text-left"
+  style={{
+    fontSize: '18px',
+    lineHeight: '60px',
+  }}
+>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Home</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">About Us</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Services</a>
+  </Link>
+  <Link href="/sectors" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Sectors</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">News</a>
+  </Link>
+</div>
 
-    {/* Column 2 */}
-    <div 
-      className="text-white font-normal text-left"
-      style={{
-        fontSize: '18px',
-        lineHeight: '60px',
-      }}
-    >
-      <a href="/team" className="block hover:text-[#C10016] transition-colors cursor-pointer">Team</a>
-      <a href="/partners" className="block hover:text-[#C10016] transition-colors cursor-pointer">Our Partners</a>
-      <a href="/story" className="block hover:text-[#C10016] transition-colors cursor-pointer">Our Story</a>
-      <a href="/locations" className="block hover:text-[#C10016] transition-colors cursor-pointer">Store Locations</a>
-      <a href="/press" className="block hover:text-[#C10016] transition-colors cursor-pointer">Press Release</a>
-    </div>
+{/* Column 2 */}
+<div 
+  className="text-white font-normal text-left"
+  style={{
+    fontSize: '18px',
+    lineHeight: '60px',
+  }}
+>
+  <Link href="/team" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Team</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Our Partners</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Our Story</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Store Locations</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Press Release</a>
+  </Link>
+</div>
 
-    {/* Column 3 */}
-    <div 
-      className="text-white font-normal text-left"
-      style={{
-        fontSize: '18px',
-        lineHeight: '60px',
-      }}
-    >
-      <a href="/contact" className="block hover:text-[#C10016] transition-colors cursor-pointer">Contact Us</a>
-      <a href="/shipping" className="block hover:text-[#C10016] transition-colors cursor-pointer">Shipping</a>
-      <a href="/delivery" className="block hover:text-[#C10016] transition-colors cursor-pointer">Delivery System</a>
-      <a href="/returns" className="block hover:text-[#C10016] transition-colors cursor-pointer">Returning Policy</a>
-      <a href="/career" className="block hover:text-[#C10016] transition-colors cursor-pointer">Career</a>
-    </div>
+{/* Column 3 */}
+<div 
+  className="text-white font-normal text-left"
+  style={{
+    fontSize: '18px',
+    lineHeight: '60px',
+  }}
+>
+  <Link href="/contact" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Contact Us</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Shipping</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Delivery System</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Returning Policy</a>
+  </Link>
+  <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Career</a>
+  </Link>
+</div>
 
   </div>
 </div>
