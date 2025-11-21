@@ -1,9 +1,81 @@
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Stack, useRouter } from 'expo-router';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { PanResponder, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 export default function LuxuryScreen() {
+const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+const [selectedCountry, setSelectedCountry] = useState('');
+const [shippingCost, setShippingCost] = useState(0);
+const [weight, setWeight] = useState(0.75);
+const sliderWidth = 600;
+
+const countries = [
+  'United Kingdom',
+  'United States', 
+  'Australia',
+  'Bahrain',
+  'San Francisco',
+  'Saudi Arabia',
+  'Georgia',
+  'United Arab Emirates'
+];
+// Shipping cost calculation based on weight and country
+const calculateShippingCost = (shippingWeight: number, country: string) => {
+  if (!country) return 0;
+ // Base prices for different countries (per kg)
+  const basePrices = {
+    'United Kingdom': 2.5,
+    'United States': 8.0,
+    'Australia': 9.5,
+    'Bahrain': 6.0,
+    'San Francisco': 8.5,
+    'Saudi Arabia': 5.5,
+    'Georgia': 4.5,
+    'United Arab Emirates': 5.0
+  };
+  
+  const basePrice = (basePrices as Record<string, number>)[country] || 5.0; // Default price
+  
+  // Calculate cost: base price * weight + handling fee
+  const calculatedCost = (basePrice * shippingWeight) + 1.5; // £1.5 handling fee
+  
+  return Math.max(calculatedCost, 3.0); // Minimum £3.0
+};
+
+// Update shipping cost when weight or country changes
+useEffect(() => {
+  const cost = calculateShippingCost(weight, selectedCountry);
+  setShippingCost(cost);
+}, [weight, selectedCountry]);
+
+// Format price to 2 decimal places
+const formatPrice = (price: number) => {
+  return `£${price.toFixed(2)}`;
+};
+
+// Calculate slider position based on weight (0.25 to 10.00)
+const sliderPosition = ((weight - 0.25) / 9.75) * sliderWidth;
+
+const panResponder = useRef(
+  PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onMoveShouldSetPanResponder: () => true,
+    onPanResponderGrant: () => true,
+    onPanResponderMove: (evt, gestureState) => {
+      // Use dx (delta X) instead of moveX for relative movement
+      const currentPosition = ((weight - 0.25) / 9.75) * sliderWidth;
+      const newPosition = Math.max(0, Math.min(sliderWidth, currentPosition + gestureState.dx));
+      const newWeight = 0.25 + (newPosition / sliderWidth) * 9.75;
+      setWeight(Number(newWeight.toFixed(2)));
+    },
+    onPanResponderRelease: () => {
+      // Optional: Add any final logic when user releases
+    },
+    onPanResponderTerminationRequest: () => false, // Prevent gesture termination
+  })
+).current;
     const router = useRouter();
     return (
         <>
@@ -481,18 +553,179 @@ export default function LuxuryScreen() {
               }}
             />
           </View>
-                    {/* Content Container - Centered */}
-                    <View className="relative z-10 max-w-[1500px] mx-auto px-8 h-full flex items-center">
-                      {/* 2 Column Layout - Centered vertically */}
-                      <View className="flex flex-row gap-20 w-full items-center">
-                        {/* LEFT COLUMN - Centered horizontally */}
-                        <View className="flex-1 flex flex-col transform -translate-x-96 translate-y-12">
-                          <Text className="font-helvetica font-bold text-[60px] leading-[74px] text-white mb-8">
-                            Shipping <Text className="text-[#C10016]">Calculator</Text>
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
+          {/* Content Container - Centered */}
+<View className="relative z-10 max-w-[1500px] mx-auto px-8 h-full flex items-center">
+  {/* 2 Column Layout - Centered vertically */}
+  <View className="flex flex-row gap-20 w-full items-center">
+
+    {/* LEFT COLUMN - Centered horizontally */}
+    <View className="flex-1 flex flex-col translate-y-12 transform -translate-x-20">
+      <Text className="font-helvetica font-bold text-[60px] leading-[74px] text-white mb-8" selectable={false}>
+        Shipping <Text className="text-[#C10016]">Calculator</Text>
+      </Text>
+      
+      {/* Package Weight Section */}
+      <View className="mb-16 mt-12">
+        {/* Package Weight and Weight Display in same row */}
+        <View className="flex flex-row items-center justify-between w-[600px] mb-4">
+          <Text className="font-helvetica font-bold text-[22px] leading-[44px] text-white" selectable={false}>
+            Package Weight
+          </Text>
+          
+          {/* Weight Display Box - Now aligned horizontally */}
+          <View className="border border-white border-opacity-30 rounded-[8px] w-[100px] h-[54px] flex items-center justify-center">
+            <Text className="font-helvetica font-normal text-[16px] leading-[44px] text-white text-opacity-70" selectable={false}>
+              {weight.toFixed(2)} kg
+            </Text>
+          </View>
+        </View>
+        
+        {/* Custom Slider */}
+        <View className="w-[600px] relative">
+          {/* Slider Track */}
+          <View className="w-full h-[8px] bg-white bg-opacity-30 rounded-[30px] relative">
+            {/* Slider Progress */}
+            <View 
+              className="h-[8px] bg-[#C10016] rounded-[30px] absolute" 
+              style={{ width: sliderPosition }}
+            />
+          </View>
+          
+          {/* Slider Handle */}
+          <View 
+            className="w-6 h-6 bg-[#C10016] rounded-full absolute -top-2"
+            style={{ left: sliderPosition - 12 }}
+            {...panResponder.panHandlers}
+          >
+            <View className="w-3 h-3 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+          </View>
+          
+          {/* Weight Labels */}
+          <View className="flex flex-row justify-between mt-4">
+            <Text className="font-helvetica font-normal text-[18px] leading-[44px] text-white" selectable={false}>
+              0.25 kg
+            </Text>
+            <Text className="font-helvetica font-normal text-[18px] leading-[44px] text-white" selectable={false}>
+              10 kg
+            </Text>
+          </View>
+        </View>
+        
+        <Text className="font-helvetica font-normal text-[18px] leading-[44px] text-white text-opacity-50" selectable={false}>
+          Select the weight of the package in kilograms.
+        </Text>
+      </View>
+
+      {/* Destination Country Section */}
+      <View className="mt-12">
+        <Text className="font-helvetica font-bold text-[22px] leading-[44px] text-white mb-4 transform -translate-y-16" selectable={false}>
+          Destination Country
+        </Text>
+        
+        {/* Country Selector Dropdown */}
+        <View className="relative z-10">
+          <TouchableOpacity 
+            className="border border-white border-opacity-30 rounded-[8px] w-[600px] h-[54px] flex flex-row items-center justify-between px-4 py-1 mb-4 transform -translate-y-16"
+            onPress={() => setIsDropdownOpen(!isDropdownOpen)}
+            activeOpacity={0.7}
+          >
+            <Text className="font-helvetica font-normal text-[16px] leading-[44px] text-white text-opacity-70">
+              {selectedCountry || 'Select your country'}
+            </Text>
+            {/* Dropdown Icon with rotation */}
+            <View className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}>
+              <img 
+                src="/downw.svg" 
+                alt="Dropdown arrow" 
+                className="w-full h-full object-contain"
+              />
+            </View>
+          </TouchableOpacity>
+          
+          {/* Dropdown Options */}
+          {isDropdownOpen && (
+            <View className="absolute top-full left-0 w-[600px] bg-white border border-gray-200 rounded-[8px] mt-1 max-h-48 overflow-y-auto z-50 shadow-lg transform -translate-y-16">
+              {countries.map((country, index) => (
+                <TouchableOpacity
+                  key={index}
+                  className={`px-4 py-3 border-b border-gray-100 last:border-b-0 active:bg-gray-50 ${
+                    selectedCountry === country ? 'bg-red-50' : ''
+                  }`}
+                  onPress={() => {
+                    setSelectedCountry(country);
+                    setIsDropdownOpen(false);
+                  }}
+                  activeOpacity={0.6}
+                >
+                  <Text className={`font-helvetica font-normal text-[16px] leading-[24px] ${
+                    selectedCountry === country ? 'text-[#C10016]' : 'text-black'
+                  }`}>
+                    {country}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        </View>
+        
+        <Text className="font-helvetica font-normal text-[18px] leading-[44px] text-white text-opacity-50 transform -translate-y-16 z-0" selectable={false}>
+          Select the country to which you want to ship the package
+        </Text>
+      </View>
+    </View>
+
+    {/* RIGHT COLUMN — FIXED, aligned perfectly */}
+    <View className="flex-none transform translate-x-20">
+      <View className="w-[680px] h-[490px] bg-white rounded-[24px] shadow-lg p-12">
+        
+        {/* Shipping Cost Title */}
+        <Text className="font-helvetica font-bold text-[24px] leading-[44px] text-black justify-start mb-6">
+          Shipping Cost
+        </Text>
+        
+        {/* Calculated Price */}
+        <Text className="font-helvetica font-bold text-[64px] leading-[44px] text-[#C10016] justify-start mb-4">
+          {formatPrice(shippingCost)}
+        </Text>
+        
+        {/* Estimated Cost Description */}
+        <Text className="font-helvetica font-normal text-[18px] leading-[44px] text-black opacity-50 justify-start mb-10">
+          Estimated shipping cost based on weight and destination country.
+        </Text>
+        
+        {/* Get your Package on its Way! */}
+        <Text className="font-helvetica font-bold text-[24px] leading-[44px] text-black justify-start">
+          Get your Package on its Way!
+        </Text>
+        
+        {/* Ready to ship description */}
+        <Text className="font-helvetica font-normal text-[18px] leading-[44px] text-black opacity-50 justify-start mb-10">
+          Ready to ship? Complete your order by confirming the details.
+        </Text>
+        
+        {/* Proceed to Checkout Button */}
+        <TouchableOpacity 
+          className="w-[260px] h-[60px] bg-[#C10016] rounded-[6px] flex flex-row items-center justify-center gap-[10px] mx-auto"
+          activeOpacity={0.8}
+        >
+          <Text className="font-helvetica font-bold text-[18px] leading-[36px] text-white">
+            Proceed to Checkout
+          </Text>
+          <View className="w-3 h-3">
+            <img 
+              src="/arrow.svg" 
+              alt="Arrow" 
+              className="w-full h-full object-contain"
+            />
+          </View>
+        </TouchableOpacity>
+
+      </View>
+    </View>
+
+  </View>
+</View>
+
           </View>
         {/* Accomplishments Section */}
         <section className="relative w-full">
