@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
+import Footer from './footer';
 import Navbar from './navbar';
 
 interface NavItemProps {
@@ -1112,6 +1113,7 @@ const row1Logos = [
 
   </div>
 </section>
+<Footer/>
 </div>
         </>
         

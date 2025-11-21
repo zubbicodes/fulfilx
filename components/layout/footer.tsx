@@ -179,7 +179,7 @@ const Footer = () => {
   <Link href="/" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Home</a>
   </Link>
-  <Link href="/" asChild>
+  <Link href="/about-us" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">About Us</a>
   </Link>
   <Link href="/" asChild>
@@ -204,7 +204,7 @@ const Footer = () => {
   <Link href="/team" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Team</a>
   </Link>
-  <Link href="/" asChild>
+  <Link href="/pricing" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Pricing</a>
   </Link>
   <Link href="/" asChild>
