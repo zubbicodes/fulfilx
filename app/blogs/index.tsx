@@ -3,14 +3,14 @@ import Navbar from '@/components/layout/navbar';
 import { Link, Stack } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
-export default function SectorsScreen() {
-    const sectors = [
+export default function BlogsScreen() {
+    const blogs = [
     // Column 1 - Left
     {
       id: 1,
-      title: "Luxury Fulfilment",
+      title: "The Power of Integration",
       description: "Explore how FulFilx elevates luxury fulfillment, offering bespoke services to manage & deliver high-end goods through an extensive courier network & seamless e-commerce platform integrations, ensuring an unmatched experience for your clients.",
-      image: "/lux.png",
+      image: "/poi.png",
       position: { left: 215, top: 200 }
     },
     {
@@ -103,7 +103,7 @@ export default function SectorsScreen() {
           <View className="relative z-10 min-h-screen flex items-center justify-center pt-20">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
-              Sectors
+              Blogs
             </Text>
             
             {/* Breadcrumb Navigation */}
@@ -113,7 +113,7 @@ export default function SectorsScreen() {
               </Text>
               <View className="w-1 h-1 bg-[#C10016] rounded-full mx-4" />
               <Text className="font-helvetica font-medium text-[20px] leading-[40px] text-[#C10016]">
-                Sectors
+                Blogs
               </Text>
             </View>
           </View>
@@ -128,25 +128,25 @@ export default function SectorsScreen() {
               top: 80
             }}
           >
-            Sectors
+            Blogs
           </Text>
 
-          {/* Sectors Grid */}
-{sectors.map((sector, index) => (
+          {/* Blogs Grid */}
+{blogs.map((blog, index) => (
   <View
-    key={sector.id}
+    key={blog.id}
     className="absolute"
     style={{
       width: 453,
-      left: sector.position.left,
-      top: sector.position.top
+      left: blog.position.left,
+      top: blog.position.top
     }}
   >
     {/* Image */}
     <View 
       className="w-[450px] h-[350px] rounded-[24px] bg-cover bg-center"
       style={{ 
-        backgroundImage: `url(${sector.image})`,
+        backgroundImage: `url(${blog.image})`,
         backdropFilter: 'blur(12.5px)'
       }}
     />
@@ -155,18 +155,18 @@ export default function SectorsScreen() {
     <View className="mt-6">
       {/* Title */}
       <Text className="font-helvetica font-bold text-[28px] leading-[84px] text-black">
-        {sector.title}
+        {blog.title}
       </Text>
       
       {/* Description */}
       <Text className="font-helvetica font-normal text-[20px] leading-[38px] text-black mb-2">
-        {sector.description}
+        {blog.description}
       </Text>
       
       {/* Learn More Button */}
-      {sector.id === 1 ? (
-        // For Luxury Fulfillment - with navigation
-        <Link href="/luxury-fulfilment" asChild>
+      {blog.id === 1 ? (
+        // For The Power of Integration - with navigation
+        <Link href="/blogs/power-of-integration" asChild>
           <View className="flex flex-row items-center gap-[10px] cursor-pointer">
             <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
               Learn More
@@ -175,7 +175,7 @@ export default function SectorsScreen() {
           </View>
         </Link>
       ) : (
-        // For other sectors - without navigation
+        // For other Blogs - without navigation
         <View className="flex flex-row items-center gap-[10px] cursor-pointer">
           <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
             Learn More
