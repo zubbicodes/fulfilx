@@ -103,12 +103,12 @@ export default function AboutUsScreen(){
             <img 
               src="/bg.png"
               alt="Background pattern"
-              className="w-full h-full object-cover"
+              className="w-[1920px] h-[600px] object-cover"
             />
           </View>
 
           {/* Hero Content */}
-          <View className="relative z-10 min-h-screen flex items-center justify-center pt-20">
+          <View className="relative z-10 min-h-screen flex items-center justify-center pb-20">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
               About Us
@@ -129,7 +129,7 @@ export default function AboutUsScreen(){
 <section className="relative w-full bg-cover bg-center bg-no-repeat">
   <div className="relative max-w-[1490px] mx-auto px-4 py-16">
     
-   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 transform -translate-y-60">
   
   {/* Left Content */}
   <div className="space-y-8">

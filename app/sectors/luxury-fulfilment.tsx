@@ -27,12 +27,12 @@ export default function LuxuryScreen() {
             <img 
               src="/bg.png"
               alt="Background pattern"
-              className="w-full h-full object-contain"
+              className="w-[1920px] h-[600px] object-cover"
             />
           </View>
 
           {/* Hero Content */}
-          <View className="relative z-10 flex items-center justify-center pt-40 pt-80">
+          <View className="relative z-10 flex items-center justify-center pt-60">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
               Luxury Fulfilment

@@ -32,12 +32,12 @@ export default function ContactScreen() {
             <img 
               src="/bg.png"
               alt="Background pattern"
-              className="w-full h-full object-cover"
+              className="w-[1920px] h-[600px] object-cover"
             />
           </View>
 
           {/* Hero Content */}
-          <View className="relative z-10 min-h-screen flex items-center justify-center pt-20">
+          <View className="relative z-10 min-h-screen flex items-center justify-center pb-20">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
               Contact Us
@@ -57,7 +57,7 @@ export default function ContactScreen() {
         </View>
 
         {/* Get in Touch Section */}
-        <View className="w-full bg-white py-20">
+        <View className="w-full bg-white transform -translate-y-48">
           {/* Contact Us Badge */}
           <View className="flex flex-row justify-center items-center mx-auto w-[200px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
             <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
@@ -186,7 +186,7 @@ export default function ContactScreen() {
         </View>
 
         {/* Contact Form Section */}
-        <div className="relative w-full bg-white py-20">
+        <div className="relative w-full bg-white transform -translate-y-24">
           {/* Two Column Layout */}
           <div className="flex flex-row justify-center items-start gap-16 px-8">
             

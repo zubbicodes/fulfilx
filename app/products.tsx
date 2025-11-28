@@ -44,12 +44,12 @@ const handlePriceChange = (index: number, value: string) => {
             <img 
               src="/bg.png"
               alt="Background pattern"
-              className="w-full h-full object-contain"
+              className="w-[1920px] h-[600px] object-cover"
             />
           </View>
 
           {/* Hero Content */}
-          <View className="relative z-10 flex items-center justify-center pt-80">
+          <View className="relative z-10 flex items-center justify-center pt-60">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
               Products
@@ -69,7 +69,7 @@ const handlePriceChange = (index: number, value: string) => {
         </View>
 
         {/* Products Filter and Grid Section */}
-        <section className="relative w-full py-12 px-4">
+        <section className="relative w-full py-12 px-4 transform -translate-y-56">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
             
             {/* Left Sidebar - Filters */}

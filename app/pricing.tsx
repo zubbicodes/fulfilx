@@ -100,12 +100,12 @@ const panResponder = useRef(
             <img 
               src="/bg.png"
               alt="Background pattern"
-              className="w-full h-full object-contain"
+              className="w-[1920px] h-[600px] object-cover"
             />
           </View>
 
           {/* Hero Content */}
-          <View className="relative z-10 flex items-center justify-center pt-80">
+          <View className="relative z-10 flex items-center justify-center pt-60">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
               Pricing Plans
@@ -124,7 +124,7 @@ const panResponder = useRef(
           </View>
         </View>
          {/* Pricing Section */}
-        <View className="w-full bg-white py-20">
+        <View className="w-full bg-white transform -translate-y-48">
           {/* Pricing Badge */}
           <View className="flex flex-row justify-center items-center mx-auto w-[200px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
             <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
@@ -145,7 +145,7 @@ const panResponder = useRef(
           </Text>
         </View>
     {/* Pricing Section */}
-<View className="relative w-full py-40">
+<View className="relative w-full py-10">
   {/* Content Container */}
   <View className="max-w-[1400px] mx-auto px-4 transform -translate-y-40">
     {/* Pricing Cards Container */}
@@ -493,7 +493,7 @@ const panResponder = useRef(
       <span className="text-[#C10016]">*</span> Pricing shown include our volume discount
     </Text>
 </View>
-<View className="transform -translate-y-36 mb-12">
+<View className="transform -translate-y-36 -mb-12">
   {/* Title */}
   <Text className="font-helvetica font-bold text-[64px] leading-[84px] text-black text-center mb-12">
     Key <Text className="text-[#C10016]">Benefits</Text>

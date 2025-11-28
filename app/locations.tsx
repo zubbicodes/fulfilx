@@ -32,12 +32,12 @@ export default function LocationsScreen() {
             <img 
               src="/bg.png"
               alt="Background pattern"
-              className="w-full h-full object-cover"
+              className="w-[1920px] h-[600px] object-cover"
             />
           </View>
 
           {/* Hero Content */}
-          <View className="relative z-10 min-h-screen flex items-center justify-center pt-20">
+          <View className="relative z-10 min-h-screen flex items-center justify-center pb-20">
             {/* Main Title */}
             <Text className="font-helvetica font-bold text-[84px] leading-[84px] text-black text-center mb-8">
               Locations
@@ -56,7 +56,7 @@ export default function LocationsScreen() {
           </View>
         </View>
         {/* Get in Touch Section */}
-        <View className="w-full bg-white py-4">
+        <View className="w-full bg-white transform -translate-y-48">
           {/* Contact Us Badge */}
           <View className="flex flex-row justify-center items-center mx-auto w-[200px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
             <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
@@ -448,7 +448,7 @@ export default function LocationsScreen() {
 
 </View>
         </View>
-<section className="relative w-full bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/bg.png)'}}>
+<section className="relative w-full bg-cover bg-center bg-no-repeat transform -translate-y-24" style={{backgroundImage: 'url(/bg.png)'}}>
   <div className="relative max-w-[1490px] mx-auto px-3 py-15">
   </div>
     <div className="relative max-w-[1490px] mx-auto px-4 py-16">
