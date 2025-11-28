@@ -8,7 +8,6 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 export default function TeamScreen() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [agreedToPolicy, setAgreedToPolicy] = useState(false);
   
   const images = [
     { id: 1, src: '/bike.png' },
