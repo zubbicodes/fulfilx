@@ -129,7 +129,7 @@ export default function AboutUsScreen(){
 <section className="relative w-full bg-cover bg-center bg-no-repeat">
   <div className="relative max-w-[1490px] mx-auto px-4 py-16">
     
-   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 transform -translate-y-60">
+   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 transform -translate-y-60" style={{marginBottom: -220}}>
   
   {/* Left Content */}
   <div className="space-y-8">
@@ -205,7 +205,7 @@ export default function AboutUsScreen(){
   </div>
 </section>
 {/* Timeline Section */}
-<View className="relative w-full py-40 mb-10">
+<View className="relative w-full py-40">
   {/* Background Image */}
   <View className="absolute inset-0">
     <img 
@@ -569,13 +569,13 @@ can build a greener future while achieving your logistics goals.
   </div>
 </section>
 {/* Reviews Section */}
-<View className="relative w-full py-40">
+<View className="relative w-full py-20">
   {/* Background Image */}
   <View className="absolute inset-0">
     <img 
       src="/bg.png" 
       alt="Background" 
-      className="w-full h-full object-cover"
+      className="w-[1920px] h-[898px] object-cover"
     />
   </View>
   
