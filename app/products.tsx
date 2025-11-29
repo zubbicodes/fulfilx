@@ -69,7 +69,7 @@ const handlePriceChange = (index: number, value: string) => {
         </View>
 
         {/* Products Filter and Grid Section */}
-        <section className="relative w-full py-12 px-4 transform -translate-y-56">
+        <section className="relative w-full py-12 px-4 transform -translate-y-56" style={{marginBottom: -180}}>
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
             
             {/* Left Sidebar - Filters */}

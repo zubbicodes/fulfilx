@@ -119,7 +119,7 @@ export default function BlogsScreen() {
           </View>
         </View>
         {/* Sectors Grid Section */}
-        <View className="relative w-full transform -translate-y-60" style={{ minHeight: 2550 }}>
+        <View className="relative w-full transform -translate-y-60" style={{ minHeight: 2550, marginBottom: -270 }}>
           {/* Main Title */}
           <Text 
             className="font-helvetica font-bold text-[64px] leading-[84px] text-black text-center absolute"

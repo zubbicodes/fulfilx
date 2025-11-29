@@ -448,7 +448,7 @@ export default function LocationsScreen() {
 
 </View>
         </View>
-<section className="relative w-full bg-cover bg-center bg-no-repeat transform -translate-y-24" style={{backgroundImage: 'url(/bg.png)'}}>
+<section className="relative w-full bg-cover bg-center bg-no-repeat transform -translate-y-24" style={{backgroundImage: 'url(/bg.png)', marginBottom: -88}}>
   <div className="relative max-w-[1490px] mx-auto px-3 py-15">
   </div>
     <div className="relative max-w-[1490px] mx-auto px-4 py-16">
