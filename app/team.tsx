@@ -106,20 +106,6 @@ export default function TeamScreen() {
       alt="Nas"
       className="w-full h-full object-cover"
     />
-    {/* Social Icons Popup - Bottom */}
-    <View className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-      <View className="flex flex-row justify-center gap-4">
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/fbdark.png" alt="Facebook" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/igdark.png" alt="Instagram" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/eye.svg" alt="View Profile" className="w-4 h-4" />
-        </TouchableOpacity>
-      </View>
-    </View>
   </View>
   
   {/* Member Info */}
@@ -154,20 +140,7 @@ export default function TeamScreen() {
       alt="Anson"
       className="w-full h-full object-cover"
     />
-    {/* Social Icons Popup - Bottom */}
-    <View className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-      <View className="flex flex-row justify-center gap-4">
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/fbdark.png" alt="Facebook" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/igdark.png" alt="Instagram" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/eye.svg" alt="View Profile" className="w-4 h-4" />
-        </TouchableOpacity>
-      </View>
-    </View>
+
   </View>
   
   {/* Member Info */}
@@ -207,20 +180,6 @@ export default function TeamScreen() {
       alt="Nat"
       className="w-full h-full object-cover"
     />
-    {/* Social Icons Popup - Bottom */}
-    <View className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-      <View className="flex flex-row justify-center gap-4">
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/fbdark.png" alt="Facebook" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/igdark.png" alt="Instagram" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/eye.svg" alt="View Profile" className="w-4 h-4" />
-        </TouchableOpacity>
-      </View>
-    </View>
   </View>
   
   {/* Member Info */}
@@ -255,20 +214,6 @@ export default function TeamScreen() {
       alt="Nas"
       className="w-full h-full object-cover"
     />
-    {/* Social Icons Popup - Bottom */}
-    <View className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-      <View className="flex flex-row justify-center gap-4">
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/fbdark.png" alt="Facebook" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/igdark.png" alt="Instagram" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/eye.svg" alt="View Profile" className="w-4 h-4" />
-        </TouchableOpacity>
-      </View>
-    </View>
   </View>
   
   {/* Member Info */}
@@ -308,20 +253,6 @@ export default function TeamScreen() {
       alt="Nas"
       className="w-full h-full object-cover"
     />
-    {/* Social Icons Popup - Bottom */}
-    <View className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-      <View className="flex flex-row justify-center gap-4">
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/fbdark.png" alt="Facebook" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/igdark.png" alt="Instagram" className="w-4 h-4" />
-        </TouchableOpacity>
-        <TouchableOpacity className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-          <img src="/eye.svg" alt="View Profile" className="w-4 h-4" />
-        </TouchableOpacity>
-      </View>
-    </View>
   </View>
   
   {/* Member Info */}

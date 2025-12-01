@@ -264,7 +264,7 @@ export default function AboutUsScreen(){
   <View className="w-[500px] h-[500px] rounded-[32px] backdrop-blur-[12.5px] bg-cover bg-center transform translate-x-60" 
     style={{backgroundImage: 'url(/head.png)'}} />
 </View>
-<View className="flex flex-row items-center justify-between mb-60 w-full">
+<View className="flex flex-row items-center justify-between w-full">
   {/* Left Side - Image */}
   <View className="w-[500px] h-[500px] rounded-[32px] backdrop-blur-[12.5px] bg-cover bg-center transform -translate-x-60" 
     style={{backgroundImage: 'url(/trolley.png)'}} />
