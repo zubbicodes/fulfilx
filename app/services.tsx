@@ -343,6 +343,104 @@ const LogisticsServicesSection = () => {
     </View>
   );
 };
+const PlatformIntegrationsIcon = () => <img src="/pi.svg" alt="General Storage" width={54} height={54} />;
+const ClientReportingIcon = () => <img src="/cr.svg" alt="Food Storage" width={54} height={54} />;
+const Arrows = () => <img src="/arrow-dark.svg" alt="Arrow" width={10} height={10} />;
+const Checks = () => <img src="/check.svg" alt="Check" width={14} height={14} />;
+
+const TechnologyIntegrationsSection = () => {
+  const services = [
+    {
+      id: 1,
+      title: 'Platform Integrations',
+      icon: PlatformIntegrationsIcon,
+      features: [
+        'UK import management (port-to-warehouse)',
+        'Export shipping to global destinations',
+        'Customs documentation support',
+        'Container de-stuffing & consolidation',
+        'Multi-supplier import consolidation',
+        'UAE expansion support with COD options',
+        'Importer of Record (IOR) services'
+      ]
+    },
+    {
+      id: 2,
+      title: 'Client Reporting',
+      icon: ClientReportingIcon,
+      features: [
+        'Pallet collections',
+        'Pallet deliveries',
+        'Bulk freight handling',
+        'Pallet storage'  
+      ]
+    },
+  ];
+
+  const Check = Checks;
+  const Arrow = Arrows;
+  return (
+    <View className="w-full px-4">
+      {/* Centered container */}
+      <ScrollView 
+        horizontal 
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+          paddingHorizontal: 270,
+        }}
+      >
+        {/* Inner container with flex row and gap */}
+        <View style={{ flexDirection: 'row', gap: 20 }}>
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <View 
+                key={service.id} 
+                className="w-[620px] h-[440px] bg-white/10 border border-[#D9D9D9]/50 rounded-[20px] backdrop-blur-[20px] flex-shrink-0 p-8 flex flex-col"
+              >
+                    <View className="w-20 h-20 rounded-full bg-transparent">
+                      <View className="w-full h-full rounded-full bg-white p-1">
+                        <View className="w-full h-full rounded-full flex items-center justify-center">
+                          <IconComponent />
+                        </View>
+                      </View>
+                    </View>
+                
+                {/* Title */}
+                <Text className="font-helvetica font-bold text-[20px] leading-normal text-black mb-3">
+                  {service.title}
+                </Text>
+                
+                {/* Features */}
+                <View className="space-y-2 flex-1">
+                  {service.features.map((feature, index) => (
+                    <View key={index} className="flex-row items-baseline gap-3">
+                      <Check />
+                      <Text className="font-helvetica text-[16px] leading-[22px] text-black">
+                        {feature}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+                
+                {/* Contact Sales Button */}
+                <TouchableOpacity className="flex-row items-center gap-2 translate-y-6">
+                  <Text className="font-helvetica font-bold text-[16px] leading-normal text-[#C10016]">
+                    Contact Sales
+                  </Text>
+                  <Arrow />
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
 
 export default function ServicesScreen(){
     const router = useRouter();
@@ -721,13 +819,20 @@ export default function ServicesScreen(){
     <img 
       src="/bg.png"
       alt="Background pattern"
-      className="w-[1920px] h-[938px] object-cover" /* Change to full width/height */
+      className="w-full h-full object-cover" /* Change to full width/height */
     />
   </View>
   <Text className="font-helvetica font-bold text-[54px] leading-[84px] text-black text-center relative z-10 transform -translate-y-10">
     Logistics, Frieght & <Text className="text-[#C10016]">International</Text>
   </Text>
   <LogisticsServicesSection/>
+</View>
+{}{/* Technology & Integrations Section */}
+<View className="relative py-20"> {/* Add vertical padding */}
+  <Text className="font-helvetica font-bold text-[54px] leading-[84px] text-black text-center relative z-10 transform -translate-y-8">
+    Technology & <Text className="text-[#C10016]">Integrations</Text>
+  </Text>
+  <TechnologyIntegrationsSection/>
 </View>
 <section className="relative w-full h-[916px] overflow-hidden">
   {/* Background with overlay */}
