@@ -355,13 +355,13 @@ const TechnologyIntegrationsSection = () => {
       title: 'Platform Integrations',
       icon: PlatformIntegrationsIcon,
       features: [
-        'UK import management (port-to-warehouse)',
-        'Export shipping to global destinations',
-        'Customs documentation support',
-        'Container de-stuffing & consolidation',
-        'Multi-supplier import consolidation',
-        'UAE expansion support with COD options',
-        'Importer of Record (IOR) services'
+        'Shopify',
+        'WooCommerce',
+        'Amazon',
+        'TikTok Shop',
+        'Etsy',
+        'eBay',
+        'Custom integrations available'
       ]
     },
     {
@@ -369,10 +369,9 @@ const TechnologyIntegrationsSection = () => {
       title: 'Client Reporting',
       icon: ClientReportingIcon,
       features: [
-        'Pallet collections',
-        'Pallet deliveries',
-        'Bulk freight handling',
-        'Pallet storage'  
+        'Real-time fulfilment dashboards',
+        'Inventory reports',
+        'Courier performance analytics'
       ]
     },
   ];
@@ -393,7 +392,7 @@ const TechnologyIntegrationsSection = () => {
         }}
       >
         {/* Inner container with flex row and gap */}
-        <View style={{ flexDirection: 'row', gap: 20 }}>
+        <View style={{ flexDirection: 'row', gap: 20, position: 'relative' }}>
           {services.map((service) => {
             const IconComponent = service.icon;
             return (
@@ -401,6 +400,7 @@ const TechnologyIntegrationsSection = () => {
                 key={service.id} 
                 className="w-[620px] h-[440px] bg-white/10 border border-[#D9D9D9]/50 rounded-[20px] backdrop-blur-[20px] flex-shrink-0 p-8 flex flex-col"
               >
+                {/* Icon inside card - KEEP THIS */}
                     <View className="w-20 h-20 rounded-full bg-transparent">
                       <View className="w-full h-full rounded-full bg-white p-1">
                         <View className="w-full h-full rounded-full flex items-center justify-center">
@@ -438,6 +438,52 @@ const TechnologyIntegrationsSection = () => {
           })}
         </View>
       </ScrollView>
+      
+      {/* ADDITIONAL ICON SETS - POSITIONED ABSOLUTELY OUTSIDE */}
+      
+      {/* Left Icon Set - Group 1160445162 */}
+      <View className="absolute w-[208px] h-[342px] left-[640px] top-1/2 transform -translate-y-1/2">
+        {/* Group 1160445156 */}
+        <View className="absolute w-[94px] h-[94px] left-[114px] top-0">
+          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9]" />
+          <img src="/shopify.svg" alt="Icon 1" className="absolute w-[48px] h-[48px] left-[23px] top-[23px]" />
+        </View>
+        
+        {/* Group 1160445158 */}
+        <View className="absolute w-[94px] h-[94px] left-[114px] top-[114px]">
+          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9]" />
+          <img src="/amazon.svg" alt="Icon 2" className="absolute w-[48px] h-[48px] left-[23px] top-[23px]" />
+        </View>
+        
+        {/* Group 1160445160 */}
+        <View className="absolute w-[94px] h-[94px] left-[114px] top-[228px]">
+          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9]" />
+          <img src="/etsy.svg" alt="Icon 3" className="absolute w-[48px] h-[48px] left-[23px] top-[23px]" />
+        </View>
+        
+        {/* Group 1160445157 */}
+        <View className="absolute w-[94px] h-[94px] left-0 top-[20px]">
+          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9]" />
+          <img src="/woo.svg" alt="Icon 4" className="absolute w-[48px] h-[48px] left-[23px] top-[23px]" />
+        </View>
+        
+        {/* Group 1160445159 */}
+        <View className="absolute w-[94px] h-[94px] left-0 top-[134px]">
+          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9]" />
+          <img src="/tiktok.svg" alt="Icon 5" className="absolute w-[42px] h-[42px] left-[26px] top-[26px]" />
+        </View>
+        
+        {/* Group 1160445161 */}
+        <View className="absolute w-[94px] h-[94px] left-0 top-[248px]">
+          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9]" />
+          <img src="/ebay.svg" alt="Icon 6" className="absolute w-[48px] h-[48px] left-[22px] top-[22px]" />
+        </View>
+      </View>
+      
+      {/* Right Image - image 82 */}
+      <View className="absolute w-[253px] h-[253px] right-[390px] top-1/2 transform -translate-y-1/2">
+        <img src="/r.png" alt="Right Image" className="w-full h-full" />
+      </View>
     </View>
   );
 };
