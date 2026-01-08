@@ -251,7 +251,7 @@ const Footer = () => {
 
     {/* Bottom Copyright */}
      {/* Bottom Copyright - Absolutely positioned at bottom */}
-  <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 pt-2 pb-4 text-center">
+  <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 pt-4 pb-4 text-center">
     <p className="text-white text-[16px] opacity-90">
       Copyright © 2025. <span className='text-[#C10016]'>Fulfil X</span>. All rights reserved.
     </p>

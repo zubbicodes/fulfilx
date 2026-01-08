@@ -123,16 +123,14 @@ const row1Logos = [
                         {/* Main Heading */}
                         <div className="w-full max-w-[900px] mx-auto lg:mx-0 mb-8 lg:mb-12">
                             <h1 className="text-[68px] font-bold leading-tight text-black text-center lg:text-left">
-                                Fulfilment Built for Brands That Think Bigger
+                                Bespoke Fulfilment, Built to Help Brands Scale
                             </h1>
                         </div>
 
                         {/* Description */}
                         <div className="w-full max-w-[759px] mx-auto lg:mx-0 mb-12 lg:mb-16">
                             <p className="text-[24px] font-helvetica font-thin leading-[2] text-black text-center lg:text-left">
-                                At FulfilX we are more than just a logistics company. Our motto is <br/>
-                                "Your success is our success" that's why we see every brand as a partner,
-                                not just a customer.
+                                At FulfilX, we are more than just a 3PL. We are your Partner in Fulfilment. "Your success is Our Success."
                             </p>
                         </div>
 
@@ -202,17 +200,10 @@ const row1Logos = [
   {/* Content Container aligned with hero section */}
   <div className="relative z-10 pt-40 pb-24">
     <div className="container mx-auto px-4 md:px-6 lg:px-8">
-      
-      {/* Section Title */}
-      <h3 className="text-[28px] font-normal leading-[44px] text-white mb-16">
-        Why You Work With Fulfil.X
-      </h3>
 
       {/* Main Heading */}
       <h2 className="text-[54px] font-bold leading-[84px] tracking-[-0.01em] text-white mb-20">
-        We Are A Leading one-Stop Logistic Service provider <br/>
-        helps to Reach Your exact delivery destination on Time <br/>
-        Without Delay & Damages.
+        The fastest growing 3PL partner assisting in the First, Middle, and Last Mile with Global Reach. Helping You Expand with ease.
       </h2>
 
       {/* Stats Grid */}
@@ -236,7 +227,7 @@ const row1Logos = [
         {/* Stat 2 */}
         <div className="w-full">
           <div className="flex items-baseline gap-2 mb-4">
-            <span className="text-[54px] font-bold leading-[80px] tracking-[-0.01em] text-white">50000</span>
+            <span className="text-[54px] font-bold leading-[80px] tracking-[-0.01em] text-white">500,000</span>
             <span
               className="text-[54px] font-bold leading-[80px] tracking-[-0.01em] bg-transparent"
               style={{ color: 'transparent', WebkitTextStroke: '2px white' }}
@@ -255,12 +246,12 @@ const row1Logos = [
               className="text-[54px] font-bold leading-[80px] tracking-[-0.01em] bg-transparent"
               style={{ color: 'transparent', WebkitTextStroke: '2px white' }}
             >
-              2
+              4
             </span>
             <span className="text-[54px] font-bold leading-[80px] tracking-[-0.01em] text-white">Continents</span>
           </div>
           <div className="h-px bg-white/10 w-full my-6"></div>
-          <p className="text-[20px] font-normal leading-[44px] text-white">United Kingdom & UAE</p>
+          <p className="text-[20px] font-normal leading-[44px] text-white">North America, UK & Europe, UAE, Australia</p>
         </div>
 
       </div>
@@ -303,21 +294,21 @@ const row1Logos = [
 
     {/* Heading */}
     <h2 className="text-[64px] font-bold leading-[74px] -tracking-[0.01em] text-black max-w-2xl mb-6">
-      Do not hesitate to say <span className="text-[#C10016]">Bonjour</span>
+      Looking to Elevate Your <span className="text-[#C10016]">Logistics?</span>
     </h2>
 
     {/* Paragraph */}
     <p className="text-[22px] font-normal leading-[44px] text-black max-w-3xl mb-10">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkown printer.
+    We work with startup and scale up brands our bespoke fulfilment services are a game changer in the 3PL market. We help brands get there logistics right so you can focus on growing.
     </p>
     <p className="text-[22px] font-normal leading-[44px] text-black max-w-3xl mb-10">
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkown printer.
+    Ready to have <span className="text-[#C10016]">Stress-Free Logistics?</span>
     </p>
 
     {/* CTA Button with icon */}
     <a 
       href="#contact"
-      className="inline-flex items-center px-6 py-2 gap-2.5 rounded-md bg-[#C10016] cursor-pointer transition duration-300 hover:brightness-110 mt-6"
+      className="inline-flex items-center px-6 py-2 gap-2.5 rounded-md bg-[#C10016] cursor-pointer transition duration-300 hover:brightness-110 mt-12"
     >
       <span className="text-white font-normal text-[18px] leading-[36px]">Let's Talk</span>
       <img 
@@ -343,23 +334,19 @@ const row1Logos = [
   {/* Title lowered slightly */}
   <div className="absolute top-32 w-full text-center text-white">
     <h2 className="text-[64px] font-bold leading-[80px] tracking-[-0.01em]">
-      Ship Happens
+      We Make Ship Happen
     </h2>
-    <p className="mt-3 text-[22px] leading-[34px] max-w-[780px] mx-auto opacity-90">
-      That’s why we have real-time communication, to handle all your immediate needs and to ensure
-      that ship happens on time – every time.
-    </p>
   </div>
 
   {/* Grid moved slightly upward + reduced spacing */}
   <div className="absolute bottom-[150px] left-1/2 -translate-x-1/2 flex gap-[20px]">
 
     {[
-      { title: "Warehouse & Storage", img: "/shiphappens1.png" },
-      { title: "Quality Control", img: "/shiphappens2.png" },
+      { title: "Fulfilment Services", img: "/shiphappens1.png" },
+      { title: "Amazon FBA & SFP", img: "/shiphappens2.png" },
       { title: "Packaging Solutions", img: "/shiphappens3.png" },
-      { title: "Middle East Expansion", img: "/shiphappens4.png" },
-      { title: "IOR Services", img: "/shiphappens5.png" },
+      { title: "Freight Services", img: "/shiphappens4.png" },
+      { title: "Rework & Quality Control", img: "/shiphappens5.png" },
     ].map((item, i) => (
       <div key={i} className="relative h-[480px] w-[250px] group overflow-hidden">
 
@@ -593,7 +580,7 @@ const row1Logos = [
     
     {/* Main Heading */}
     <h1 className="absolute w-[835px] left-1/2 transform -translate-x-1/2 top-0 font-bold text-[74px] leading-[80px] tracking-tight text-white text-center">
-      We Respond In Real Time
+      Ready to have a Chat?
     </h1>
     
     {/* Subheading */}
@@ -663,11 +650,11 @@ const row1Logos = [
 <div className="flex items-center gap-4">
   <div className="w-[150px] h-[80px] bg-black/10 rounded-[10px] flex items-center justify-center">
     <span className="font-bold text-[40px] leading-[80px] tracking-tight text-black">
-      250k
+      5-Stars
     </span>
   </div>
   <p className="font-normal text-[20px] leading-[40px] text-[#C10016]">
-    Orders <br/> Shipped
+    On <br/> Google
   </p>
 </div>
 
@@ -687,11 +674,11 @@ const row1Logos = [
 <div className="flex items-center gap-4">
   <div className="w-[150px] h-[80px] bg-black/10 rounded-[10px] flex items-center justify-center">
     <span className="font-bold text-[40px] leading-[80px] tracking-tight text-black">
-      100%
+      100+
     </span>
   </div>
   <p className="font-normal text-[20px] leading-[40px] text-[#C10016]">
-    Customer<br/> Satisfaction
+    Brands<br/>Managed
   </p>
 </div>
 
@@ -702,25 +689,11 @@ const row1Logos = [
 
       {/* Right Content */}
       <div className="space-y-8">
-        
-        {/* Description */}
-        <p className="font-normal text-[20px] leading-[36px] text-black">
-          Our founders, with experience in international brands, identified a need for change in the 3PL market. Frustrated by impersonal interactions & limitations, they launched FulfilX.
-        </p>
-
-        {/* About Us Button */}
-        <button className="flex items-center gap-[10px] group">
-  <span className="font-helvetica-bold text-[22px] leading-[36px] text-[#C10016] group-hover:underline">
-    About Us
-  </span>
-  <img src="/arrow-dark.svg" alt="" className="w-4 h-4" />
-          
-        </button>
         {/* Image with Pagination */}
 <div className="relative">
   {/* Image that changes based on active dot */}
   <div 
-    className="w-full h-[600px] bg-cover bg-center rounded-[24px] backdrop-blur-[12.5px]"
+    className="w-full h-[900px] bg-cover bg-center rounded-[24px] backdrop-blur-[12.5px]"
     style={{
       backgroundImage: `url(${
         activeDot === 0 ? '/box.png' :
@@ -776,7 +749,7 @@ const row1Logos = [
 
     {/* Main Heading */}
     <h2 className="text-center font-bold text-[64px] leading-[74px] text-black mt-16 max-w-[700px] mx-auto">
-  List of nations we work with <span className="text-[#C10016]">worldwide</span>
+  Our <span className="text-[#C10016]">Worldwide Network</span>
 </h2>
 
     {/* First Row of Countries */}
@@ -790,19 +763,19 @@ const row1Logos = [
       {/* United States */}
       <div className="flex items-center gap-3">
         <div className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]" style={{backgroundImage: 'url(/US.png)'}}></div>
-        <span className="font-normal text-[18px] leading-[30px] text-black">United States</span>
+        <span className="font-normal text-[18px] leading-[30px] text-black">California</span>
       </div>
 
       {/* San Francisco */}
       <div className="flex items-center gap-3">
         <div className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]" style={{backgroundImage: 'url(/SF.png)'}}></div>
-        <span className="font-normal text-[18px] leading-[30px] text-black">San Francisco</span>
+        <span className="font-normal text-[18px] leading-[30px] text-black">Atlanta</span>
       </div>
 
       {/* Georgia */}
       <div className="flex items-center gap-3">
         <div className="w-[30px] h-[20px] border border-black/10 bg-cover bg-center rounded-[2px]" style={{backgroundImage: 'url(/G.png)'}}></div>
-        <span className="font-normal text-[18px] leading-[30px] text-black">Georgia</span>
+        <span className="font-normal text-[18px] leading-[30px] text-black">Netherlands</span>
       </div>
 
       {/* UAE */}
@@ -950,18 +923,9 @@ const row1Logos = [
   {/* Content */}
   <div className="relative max-w-[1300px] mx-auto px-4 z-10">
     
-    {/* "We integrate with" Badge */}
-    <div className="flex justify-center">
-      <div className="w-[280px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] flex items-center justify-center">
-        <span className="font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
-          We integrate with
-        </span>
-      </div>
-    </div>
-
     {/* Main Heading */}
     <h2 className="text-center font-bold text-[74px] leading-[80px] tracking-tight text-white mt-16">
-      Leading Brands...
+      We Integrate With
     </h2>
 
 <div className="w-full overflow-hidden py-10">
@@ -1088,7 +1052,7 @@ const row1Logos = [
         
         {/* Heading */}
         <h2 className="font-bold text-[42px] leading-[54px] tracking-tight text-black mb-8">
-          Our Accomplishments
+          Our Awards
         </h2>
 
         {/* Red Line - Centered */}
@@ -1113,7 +1077,7 @@ const row1Logos = [
         
         {/* Heading */}
         <h2 className="font-bold text-[42px] leading-[54px] tracking-tight text-white mb-8">
-          Advanced Tech Solutions
+          Accreditations
         </h2>
 
         {/* White Line - Centered */}
