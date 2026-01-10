@@ -155,7 +155,10 @@ export default function BlogsScreen() {
                     </Text>
                     
                     <TouchableOpacity 
-                      onPress={() => blog.id === 1 ? router.push('/blogs/power-of-integration') : null}
+                      onPress={() => {
+                        if (blog.id === 1) router.push('/blogs/power-of-integration');
+                      }}
+                      disabled={blog.id !== 1}
                       className="flex flex-row items-center gap-[10px]"
                     >
                       <Text className="font-helvetica font-bold text-lg text-[#C10016]">
@@ -185,7 +188,7 @@ export default function BlogsScreen() {
             </Text>
 
             {/* Blogs Grid */}
-            {blogs.map((blog, index) => (
+            {blogs.map((blog) => (
               <View
                 key={blog.id}
                 className="absolute"
@@ -306,7 +309,7 @@ export default function BlogsScreen() {
                   className="border border-white rounded-[6px] flex flex-row items-center justify-center gap-[10px] px-8 py-4"
                   onPress={() => router.push('/contact')}
                 >
-                  <Text className="font-helvetica font-bold text-[18px] leading-[36px] text-white">Let's Talk</Text>
+                  <Text className="font-helvetica font-bold text-[18px] leading-[36px] text-white">Let&apos;s Talk</Text>
                   <View className="w-4 h-4">
                     <img src="/arrow.svg" alt="arrow" className="w-full h-full object-contain" />
                   </View>
