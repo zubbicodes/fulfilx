@@ -89,7 +89,16 @@ const row1Logos = [
   };
     const primaryRed = 'bg-[#C10016]';
     const [activeDot, setActiveDot] = useState(1); // Start with middle dot active
+    const [whyChooseTab, setWhyChooseTab] = useState<'history' | 'mission' | 'vision'>('history');
     const router = useRouter();
+    const whyChooseContent: Record<typeof whyChooseTab, string> = {
+      history:
+        'At FulfilX we are more than just a logistics company. Our motto is "Your success is our success" that\'s why we see every brand as a partner, not just a customer. We are on hand to help your business grow and build customer-centric solutions.',
+      mission:
+        'At FulfilX our mission is to help brands scale with customer-first fulfilment. We combine real-time visibility, reliable operations, and seamless integrations to keep your deliveries fast and your customers happy.',
+      vision:
+        'At FulfilX our vision is to set the standard for modern fulfilment by building scalable, tech-enabled logistics that adapts to every brand and every market, without compromising the customer experience.',
+    };
     return (
         <>
             {/*Navbar*/}
@@ -428,10 +437,10 @@ const row1Logos = [
     <div className="mx-auto w-full max-w-[1490px]">
       <h3 className="text-center text-black font-bold text-[28px] md:text-[40px]">Easy <span className="text-[#C10016]">Setup</span></h3>
 
- <div className="relative mt-12 md:mt-20 pt-20 md:-translate-x-10 md:-translate-y-6">
+ <div className="relative mt-12 md:mt-20 pt-16 md:pt-20 w-full md:-translate-y-6">
       
-      {/* Curved connecting line - hidden on mobile, visible on md+ */}
-      <div className="hidden md:block absolute top-[60px] left-0 right-0 w-full pointer-events-none">
+      {/* Curved connecting line - hidden on mobile/tablet */}
+      <div className="hidden lg:block absolute top-[60px] left-0 right-0 w-full pointer-events-none">
         <svg 
           className="w-full h-auto" 
           viewBox="0 0 1132 95" 
@@ -451,18 +460,14 @@ const row1Logos = [
 
       {/* Step Circles aligned with text */}
       <style>{`
-        @media (min-width: 768px) {
-          .step-0-circle { transform: translate(-40px, -40px); }
-          .step-0-content { transform: translate(-40px, -40px); }
-          .step-1-circle { transform: translate(40px, 20px); }
-          .step-1-content { transform: translate(40px, 20px); }
-          .step-2-circle { transform: translate(150px, -30px); }
-          .step-2-content { transform: translate(150px, -30px); }
-          .step-3-circle { transform: translate(240px, 5px); }
-          .step-3-content { transform: translate(240px, 5px); }
+        @media (min-width: 1024px) {
+          .step-0-circle { transform: translate(clamp(-40px, -3vw, -20px), clamp(-40px, -3vw, -20px)); }
+          .step-1-circle { transform: translate(clamp(20px, 3vw, 40px), clamp(10px, 1.5vw, 20px)); }
+          .step-2-circle { transform: translate(clamp(60px, 10vw, 150px), clamp(-30px, -2vw, -10px)); }
+          .step-3-circle { transform: translate(clamp(90px, 16vw, 240px), clamp(0px, 0.5vw, 5px)); }
         }
       `}</style>
-<div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 justify-items-center lg:justify-items-stretch">
   {[
     { 
       step: 1, 
@@ -499,7 +504,7 @@ const row1Logos = [
       description: "Real-time tracking, multiple carrier options & automated processes. Delight customers with reliable logistics.",
     }
   ].map((item, i) => (
-    <div key={i} className="flex flex-col items-start">
+    <div key={i} className="flex flex-col items-center sm:items-start text-center sm:text-left w-full max-w-[420px] sm:max-w-none px-2 sm:px-0 min-w-0">
       {/* Step Circle with custom positioning */}
       <div 
         className={`relative mb-6 z-10 step-${i}-circle`} 
@@ -521,15 +526,15 @@ const row1Logos = [
 
       {/* Content Container with custom positioning */}
       <div 
-        className={`step-${i}-content`}
+        className={`step-${i}-content min-w-0 w-full`}
       >
         {/* Title */}
-        <h3 className={`font-bold text-xl md:text-2xl mb-4 ${item.titleColor}`}>
+        <h3 className={`font-bold text-xl md:text-2xl mb-4 ${item.titleColor} break-words`}>
           {item.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm md:text-[16px] leading-6 md:leading-[28px]">
+        <p className="text-sm md:text-[16px] leading-6 md:leading-[28px] break-words">
           {item.description}
         </p>
       </div>
@@ -595,22 +600,48 @@ const row1Logos = [
 
     {/* History, Mission, Vision Tabs */}
     <div className="space-y-4">
-      <div className="flex space-x-8 border-b border-black/25 pb-4 overflow-x-auto">
-        <button className="font-bold text-xl lg:text-[28px] leading-[80px] text-[#C10016] relative whitespace-nowrap">
+      <div className="flex flex-wrap gap-x-8 gap-y-2 border-b border-black/25 pb-4">
+        <button
+          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap ${
+            whyChooseTab === 'history' ? 'text-[#C10016]' : 'text-black'
+          }`}
+          onClick={() => setWhyChooseTab('history')}
+          type="button"
+        >
           History
-          <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+          {whyChooseTab === 'history' && (
+            <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+          )}
         </button>
-        <button className="font-bold text-xl lg:text-[28px] leading-[80px] text-black whitespace-nowrap">
+        <button
+          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap ${
+            whyChooseTab === 'mission' ? 'text-[#C10016]' : 'text-black'
+          }`}
+          onClick={() => setWhyChooseTab('mission')}
+          type="button"
+        >
           Mission
+          {whyChooseTab === 'mission' && (
+            <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+          )}
         </button>
-        <button className="font-bold text-xl lg:text-[28px] leading-[80px] text-black whitespace-nowrap">
+        <button
+          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap ${
+            whyChooseTab === 'vision' ? 'text-[#C10016]' : 'text-black'
+          }`}
+          onClick={() => setWhyChooseTab('vision')}
+          type="button"
+        >
           Vision
+          {whyChooseTab === 'vision' && (
+            <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+          )}
         </button>
       </div>
 
       {/* Content */}
       <p className="font-normal text-base lg:text-[20px] leading-relaxed lg:leading-[48px] text-black">
-        At FulfilX we are more than just a logistics company. Our motto is &quot;Your success is our success&quot; that&apos;s why we see every brand as a partner, not just a customer. We are on hand to help your business grow and build customer-centric solutions.
+        {whyChooseContent[whyChooseTab]}
       </p>
     </div>
 
