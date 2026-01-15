@@ -45,49 +45,62 @@ const Navbar: React.FC = () => {
     const [scrollbarGutter, setScrollbarGutter] = useState(0);
     const primaryRed = 'bg-[#C10016]';
 
+    // Handle Scroll Background Color
     useEffect(() => {
-        const onScroll = (e: Event) => {
-            const target = e.target as any;
-            const scrollTop =
-                typeof target?.scrollTop === 'number'
-                    ? target.scrollTop
-                    : window.scrollY || document.documentElement.scrollTop || 0;
-
+        const onScroll = () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
             setIsScrolled(scrollTop > 20);
         };
 
-        document.addEventListener('scroll', onScroll, true);
         window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll(new Event('scroll'));
+        onScroll();
 
         return () => {
-            document.removeEventListener('scroll', onScroll, true);
-            window.removeEventListener('scroll', onScroll as any);
+            window.removeEventListener('scroll', onScroll);
         };
     }, []);
 
+    // Handle Scrollbar Gutter Calculation
     useEffect(() => {
-        const update = () => {
-            const w = window.innerWidth - document.documentElement.clientWidth;
-            setScrollbarGutter(Math.max(0, w));
+        const updateScrollbar = () => {
+            // Calculates the difference between the window width and the content width
+            const widthWithScrollbar = window.innerWidth;
+            const widthWithoutScrollbar = document.documentElement.clientWidth;
+            const gutter = widthWithScrollbar - widthWithoutScrollbar;
+            setScrollbarGutter(Math.max(0, gutter));
         };
 
-        update();
-        window.addEventListener('resize', update, { passive: true });
+        updateScrollbar();
+
+        window.addEventListener('resize', updateScrollbar, { passive: true });
+        
+        const resizeObserver = typeof ResizeObserver !== 'undefined'
+            ? new ResizeObserver(() => updateScrollbar())
+            : null;
+
+        resizeObserver?.observe(document.documentElement);
+
+        // Initial "pump" to ensure calculation is correct after hydration
+        const raf = requestAnimationFrame(updateScrollbar);
 
         return () => {
-            window.removeEventListener('resize', update as any);
+            window.removeEventListener('resize', updateScrollbar);
+            resizeObserver?.disconnect();
+            cancelAnimationFrame(raf);
         };
     }, []);
 
     return (
         <header
-            className={`fixed top-0 z-50 overflow-hidden transition-colors duration-300 pointer-events-none ${
+            className={`fixed top-0 z-[100] transition-colors duration-300 pointer-events-none ${
                 isScrolled ? 'bg-white shadow-sm' : 'bg-white/90'
             }`}
-            style={{ left: 0, right: scrollbarGutter }}
+            style={{ 
+                left: 0,
+                width: `calc(100vw - ${scrollbarGutter}px)`
+            }}
         >
-            <div className="mx-auto w-full max-w-[1490px] px-4 md:px-6 lg:px-8 py-4 md:py-6 lg:py-8 pointer-events-auto">
+            <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 2xl:px-16 py-4 md:py-6 lg:py-8 pointer-events-auto">
                 <div className="relative flex items-center justify-between">
                 
                 {/* Logo */}
@@ -141,7 +154,7 @@ const Navbar: React.FC = () => {
                 <div className="lg:hidden ml-4">
                     <button 
                         type="button" 
-                        className="p-2 rounded-md text-black hover:bg-gray-100 font-sans"
+                        className="p-2 rounded-md text-black hover:bg-gray-100 font-sans pointer-events-auto"
                         aria-label="Toggle menu"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
@@ -160,7 +173,7 @@ const Navbar: React.FC = () => {
 
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100 flex flex-col items-center py-4 px-4 h-screen overflow-y-auto pb-20">
+                <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100 flex flex-col items-center py-4 px-4 h-screen overflow-y-auto pb-20 pointer-events-auto">
                      <NavItem mobile onPress={() => { router.push('/'); setIsMenuOpen(false); }}>Home</NavItem>
                      <NavItem mobile onPress={() => { router.push('/services'); setIsMenuOpen(false); }}>Services</NavItem>
                      <NavItem mobile onPress={() => { router.push('/pricing'); setIsMenuOpen(false); }}>Pricing</NavItem>

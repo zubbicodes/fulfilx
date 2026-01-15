@@ -95,7 +95,7 @@ const row1Logos = [
             {/*Navbar*/}
             <Navbar/>
             {/* Home Content */}
-<div className="min-h-screen relative bg-white pt-40 md:pt-60 lg:pt-80 overflow-x-hidden">
+<div className="min-h-screen relative bg-white pt-24 md:pt-32 lg:pt-36 overflow-x-hidden">
     {/* PNG Background - MOVE ABOVE WHITE BACKGROUND */}
     <div className="absolute inset-0 z-0">
         <img 
@@ -153,6 +153,14 @@ const row1Logos = [
                                         />
                                     </a>
                                 </div>
+
+                                <div className="mt-6 flex justify-center lg:justify-start w-full">
+                                    <img 
+                                        src="/google_rev.png" 
+                                        alt="Google reviews" 
+                                        className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] h-auto object-contain"
+                                    />
+                                </div>
                             </div>
 
                             <div className="flex justify-center lg:justify-end w-full">
@@ -164,13 +172,6 @@ const row1Logos = [
                             </div>
                         </div>
 
-                        <div className="mt-10 flex justify-center lg:justify-start">
-                            <img 
-                                src="/google_rev.png" 
-                                alt="Design Element" 
-                                className="w-[620px] h-[28px] object-contain"
-                            />
-                        </div>
                     </div>
                 </div>
                 {/* Stats Section */}
