@@ -95,13 +95,13 @@ const row1Logos = [
             {/*Navbar*/}
             <Navbar/>
             {/* Home Content */}
-<div className="min-h-screen relative bg-white pt-40 md:pt-60 lg:pt-80 overflow-auto">
+<div className="min-h-screen relative bg-white pt-40 md:pt-60 lg:pt-80 overflow-x-hidden">
     {/* PNG Background - MOVE ABOVE WHITE BACKGROUND */}
     <div className="absolute inset-0 z-0">
         <img 
             src="/bg.webp"
             alt="Background pattern"
-            className="w-full h-full lg:w-[1920px] lg:h-[1000px] object-cover"
+            className="w-full h-full object-cover"
         />
     </div>
 
@@ -158,12 +158,12 @@ const row1Logos = [
                             </a>
                         </div>
                         {/* Image aligned with content but on the right */}
-<div className="flex flex-col lg:flex-row items-center justify-between -mt-50 lg:mt-24">
+<div className="flex flex-col lg:flex-row items-center justify-between mt-0 lg:mt-24">
     {/* Left content - can be empty or have other content */}
     <div className="flex-1"></div>
     
     {/* Right aligned image */}
-    <div className="flex-1 flex justify-center lg:justify-end -mr-40 transform translate-y-[-250px] lg:translate-y-[-600px] relative z-0">
+    <div className="flex-1 flex justify-center lg:justify-end mr-0 lg:-mr-40 translate-y-0 lg:translate-y-[-600px] relative z-0">
         <img 
             src="/helement.webp"
             alt="Your image description"
@@ -264,7 +264,7 @@ const row1Logos = [
     <img 
       src="/bg.webp"
       alt="Background"
-      className="w-full h-full lg:w-[1920px] lg:h-[1000px] object-cover"
+      className="w-full h-full object-cover"
     />
   </div>
   {/* Decorative rectangle image - Fixed positioning */}
@@ -445,7 +445,7 @@ const row1Logos = [
   </div>
     <h3 className="text-center text-black font-bold text-[28px] md:text-[40px]">Easy <span className="text-[#C10016]">Setup</span></h3>
 
- <div className="relative max-w-[1400px] mx-auto mt-12 md:mt-20 px-4 pt-20 transform -translate-x-10 -translate-y-6">
+ <div className="relative max-w-[1400px] mx-auto mt-12 md:mt-20 px-4 pt-20 md:-translate-x-10 md:-translate-y-6">
       
       {/* Curved connecting line - hidden on mobile, visible on md+ */}
       <div className="hidden md:block absolute top-[60px] left-0 right-0 w-full pointer-events-none">
