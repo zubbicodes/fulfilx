@@ -130,13 +130,13 @@ const row1Logos = [
                                 </div>
 
                                 <div className="w-full mb-8 lg:mb-12">
-                                    <h1 className="text-4xl lg:text-[68px] font-bold leading-tight text-black text-center lg:text-left">
+                                    <h1 className="text-4xl lg:text-[50px] font-bold leading-tight text-black text-center lg:text-left">
                                         Bespoke Fulfilment, Built to Help Brands Scale
                                     </h1>
                                 </div>
 
                                 <div className="w-full max-w-[759px] mb-12 lg:mb-16">
-                                    <p className="text-lg lg:text-[24px] font-helvetica font-thin leading-[2] text-black text-center lg:text-left">
+                                    <p className="text-lg lg:text-[18px] font-helvetica font-thin leading-[2] text-black text-center lg:text-left">
                                         At FulfilX, we are more than just a 3PL. We are your Partner in Fulfilment. &quot;Your success is Our Success.&quot;
                                     </p>
                                 </div>
@@ -162,12 +162,11 @@ const row1Logos = [
                                         />
                                     </a>
                                 </div>
-
-                                <div className="mt-6 flex justify-center lg:justify-start w-full">
+                                      <div className="mt-6 flex justify-center w-full">
                                     <img 
-                                        src="/google_rev.png" 
+                                        src="/google_rev.webp" 
                                         alt="Google reviews" 
-                                        className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] h-auto object-contain"
+                                        className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[80px] h-auto object-contain mx-auto"
                                     />
                                 </div>
                             </div>
