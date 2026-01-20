@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
             }`}
             style={{ 
                 left: 0,
-                width: `calc(99vw - ${scrollbarGutter}px)`
+                width: `calc(99.2vw - ${scrollbarGutter}px)`
             }}
         >
             <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 2xl:px-16 py-4 md:py-6 lg:py-8 pointer-events-auto">
