@@ -24,29 +24,43 @@ const mapOverlayRef = useRef<HTMLDivElement>(null);
 const getMarkerPos = (id: string) => defaultMarkerPositions[id] ?? { x: 0, y: 0 };
 
 const testimonials = [
-  { image: '/audenza.webp', alt: 'Testimonial 1' },
-  { image: '/hot.webp', alt: 'Testimonial 2' },
-  { image: '/milk.webp', alt: 'Testimonial 3' },
-  { image: '/pops.webp', alt: 'Testimonial 4' },
-  { image: '/har.webp', alt: 'Testimonial 5' }
+  { image: '/Amazon.png', alt: 'Testimonial 1' },
+  { image: '/Argos-Logo.png', alt: 'Testimonial 2' },
+  { image: '/bloomingdales-logo.png', alt: 'Testimonial 3' },
+  { image: '/Boots.png', alt: 'Testimonial 4' },
+  { image: '/Costco_Wholesale.png', alt: 'Testimonial 5' }, 
+  { image: '/Currys.png', alt: 'Testimonial 5' },
+  { image: '/Fenwick.png', alt: 'Testimonial 5' },
+  { image: '/Harrods.png', alt: 'Testimonial 5' },
+  { image: '/Nordstrom.png', alt: 'Testimonial 5' },
+  { image: '/PetsAtHome.png', alt: 'Testimonial 5' },
+  { image: '/QVC.png', alt: 'Testimonial 5' },
+  { image: '/Saks_Fifth_Avenue.png', alt: 'Testimonial 5' },
+  { image: '/Selfridges.png', alt: 'Testimonial 5' },
+  { image: '/Sephora.png', alt: 'Testimonial 5' },
+  { image: '/Superdrug.png', alt: 'Testimonial 5' }
 ];
 const row1Logos = [
-    { src: "/amazon.webp", alt: "Amazon" },
-    { src: "/shopify.webp", alt: "Shopify" },
-    { src: "/tiktok.webp", alt: "TikTok" }
+    { src: "/0x0.png", alt: "" },
+    { src: "/SUPRIVA_logo.png", alt: "" },
+    { src: "/Asset.png", alt: "" }
+    
   ];
 
   const row2Logos = [
-    { src: "/ebay.webp", alt: "eBay" },
-    { src: "/magento.webp", alt: "Magento" },
-    { src: "/etsy.webp", alt: "Etsy" },
-    { src: "/woo.webp", alt: "WooCommerce" }
+    { src: "/atelier-de-glow.png", alt: "" },
+    { src: "/beautifect_logo.png", alt: "" },
+    { src: "/hubb_red.png", alt: "Etsy" },
+    { src: "/I_want_great_sleep.png", alt: "" }
+    
   ];
 
   const row3Logos = [
-    { src: "/onbuy.webp", alt: "OnBuy" },
-    { src: "/dpd.webp", alt: "DPD" },
-    { src: "/shipstation.webp", alt: "ShipStation" }
+    { src: "/Logo_and_font.png", alt: "Logo and Font" },
+    { src: "/Nicpic.png", alt: "Nicpic" },
+    { src: "/OPULENSI_Luxury.png", alt: "Opulensi Luxury" },
+    { src: "/S2O-Black.png", alt: "S2O" },
+    { src: "/yummos.avif", alt: "Yummos" }
   ];
 
 
