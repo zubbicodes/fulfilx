@@ -37,7 +37,7 @@ export default function LocationsScreen() {
               resizeMode="cover"
             />
           </View>
-
+          
           {/* Hero Content */}
           <View className="relative z-10 min-h-screen flex items-center justify-center pb-20">
             {/* Main Title */}
@@ -404,7 +404,7 @@ export default function LocationsScreen() {
 </View>
         </View>
 <View className="relative w-full min-h-screen bg-white">
-  <View className="relative w-full h-[600px] lg:h-[800px] -mt-24">
+  <View className="relative w-full min-h-[600px] lg:min-h-[800px] -mt-24 pb-20">
      <Image 
       source={{ uri: "/bg.webp" }}
       alt="Background" 
@@ -470,7 +470,7 @@ export default function LocationsScreen() {
     </View>
 
     {/* Second Row of Countries */}
-    <View className="flex flex-row flex-wrap justify-center items-center gap-4 lg:gap-12 mt-8">
+    <View className="flex flex-row flex-wrap justify-center items-center gap-4 lg:gap-12 mt-8 mb-16">
       {/* Saudi */}
       <View className="flex flex-row items-center gap-3">
         <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
@@ -497,51 +497,123 @@ export default function LocationsScreen() {
     </View>
 
     {/* World Map Image */}
-    <View className="relative w-full h-[300px] lg:h-[698px] ">
-      <Image source={{ uri: "/world-map.webp" }} className="w-full h-full rounded-lg" resizeMode="contain" />
-      
-{/* Location Markers - Hidden on mobile for simplicity or positioned relatively? keeping absolute but adjusted */}
-{/* UK Marker */}
-<View className="absolute left-[49%] top-[30%] group">
-  <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center">
-    <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-      <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+    <View className="relative w-full h-[300px] lg:h-[698px] mb-40">
+      {/* <Image source={{ uri: "/world-map.webp" }} className="w-full h-full rounded-lg" resizeMode="contain" /> */}
+      <img
+        src="/world-map.webp"
+        alt="World map"
+        className="w-full h-auto rounded-lg"
+      />
+{/* Location Markers - Positioned to match the flags list with hover tooltips */}
+
+{/* United Kingdom */}
+<View className="absolute z-50" style={{ left: '47%', top: '26%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">United Kingdom</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
     </View>
   </View>
 </View>
 
-{/* US Marker */}
-<View className="absolute left-[13%] top-[51%] group">
-  <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center">
-    <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-      <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+{/* United States */}
+<View className="absolute z-50" style={{ left: '22%', top: '35%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">United States</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
     </View>
   </View>
 </View>
 
-{/* UAE Marker */}
-<View className="absolute left-[54%] top-[60%] group">
-  <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center">
-    <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-      <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+{/* San Francisco */}
+<View className="absolute z-50" style={{ left: '12%', top: '38%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">San Francisco</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
     </View>
   </View>
 </View>
 
-{/* Australia Marker */}
-<View className="absolute left-[86%] top-[70%] group">
-  <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center">
-    <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-      <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+{/* Georgia */}
+<View className="absolute z-50" style={{ left: '28%', top: '36%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">Georgia</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
     </View>
   </View>
 </View>
 
-{/* Small UK Marker (Saudi?) */}
-<View className="absolute left-[25%] top-[62%] group">
-  <View className="w-[40px] h-[40px] border border-[#C10016] rounded-full flex items-center justify-center">
-    <View className="w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full flex items-center justify-center">
-      <View className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></View>
+{/* UAE */}
+<View className="absolute z-50" style={{ left: '62%', top: '44%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">UAE</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
+    </View>
+  </View>
+</View>
+
+{/* Saudi */}
+<View className="absolute z-50" style={{ left: '58%', top: '44%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">Saudi</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
+    </View>
+  </View>
+</View>
+
+{/* Bahrain */}
+<View className="absolute z-50" style={{ left: '60%', top: '42%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">Bahrain</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
+    </View>
+  </View>
+</View>
+
+{/* Australia */}
+<View className="absolute z-50" style={{ left: '86%', top: '72%' }}>
+  <View className="group relative items-center">
+    <View className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 px-3 py-1 rounded pointer-events-none">
+      <Text className="text-white text-xs font-bold whitespace-nowrap">Australia</Text>
+    </View>
+    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
+      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
+      </View>
     </View>
   </View>
 </View>
@@ -551,7 +623,7 @@ export default function LocationsScreen() {
 </View>
 
         {/* Accomplishments Section */}
-        <View className="relative w-full ">
+        <View className="relative w-full mt-48">
           {/* Two Column Layout */}
           <View className="flex flex-col lg:flex-row mt-80">
             
