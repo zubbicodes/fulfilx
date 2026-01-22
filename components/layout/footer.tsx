@@ -193,20 +193,18 @@ const Footer = () => {
   <Link href="/locations" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Store Locations</a>
   </Link>
+    <Link href="/contact" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Contact Us</a>
+  </Link>
 </div>
 
 {/* Column 3 */}
 <div 
   className="text-white font-normal text-left text-base sm:text-[18px] leading-10 sm:leading-[60px]"
 >
-  <Link href="/contact" asChild>
-    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Contact Us</a>
-  </Link>
+
   <Link href="/" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Shipping</a>
-  </Link>
-  <Link href="/" asChild>
-    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Delivery System</a>
   </Link>
   <Link href="/" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Returning Policy</a>
