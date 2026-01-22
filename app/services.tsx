@@ -189,7 +189,7 @@ const WarehouseServicesSection = () => {
                 </View>
                 
                 {/* Contact Sales Button */}
-                <TouchableOpacity className="flex-row items-center gap-2 mt-6">
+                <TouchableOpacity className="flex-row items-center gap-2 mt-6 relative z-10">
                   <Text className="font-helvetica font-bold text-[16px] leading-normal text-[#C10016]">
                     Contact Sales
                   </Text>
@@ -376,12 +376,16 @@ const TechnologyIntegrationsSection = () => {
       <View className="flex-row flex-wrap justify-center gap-6 px-5 lg:px-20">
           {services.map((service) => {
             const IconComponent = service.icon;
+            const cardClassName =
+              service.id === 1 || service.id === 2
+                ? "w-[300px] lg:w-[500px] min-h-[440px] bg-white/10 border border-[#D9D9D9]/50 rounded-[20px] backdrop-blur-[20px] p-8 flex flex-col justify-between relative overflow-hidden lg:pr-[240px]"
+                : "w-[300px] lg:w-[500px] min-h-[440px] bg-white/10 border border-[#D9D9D9]/50 rounded-[20px] backdrop-blur-[20px] p-8 flex flex-col justify-between relative overflow-hidden";
             return (
               <View 
                 key={service.id} 
-                className="w-[300px] lg:w-[500px] min-h-[440px] bg-white/10 border border-[#D9D9D9]/50 rounded-[20px] backdrop-blur-[20px] p-8 flex flex-col justify-between"
+                className={cardClassName}
               >
-                <View>
+                <View className="relative z-10">
                   {/* Icon inside card - KEEP THIS */}
                       <View className="w-20 h-20 rounded-full bg-transparent mb-4">
                         <View className="w-full h-full rounded-full bg-white p-1">
@@ -416,55 +420,55 @@ const TechnologyIntegrationsSection = () => {
                   </Text>
                   <Arrow />
                 </TouchableOpacity>
+
+                {service.id === 2 && (
+                  <View className="hidden lg:block absolute w-[200px] h-[200px] right-8 top-1/2 transform -translate-y-1/2 z-0">
+                    <img src="/r.webp" alt="Right Image" className="w-full h-full object-contain" />
+                  </View>
+                )}
+
+                {service.id === 1 && (
+                  <View className="hidden lg:block absolute w-[175px] h-[285px] right-8 top-1/2 transform -translate-y-1/2 z-0">
+                    {/* Group 1160445156 */}
+                    <View className="absolute w-[80px] h-[80px] left-[95px] top-0 group">
+                      <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
+                      <img src="/shopify.svg" alt="Icon 1" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
+                    </View>
+                    
+                    {/* Group 1160445158 */}
+                    <View className="absolute w-[80px] h-[80px] left-[95px] top-[95px] group">
+                      <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
+                      <img src="/amazon.svg" alt="Icon 2" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
+                    </View>
+                    
+                    {/* Group 1160445160 */}
+                    <View className="absolute w-[80px] h-[80px] left-[95px] top-[190px] group">
+                      <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
+                      <img src="/etsy.svg" alt="Icon 3" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
+                    </View>
+                    
+                    {/* Group 1160445157 */}
+                    <View className="absolute w-[80px] h-[80px] left-0 top-[15px] group">
+                      <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
+                      <img src="/woo.svg" alt="Icon 4" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
+                    </View>
+                    
+                    {/* Group 1160445159 */}
+                    <View className="absolute w-[80px] h-[80px] left-0 top-[110px] group">
+                      <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
+                      <img src="/tiktok.svg" alt="Icon 5" className="absolute w-[39px] h-[39px] left-[20.5px] top-[20.5px]" />
+                    </View>
+                    
+                    {/* Group 1160445161 */}
+                    <View className="absolute w-[80px] h-[80px] left-0 top-[205px] group">
+                      <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
+                      <img src="/ebay.svg" alt="Icon 6" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
+                    </View>
+                  </View>
+                )}
               </View>
             );
           })}
-      </View>
-      
-      {/* ADDITIONAL ICON SETS - POSITIONED ABSOLUTELY OUTSIDE */}
-      
-      {/* Right Image - image 82 */}
-      <View className="hidden lg:block absolute w-[253px] h-[253px] right-[255px] top-1/2 transform -translate-y-1/2">
-        <img src="/r.webp" alt="Right Image" className="w-full h-full" />
-      </View>
-      
-      {/* Left Icon Set - Group 1160445162 */}
-      <View className="hidden lg:block absolute w-[175px] h-[285px] left-[558px] top-1/2 transform -translate-y-1/2">
-        {/* Group 1160445156 */}
-        <View className="absolute w-[80px] h-[80px] left-[95px] top-0 group">
-          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
-          <img src="/shopify.svg" alt="Icon 1" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
-        </View>
-        
-        {/* Group 1160445158 */}
-        <View className="absolute w-[80px] h-[80px] left-[95px] top-[95px] group">
-          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
-          <img src="/amazon.svg" alt="Icon 2" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
-        </View>
-        
-        {/* Group 1160445160 */}
-        <View className="absolute w-[80px] h-[80px] left-[95px] top-[190px] group">
-          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
-          <img src="/etsy.svg" alt="Icon 3" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
-        </View>
-        
-        {/* Group 1160445157 */}
-        <View className="absolute w-[80px] h-[80px] left-0 top-[15px] group">
-          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
-          <img src="/woo.svg" alt="Icon 4" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
-        </View>
-        
-        {/* Group 1160445159 */}
-        <View className="absolute w-[80px] h-[80px] left-0 top-[110px] group">
-          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
-          <img src="/tiktok.svg" alt="Icon 5" className="absolute w-[39px] h-[39px] left-[20.5px] top-[20.5px]" />
-        </View>
-        
-        {/* Group 1160445161 */}
-        <View className="absolute w-[80px] h-[80px] left-0 top-[205px] group">
-          <View className="absolute w-full h-full rounded-full bg-[#D9D9D9] opacity-40 group-hover:bg-[#C10016] group-hover:opacity-100 transition-colors duration-300" />
-          <img src="/ebay.svg" alt="Icon 6" className="absolute w-[45px] h-[45px] left-[17.5px] top-[17.5px]" />
-        </View>
       </View>
 
     </View>
@@ -557,6 +561,89 @@ export default function ServicesScreen(){
       }, [isPaused, images.length]);
           const [activeDot, setActiveDot] = useState(1); // Start with middle dot active
           const [activeReview, setActiveReview] = useState(0);
+      
+    const valueAddedServicesItems = [
+      {
+        title: ['Kitting', '& Assembly'],
+        img: '/shiphappens1.jpg',
+        logo: '/k.svg',
+        features: ['Custom product bundling', 'Multi-SKU assembly', 'Promotional packaging', 'Retail-ready kits'],
+      },
+      {
+        title: ['Quality Control', '(QC)'],
+        img: '/qc.webp',
+        logo: '/q.svg',
+        features: ['Inspection & verification', 'Product sampling', 'Defect analysis', 'Compliance checks'],
+      },
+      {
+        title: ['Recommence', 'Services'],
+        img: '/shiphappens3.webp',
+        logo: '/r.svg',
+        features: ['Returns processing', 'Product refurbishment', 'Quality inspection', 'Restocking services'],
+      },
+      {
+        title: ['Product', 'Personalisation'],
+        img: '/shiphappens4.webp',
+        logo: '/p.svg',
+        features: ['Custom engraving', 'Laser etching', 'Branded packaging', 'Gift message inserts'],
+      },
+    ];
+
+    const brandCreativeServicesItems = [
+      {
+        title: ['Content', 'Creation'],
+        img: '/shiphappens1.jpg',
+        logo: '/cc.svg',
+        features: ['Product photography', 'Lifestyle shoots', 'Short-form video content', 'Editing, retouching, creative direction'],
+      },
+      {
+        title: ['Brand Launch &', 'Growth Support'],
+        img: '/blgs.webp',
+        logo: '/blgs.svg',
+        features: ['Shopify store setup (basic)', 'Packaging coordination', 'Logistic planning', 'International expansion scaling support'],
+      },
+      {
+        title: ['Custom Packaging', 'Supply'],
+        img: '/shiphappens3.webp',
+        logo: '/r.svg',
+        features: ['Branded boxes', 'Stickers', 'Tissue papers', 'Bulk ordering options for clients'],
+      },
+    ];
+
+    const [activeVasIndex, setActiveVasIndex] = useState(0);
+    const [vasPrevIndex, setVasPrevIndex] = useState<number | null>(null);
+    const vasTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const [activeBrandCreativeIndex, setActiveBrandCreativeIndex] = useState(0);
+    const [brandCreativePrevIndex, setBrandCreativePrevIndex] = useState<number | null>(null);
+    const brandCreativeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(() => {
+      return () => {
+        if (vasTimerRef.current) clearTimeout(vasTimerRef.current);
+        if (brandCreativeTimerRef.current) clearTimeout(brandCreativeTimerRef.current);
+      };
+    }, []);
+
+    const activateVas = (index: number) => {
+      if (index === activeVasIndex) return;
+      if (vasTimerRef.current) clearTimeout(vasTimerRef.current);
+      setVasPrevIndex(activeVasIndex);
+      setActiveVasIndex(index);
+      vasTimerRef.current = setTimeout(() => {
+        setVasPrevIndex(null);
+      }, 750);
+    };
+
+    const activateBrandCreative = (index: number) => {
+      if (index === activeBrandCreativeIndex) return;
+      if (brandCreativeTimerRef.current) clearTimeout(brandCreativeTimerRef.current);
+      setBrandCreativePrevIndex(activeBrandCreativeIndex);
+      setActiveBrandCreativeIndex(index);
+      brandCreativeTimerRef.current = setTimeout(() => {
+        setBrandCreativePrevIndex(null);
+      }, 750);
+    };
       
   
   return (
@@ -717,9 +804,8 @@ export default function ServicesScreen(){
   </Text>
   <WarehouseServicesSection/>
 </View>
-<section className="relative w-full h-auto min-h-[916px] overflow-hidden py-20 lg:py-0">
-  {/* Background with overlay */}
-  <div 
+<section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
+  <div
     className="absolute inset-0 bg-black/65"
     style={{
       backgroundImage: `url('/vas.webp')`,
@@ -729,127 +815,97 @@ export default function ServicesScreen(){
     }}
   />
 
-  {/* Title lowered slightly */}
-  <div className="relative lg:absolute lg:top-32 w-full text-center text-white mb-12 lg:mb-0">
-    <h2 className="text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
-      Value Added <span className='text-[#C10016]'>Services (VAS)</span>
-    </h2>
-  </div>
+  <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
+    <div className="mx-auto w-full max-w-[1490px]">
+      <style>{`
+        @keyframes servicesSlideIn {
+          0% { opacity: 0; transform: translateX(-36px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+      `}</style>
 
-  {/* Grid moved slightly upward + reduced spacing */}
-  <div className="relative lg:absolute lg:bottom-[150px] lg:left-1/2 lg:-translate-x-1/2 flex flex-col lg:flex-row gap-[20px] items-center">
+      <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+        Value Added <span className="text-[#C10016]">Services (VAS)</span>
+      </h2>
 
-    {[
-      { 
-        line1:"Kitting", 
-        line2:"& Assembly",
-        img: "/shiphappens1.webp", 
-        logo:"/k.svg",
-        features: [
-          "Custom product bundling",
-          "Multi-SKU assembly",
-          "Promotional packaging",
-          "Retail-ready kits"
-        ]
-      },
-      { 
-        line1:"Quality Control", 
-        line2: "(QC)",
-        img: "/qc.webp", 
-        logo: "/q.svg",
-        features: [
-          "Inspection & verification",
-          "Product sampling",
-          "Defect analysis",
-          "Compliance checks"
-        ]
-      },
-      {
-        line1:"Recommence",
-        line2:"Services",
-        img: "/shiphappens3.webp", 
-        logo: "/r.svg",
-        features: [
-          "Returns processing",
-          "Product refurbishment",
-          "Quality inspection",
-          "Restocking services"
-        ]
-      },
-      { 
-        line1: "Product", 
-        line2: "Personalisation", 
-        img: "/shiphappens4.webp", 
-        logo: "/p.svg",
-        features: [
-          "Custom engraving",
-          "Laser etching",
-          "Branded packaging",
-          "Gift message inserts"
-        ]
-      },
-    ].map((item, i) => (
-      <div key={i} className="relative h-[480px] w-[250px] group overflow-hidden">
-        {/* Divider line left of each except first */}
-        {i !== 0 && <div className="hidden lg:block absolute -left-0 top-0 h-full w-px bg-white/30" />}
-
-        {/* Background blurred image */}
-        <div 
-          className="absolute inset-0 rounded-xl transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:blur-none group-hover:scale-105 blur-sm scale-100"
-          style={{
-            backgroundImage: `url(${item.img})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        
-        {/* Logo at top - Aligned left */}
-        <div className="flex justify-start translate-x-4 translate-y-32">
-          <img 
-            src={item.logo}
-            alt={`${item.line1} ${item.line2} Logo`}
-            className="w-12 h-12"
-          />
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+        <div className="lg:col-span-1">
+          <div className="flex flex-col gap-3">
+            {valueAddedServicesItems.map((item, i) => {
+              const isActive = i === activeVasIndex;
+              return (
+                <button
+                  key={item.title.join(' ')}
+                  type="button"
+                  onMouseEnter={() => activateVas(i)}
+                  onFocus={() => activateVas(i)}
+                  onClick={() => activateVas(i)}
+                  className={[
+                    "w-full flex items-center gap-4 rounded-xl border px-5 py-4 text-left transition",
+                    "bg-white/5 hover:bg-white/10 border-white/20 hover:border-white/35",
+                    isActive ? "bg-white/12 border-white/45" : "",
+                  ].join(" ")}
+                >
+                  <img src={item.logo} alt="" className="w-10 h-10 shrink-0" />
+                  <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                    <span className="block">{item.title[0]}</span>
+                    <span className="block">{item.title[1]}</span>
+                  </span>
+                  <img
+                    src="/arrow.svg"
+                    alt="arrow"
+                    className={[
+                      "w-5 h-5 object-contain opacity-70 transition",
+                      isActive ? "opacity-100 translate-x-0.5" : "",
+                    ].join(" ")}
+                  />
+                </button>
+              );
+            })}
+          </div>
         </div>
-        
-        {/* Title */}
-        <h3 className="absolute left-4 bottom-52 text-white font-normal text-[24px] tracking-[-0.01em] whitespace-nowrap">
-          {item.line1}<br />{item.line2}
-        </h3>
 
-        {/* Features - Hidden by default, shows on hover */}
-        <div className="absolute left-4 top-[280px] w-[220px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          {item.features.map((feature, index) => (
-            <div key={index} className="flex items-baseline gap-2 mb-3">
-              <img 
-                src="/checkw.svg" 
-                alt="Check" 
-                className="w-4 h-4 flex-shrink-0"
+        <div className="lg:col-span-2">
+          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-full rounded-2xl overflow-hidden border border-white/15 bg-black/20">
+            {vasPrevIndex !== null && (
+              <img
+                src={valueAddedServicesItems[vasPrevIndex]?.img}
+                alt={valueAddedServicesItems[vasPrevIndex]?.title.join(' ')}
+                className="absolute inset-0 w-full h-full object-cover"
               />
-              <span className="text-white text-[16px] leading-[22px]">
-                {feature}
-              </span>
+            )}
+            <img
+              key={`${activeVasIndex}-${valueAddedServicesItems[activeVasIndex]?.img}`}
+              src={valueAddedServicesItems[activeVasIndex]?.img}
+              alt={valueAddedServicesItems[activeVasIndex]?.title.join(' ')}
+              className="absolute inset-0 w-full h-full object-cover z-10"
+              style={{ animation: 'servicesSlideIn 750ms cubic-bezier(0.22, 1, 0.36, 1)', willChange: 'transform' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+            <div className="absolute left-6 bottom-6 right-6 z-20">
+              <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+                {valueAddedServicesItems[activeVasIndex]?.title[0]} {valueAddedServicesItems[activeVasIndex]?.title[1]}
+              </div>
+              <div className="mt-6 space-y-3 max-w-[560px]">
+                {(valueAddedServicesItems[activeVasIndex]?.features ?? []).map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <img src="/checkw.svg" alt="Check" className="w-4 h-4 mt-1 flex-shrink-0" />
+                    <span className="text-white text-[16px] leading-[22px]">{feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
-        <button 
-  className="absolute left-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 cursor-pointer"
-  onClick={() => {
-    // Add your click handler here
-    console.log(`Contact Sales for ${item.line1} ${item.line2}`);
-  }}
->
-  <span className="text-white font-bold text-[16px] leading-normal">
-    Contact Sales
-  </span>
-  <img 
-    src="/arrow.svg" 
-    alt="Arrow" 
-    className="w-3 h-3"
-  />
-</button>
       </div>
-    ))}
+
+      <div className="mt-10 flex justify-center">
+        <button className="flex items-center gap-3 bg-[#C10016] text-white px-8 py-4 rounded-md font-bold text-[18px]">
+          Contact Sales
+          <img src="/arrow.svg" className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 {/* Logistics Section */}
@@ -874,9 +930,8 @@ export default function ServicesScreen(){
   </Text>
   <TechnologyIntegrationsSection/>
 </View>
-<section className="relative w-full h-auto min-h-[916px] overflow-hidden py-20 lg:py-0">
-  {/* Background with overlay */}
-  <div 
+<section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
+  <div
     className="absolute inset-0 bg-black/65"
     style={{
       backgroundImage: `url('/bcs.webp')`,
@@ -885,115 +940,91 @@ export default function ServicesScreen(){
       transform: 'scaleX(-1)'
     }}
   />
-  {/* Title lowered slightly */}
-  <div className="relative lg:absolute lg:top-32 w-full text-center text-white mb-12 lg:mb-0">
-    <h2 className="text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
-      Brand & Creative <span className='text-[#C10016]'>Services</span>
-    </h2>
-  </div>
 
-  {/* Grid moved slightly upward + reduced spacing */}
-  <div className="relative lg:absolute lg:bottom-[150px] lg:left-1/2 lg:-translate-x-1/2 flex flex-col lg:flex-row gap-[20px] items-center">
+  <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
+    <div className="mx-auto w-full max-w-[1490px]">
+      <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+        Brand & Creative <span className="text-[#C10016]">Services</span>
+      </h2>
 
-    {[
-      { 
-        line1:"Content", 
-        line2:"Creation",
-        img: "/shiphappens1.webp", 
-        logo:"/cc.svg",
-        features: [
-          "Product photography",
-          "Lifestyle shoots",
-          "Short-form video content",
-          "Editing, retouching, creative direction"
-        ]
-      },
-      { 
-        line1:"Brand Launch &", 
-        line2: "Growth Support",
-        img: "/blgs.webp", 
-        logo: "/blgs.svg",
-        features: [
-          "Shopify store setup (basic)",
-          "Packaging coordination",
-          "Logistic planning",
-          "International expansion scaling support"
-        ]
-      },
-      {
-        line1:"Custom Packaging",
-        line2:"Supply",
-        img: "/shiphappens3.webp", 
-        logo: "/r.svg",
-        features: [
-          "Branded boxes",
-          "Stickers",
-          "Tissue papers",
-          "Bulk ordering options for clients"
-        ]
-      },
-    ].map((item, i) => (
-      <div key={i} className="relative h-[480px] w-[250px] group overflow-hidden">
-        {/* Divider line left of each except first */}
-        {i !== 0 && <div className="hidden lg:block absolute -left-0 top-0 h-full w-px bg-white/30" />}
-
-        {/* Background blurred image */}
-        <div 
-          className="absolute inset-0 rounded-xl transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:blur-none group-hover:scale-105 blur-sm scale-100"
-          style={{
-            backgroundImage: `url(${item.img})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        
-        {/* Logo at top - Aligned left */}
-        <div className="flex justify-start translate-x-4 translate-y-32">
-          <img 
-            src={item.logo}
-            alt={`${item.line1} ${item.line2} Logo`}
-            className="w-12 h-12"
-          />
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+        <div className="lg:col-span-1">
+          <div className="flex flex-col gap-3">
+            {brandCreativeServicesItems.map((item, i) => {
+              const isActive = i === activeBrandCreativeIndex;
+              return (
+                <button
+                  key={item.title.join(' ')}
+                  type="button"
+                  onMouseEnter={() => activateBrandCreative(i)}
+                  onFocus={() => activateBrandCreative(i)}
+                  onClick={() => activateBrandCreative(i)}
+                  className={[
+                    "w-full flex items-center gap-4 rounded-xl border px-5 py-4 text-left transition",
+                    "bg-white/5 hover:bg-white/10 border-white/20 hover:border-white/35",
+                    isActive ? "bg-white/12 border-white/45" : "",
+                  ].join(" ")}
+                >
+                  <img src={item.logo} alt="" className="w-10 h-10 shrink-0" />
+                  <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                    <span className="block">{item.title[0]}</span>
+                    <span className="block">{item.title[1]}</span>
+                  </span>
+                  <img
+                    src="/arrow.svg"
+                    alt="arrow"
+                    className={[
+                      "w-5 h-5 object-contain opacity-70 transition",
+                      isActive ? "opacity-100 translate-x-0.5" : "",
+                    ].join(" ")}
+                  />
+                </button>
+              );
+            })}
+          </div>
         </div>
-        
-        {/* Title */}
-        <h3 className="absolute left-4 bottom-52 text-white font-normal text-[24px] tracking-[-0.01em] whitespace-nowrap">
-          {item.line1}<br />{item.line2}
-        </h3>
 
-        {/* Features - Hidden by default, shows on hover */}
-        <div className="absolute left-4 top-[280px] w-[220px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          {item.features.map((feature, index) => (
-            <div key={index} className="flex items-baseline gap-2 mb-3">
-              <img 
-                src="/checkw.svg" 
-                alt="Check" 
-                className="w-4 h-4 flex-shrink-0"
+        <div className="lg:col-span-2">
+          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-full rounded-2xl overflow-hidden border border-white/15 bg-black/20">
+            {brandCreativePrevIndex !== null && (
+              <img
+                src={brandCreativeServicesItems[brandCreativePrevIndex]?.img}
+                alt={brandCreativeServicesItems[brandCreativePrevIndex]?.title.join(' ')}
+                className="absolute inset-0 w-full h-full object-cover"
               />
-              <span className="text-white text-[16px] leading-[22px]">
-                {feature}
-              </span>
+            )}
+            <img
+              key={`${activeBrandCreativeIndex}-${brandCreativeServicesItems[activeBrandCreativeIndex]?.img}`}
+              src={brandCreativeServicesItems[activeBrandCreativeIndex]?.img}
+              alt={brandCreativeServicesItems[activeBrandCreativeIndex]?.title.join(' ')}
+              className="absolute inset-0 w-full h-full object-cover z-10"
+              style={{ animation: 'servicesSlideIn 750ms cubic-bezier(0.22, 1, 0.36, 1)', willChange: 'transform' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+            <div className="absolute left-6 bottom-6 right-6 z-20">
+              <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+                {brandCreativeServicesItems[activeBrandCreativeIndex]?.title[0]} {brandCreativeServicesItems[activeBrandCreativeIndex]?.title[1]}
+              </div>
+              <div className="mt-6 space-y-3 max-w-[560px]">
+                {(brandCreativeServicesItems[activeBrandCreativeIndex]?.features ?? []).map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <img src="/checkw.svg" alt="Check" className="w-4 h-4 mt-1 flex-shrink-0" />
+                    <span className="text-white text-[16px] leading-[22px]">{feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
-        <button 
-  className="absolute left-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 cursor-pointer"
-  onClick={() => {
-    // Add your click handler here
-    console.log(`Contact Sales for ${item.line1} ${item.line2}`);
-  }}
->
-  <span className="text-white font-bold text-[16px] leading-normal">
-    Contact Sales
-  </span>
-  <img 
-    src="/arrow.svg" 
-    alt="Arrow" 
-    className="w-3 h-3"
-  />
-</button>
       </div>
-    ))}
+
+      <div className="mt-10 flex justify-center">
+        <button className="flex items-center gap-3 bg-[#C10016] text-white px-8 py-4 rounded-md font-bold text-[18px]">
+          Contact Sales
+          <img src="/arrow.svg" className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
   </div>
 </section>
   <section className="relative w-full min-h-[800px] py-20">

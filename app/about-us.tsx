@@ -657,7 +657,7 @@ can build a greener future while achieving your logistics goals.
         
         {/* Review Text */}
         <Text className="font-helvetica font-normal text-[20px] leading-[38px] text-black opacity-70">
-          Excellent Services, Fast Delivery and Cooperative Support We are working with FULFIL.X since last 6 months and it's really a good experience with them. Staff is really good and cooperative environment. Fulfil.x is super fast in Inventory tracking, orders management and fast delivery.
+          Excellent Services, Fast Delivery and Cooperative Support We are working with FULFIL.X since last 6 months and it&apos;s really a good experience with them. Staff is really good and cooperative environment. Fulfil.x is super fast in Inventory tracking, orders management and fast delivery.
         </Text>
       </View>
 

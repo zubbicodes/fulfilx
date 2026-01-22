@@ -1,11 +1,41 @@
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Link, Stack, useRouter } from 'expo-router';
+import { useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+
+function ExpandableDescription({ text, textClassName, toggleClassName, containerClassName }: { text: string, textClassName?: string, toggleClassName?: string, containerClassName?: string }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <View className={containerClassName}>
+            <Text 
+                className={textClassName} 
+                numberOfLines={isExpanded ? undefined : 2}
+                ellipsizeMode="tail"
+            >
+                {text}
+            </Text>
+            <TouchableOpacity 
+                onPress={() => setIsExpanded(!isExpanded)} 
+                activeOpacity={0.7}
+                className="mt-1 flex flex-row items-center"
+            >
+                 <img 
+                    src="/downr.svg" 
+                    alt={isExpanded ? "Collapse" : "Expand"} 
+                    className={`w-[14px] h-[8px] object-contain transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                 />
+            </TouchableOpacity>
+        </View>
+    );
+}
 
 export default function SectorsScreen() {
     const { width } = useWindowDimensions();
-    const isMobile = width < 1024;
+    const isMobile = width < 768;
+    const isTablet = width >= 768 && width < 1280;
+    const gridItemBasis = isTablet ? '48%' : '31%';
     const router = useRouter();
 
     const sectors = [
@@ -91,6 +121,7 @@ export default function SectorsScreen() {
       <ScrollView 
         className="flex-1 bg-white"
         showsVerticalScrollIndicator={false}
+        style={{ scrollbarGutter: 'stable both-edges' } as any}
       >
         {/* Hero Section */}
         <View className="relative min-h-[60vh] lg:min-h-screen">
@@ -139,9 +170,12 @@ export default function SectorsScreen() {
                   <Text className="font-helvetica font-bold text-2xl leading-tight text-black mb-4">
                     {sector.title}
                   </Text>
-                  <Text className="font-helvetica font-normal text-lg leading-7 text-black mb-4">
-                    {sector.description}
-                  </Text>
+                  <ExpandableDescription 
+                    text={sector.description} 
+                    textClassName="font-helvetica font-normal text-lg leading-7 text-black mb-1" 
+                    toggleClassName="text-sm"
+                    containerClassName="mb-4"
+                  />
                   
                   {sector.id === 1 ? (
                     <TouchableOpacity 
@@ -166,74 +200,65 @@ export default function SectorsScreen() {
             </View>
           </View>
         ) : (
-          // Desktop View - Original Absolute Positioning
-          <View className="relative w-full transform -translate-y-60" style={{ minHeight: 2550, marginBottom: -270 }}>
-            {/* Main Title */}
-            <Text 
-              className="font-helvetica font-bold text-[64px] leading-[84px] text-black text-center absolute"
-              style={{
-                left: 215,
-                top: 80
-              }}
-            >
-              Sectors
-            </Text>
-
-            {/* Sectors Grid */}
-            {sectors.map((sector, index) => (
+          // Desktop/Tablet View - Responsive Grid
+          <View className="relative w-full px-4 md:px-6 lg:px-10 2xl:px-16 -mt-20 lg:-mt-48 pb-24">
+            <View className="w-full max-w-[1500px] mx-auto">
+              <Text className="font-helvetica font-bold text-[44px] lg:text-[64px] leading-tight lg:leading-[84px] text-black text-center mb-12 lg:mb-16">
+                Sectors
+              </Text>
               <View
-                key={sector.id}
-                className="absolute"
-                style={{
-                  width: 453,
-                  left: sector.position.left,
-                  top: sector.position.top
-                }}
+                className="flex flex-row flex-wrap justify-center lg:justify-between"
+                style={{ rowGap: 48, columnGap: 32 } as any}
               >
-                {/* Image */}
-                <View 
-                  className="w-[450px] h-[350px] rounded-[24px] bg-cover bg-center"
-                  style={{ 
-                    backgroundImage: `url(${sector.image})`,
-                    backdropFilter: 'blur(12.5px)'
-                  } as any}
-                />
-                
-                {/* Content */}
-                <View className="mt-6">
-                  {/* Title */}
-                  <Text className="font-helvetica font-bold text-[28px] leading-[84px] text-black">
-                    {sector.title}
-                  </Text>
-                  
-                  {/* Description */}
-                  <Text className="font-helvetica font-normal text-[20px] leading-[38px] text-black mb-2">
-                    {sector.description}
-                  </Text>
-                  
-                  {/* Learn More Button */}
-                  {sector.id === 1 ? (
-                    // For Luxury Fulfillment - with navigation
-                    <Link href="/sectors/luxury-fulfilment" asChild>
-                      <TouchableOpacity className="flex flex-row items-center gap-[10px] cursor-pointer">
-                        <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
-                          Learn More
-                        </Text>
-                        <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
-                      </TouchableOpacity>
-                    </Link>
-                  ) : (
-                    // For other sectors - without navigation
-                    <View className="flex flex-row items-center gap-[10px] cursor-pointer">
-                      <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
-                        Learn More
+                {sectors.map((sector) => (
+                  <View
+                    key={sector.id}
+                    className="w-full"
+                    style={{ flexBasis: gridItemBasis, maxWidth: 453, flexGrow: 1 }}
+                  >
+                    <View 
+                      className="w-full rounded-[24px] bg-cover bg-center"
+                      style={{ 
+                        backgroundImage: `url(${sector.image})`,
+                        aspectRatio: 9 / 7,
+                        backdropFilter: 'blur(12.5px)'
+                      } as any}
+                    />
+                    
+                    <View className="mt-6">
+                      <Text className="font-helvetica font-bold text-[24px] lg:text-[28px] leading-tight lg:leading-[84px] text-black">
+                        {sector.title}
                       </Text>
-                      <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
+                      
+                      <ExpandableDescription 
+                        text={sector.description} 
+                        textClassName="font-helvetica font-normal text-[18px] lg:text-[20px] leading-7 lg:leading-[38px] text-black mb-1" 
+                        toggleClassName="text-[16px]"
+                        containerClassName="mb-2"
+                      />
+                      
+                      {sector.id === 1 ? (
+                        <Link href="/sectors/luxury-fulfilment" asChild>
+                          <TouchableOpacity className="flex flex-row items-center gap-[10px] cursor-pointer">
+                            <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
+                              Learn More
+                            </Text>
+                            <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
+                          </TouchableOpacity>
+                        </Link>
+                      ) : (
+                        <View className="flex flex-row items-center gap-[10px] cursor-pointer">
+                          <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
+                            Learn More
+                          </Text>
+                          <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
+                        </View>
+                      )}
                     </View>
-                  )}
-                </View>
+                  </View>
+                ))}
               </View>
-            ))}
+            </View>
           </View>
         )}
 

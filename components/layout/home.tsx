@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Animated, { FadeIn, FadeInUp, FadeOut } from 'react-native-reanimated';
 import Footer from './footer';
 import Navbar from './navbar';
 
@@ -88,6 +89,9 @@ const row1Logos = [
     const primaryRed = 'bg-[#C10016]';
     const [activeDot, setActiveDot] = useState(1); // Start with middle dot active
     const [whyChooseTab, setWhyChooseTab] = useState<'history' | 'mission' | 'vision'>('history');
+    const [activeShipHappensIndex, setActiveShipHappensIndex] = useState(0);
+    const [shipHappensPrevIndex, setShipHappensPrevIndex] = useState<number | null>(null);
+    const shipHappensTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const whyChooseContent: Record<typeof whyChooseTab, string> = {
       history:
@@ -96,6 +100,30 @@ const row1Logos = [
         'FULFIL.X exists to disrupt the logistics industry with a radically brand-centric approach to fulfilment. We empower brands to own their customer experience from click to delivery.',
       vision:
         'To redefine fulfilment with a brand-centric approach that gives businesses the transparency, control, and confidence to own their customer experience end to end. FULFIL.X envisions a logistics ecosystem where fulfilment is simple, visible, and aligned with each brand’s identity — enabling faster growth, stronger customer relationships, and seamless delivery experiences that reflect the brand at every touchpoint.',
+    };
+
+    const shipHappensItems = [
+      { title: "Fulfilment Services", img: "/shiphappens1.jpg" },
+      { title: "Amazon FBA & SFP", img: "/shiphappens2.webp" },
+      { title: "Packaging Solutions", img: "/shiphappens3.webp" },
+      { title: "Freight Services", img: "/shiphappens4.webp" },
+      { title: "Rework & Quality Control", img: "/shiphappens5.webp" },
+    ];
+
+    useEffect(() => {
+      return () => {
+        if (shipHappensTimerRef.current) clearTimeout(shipHappensTimerRef.current);
+      };
+    }, []);
+
+    const activateShipHappens = (index: number) => {
+      if (index === activeShipHappensIndex) return;
+      if (shipHappensTimerRef.current) clearTimeout(shipHappensTimerRef.current);
+      setShipHappensPrevIndex(activeShipHappensIndex);
+      setActiveShipHappensIndex(index);
+      shipHappensTimerRef.current = setTimeout(() => {
+        setShipHappensPrevIndex(null);
+      }, 750);
     };
     return (
         <>
@@ -326,7 +354,7 @@ focus on growing.    </p>
   </div>
 </section>
 
-<section className="relative w-full h-auto py-20 lg:h-[1020px] overflow-hidden">
+<section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
   {/* Background with overlay */}
   <div
     className="absolute inset-0 bg-black/65"
@@ -338,41 +366,80 @@ focus on growing.    </p>
     }}
   />
 
-  <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-16 py-16 lg:py-24">
+  <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
     <div className="mx-auto w-full max-w-[1490px]">
       <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
         We Make Ship Happen
       </h2>
 
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-        {[
-          { title: "Fulfilment Services", img: "/shiphappens1.webp" },
-          { title: "Amazon FBA & SFP", img: "/shiphappens2.webp" },
-          { title: "Packaging Solutions", img: "/shiphappens3.webp" },
-          { title: "Freight Services", img: "/shiphappens4.webp" },
-          { title: "Rework & Quality Control", img: "/shiphappens5.webp" },
-        ].map((item, i) => (
-          <div key={i} className="relative h-[260px] sm:h-[320px] lg:h-[480px] w-full group overflow-hidden rounded-xl">
-            <div 
-              className="absolute inset-0 rounded-xl transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:blur-none group-hover:scale-105 blur-sm scale-100"
-              style={{
-                backgroundImage: `url(${item.img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-            />
-
-            <h3 className="absolute left-6 bottom-4 lg:left-11 text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em] rotate-0 lg:rotate-[-90deg] whitespace-nowrap origin-bottom-left">
-              {item.title}
-            </h3>
-
-            <img 
-              src="/arrow.svg"
-              alt="arrow"
-              className="absolute right-4 top-4 w-6 h-6 opacity-70 group-hover:opacity-100 transition"
-            />
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+        <div className="lg:col-span-1">
+          <div className="flex flex-col gap-3">
+            {shipHappensItems.map((item, i) => {
+              const isActive = i === activeShipHappensIndex;
+              return (
+                <button
+                  key={item.title}
+                  type="button"
+                  onMouseEnter={() => activateShipHappens(i)}
+                  onFocus={() => activateShipHappens(i)}
+                  onClick={() => activateShipHappens(i)}
+                  className={[
+                    "w-full flex items-center gap-4 rounded-xl border px-5 py-4 text-left transition",
+                    "bg-white/5 hover:bg-white/10 border-white/20 hover:border-white/35",
+                    isActive ? "bg-white/12 border-white/45" : "",
+                  ].join(" ")}
+                >
+                  <span className="text-white/70 font-medium text-base tabular-nums w-10 shrink-0">
+                    {(i + 1).toString().padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                    {item.title}
+                  </span>
+                  <img
+                    src="/arrow.svg"
+                    alt="arrow"
+                    className={[
+                      "w-5 h-5 object-contain opacity-70 transition",
+                      isActive ? "opacity-100 translate-x-0.5" : "",
+                    ].join(" ")}
+                  />
+                </button>
+              );
+            })}
           </div>
-        ))}
+        </div>
+
+        <div className="lg:col-span-2">
+          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-full rounded-2xl overflow-hidden border border-white/15 bg-black/20">
+            <style>{`
+              @keyframes shipHappensSlideIn {
+                0% { opacity: 0; transform: translateX(-36px); }
+                100% { opacity: 1; transform: translateX(0); }
+              }
+            `}</style>
+            {shipHappensPrevIndex !== null && (
+              <img
+                src={shipHappensItems[shipHappensPrevIndex]?.img}
+                alt={shipHappensItems[shipHappensPrevIndex]?.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            )}
+            <img
+              key={`${activeShipHappensIndex}-${shipHappensItems[activeShipHappensIndex]?.img}`}
+              src={shipHappensItems[activeShipHappensIndex]?.img}
+              alt={shipHappensItems[activeShipHappensIndex]?.title}
+              className="absolute inset-0 w-full h-full object-cover z-10"
+              style={{ animation: 'shipHappensSlideIn 750ms cubic-bezier(0.22, 1, 0.36, 1)', willChange: 'transform' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent" />
+            <div className="absolute left-6 bottom-6 right-6">
+              <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+                {shipHappensItems[activeShipHappensIndex]?.title}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="mt-10 flex justify-center">
@@ -610,47 +677,64 @@ focus on growing.    </p>
     <div className="space-y-4">
       <div className="flex flex-wrap gap-x-8 gap-y-2 border-b border-black/25 pb-4">
         <button
-          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap ${
-            whyChooseTab === 'history' ? 'text-[#C10016]' : 'text-black'
+          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap transition-colors duration-300 ${
+            whyChooseTab === 'history' ? 'text-[#C10016]' : 'text-black hover:text-black/70'
           }`}
           onClick={() => setWhyChooseTab('history')}
           type="button"
         >
           History
           {whyChooseTab === 'history' && (
-            <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+            <Animated.View 
+              entering={FadeIn.duration(400)}
+              className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"
+            />
           )}
         </button>
         <button
-          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap ${
-            whyChooseTab === 'mission' ? 'text-[#C10016]' : 'text-black'
+          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap transition-colors duration-300 ${
+            whyChooseTab === 'mission' ? 'text-[#C10016]' : 'text-black hover:text-black/70'
           }`}
           onClick={() => setWhyChooseTab('mission')}
           type="button"
         >
           Mission
           {whyChooseTab === 'mission' && (
-            <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+            <Animated.View 
+              entering={FadeIn.duration(500)}
+              className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"
+            />
           )}
         </button>
         <button
-          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap ${
-            whyChooseTab === 'vision' ? 'text-[#C10016]' : 'text-black'
+          className={`font-bold text-xl lg:text-[28px] leading-[44px] lg:leading-[80px] relative whitespace-nowrap transition-colors duration-300 ${
+            whyChooseTab === 'vision' ? 'text-[#C10016]' : 'text-black hover:text-black/70'
           }`}
           onClick={() => setWhyChooseTab('vision')}
           type="button"
         >
           Vision
           {whyChooseTab === 'vision' && (
-            <div className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"></div>
+            <Animated.View 
+              entering={FadeIn.duration(500)}
+              className="absolute bottom-[-17px] left-0 w-full h-[2px] bg-[#C10016]"
+            />
           )}
         </button>
       </div>
 
       {/* Content */}
-      <p className="font-normal text-base lg:text-[20px] leading-relaxed lg:leading-[48px] text-black">
-        {whyChooseContent[whyChooseTab]}
-      </p>
+      <div className="relative overflow-hidden min-h-[120px]">
+          <Animated.View 
+            key={whyChooseTab}
+            entering={FadeInUp.springify().damping(20).mass(1).stiffness(60)}
+            exiting={FadeOut.duration(200)}
+          >
+            <p className="font-normal text-base lg:text-[20px] leading-relaxed lg:leading-[48px] text-black">
+              {whyChooseContent[whyChooseTab]}
+            </p>
+          </Animated.View>
+      </div>
     </div>
 
     {/* Stats Grid */}
