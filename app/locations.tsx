@@ -2,8 +2,20 @@
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Stack, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
+const defaultMarkerPositions: Record<string, { x: number; y: number }> = {
+  uk: { x: 45.84, y: 16.59 },
+  ca: { x: 10.57, y: 53.58 },
+  us: { x: 14.53, y: 41.47 },
+  atl: { x: 21.68, y: 44.29 },
+  nl: { x: 48.33, y: 19.41 },
+  uae: { x: 66.51, y: 42.13 },
+  bh: { x: 64.72, y: 36.16 },
+  au: { x: 85.55, y: 86.42 },
+  sa: { x: 62.94, y: 36.49 },
+};
 
 const LocationMarker = ({ left, top, children }: { left: any, top: any, children: React.ReactNode }) => {
   return (
@@ -25,6 +37,9 @@ export default function LocationsScreen() {
   const router = useRouter();
   const [agreedToPolicy, setAgreedToPolicy] = useState(false);
   const primaryRed = 'bg-[#C10016]';
+  const mapOverlayRef = useRef<HTMLDivElement>(null);
+
+  const getMarkerPos = (id: string) => defaultMarkerPositions[id] ?? { x: 0, y: 0 };
   
   return (
     <>
@@ -419,255 +434,266 @@ export default function LocationsScreen() {
 
 </View>
         </View>
-<View className="relative w-full min-h-screen bg-white">
-  <View className="relative w-full min-h-[600px] lg:min-h-[800px] -mt-24 pb-20">
-     <Image 
-      source={{ uri: "/bg.webp" }}
-      alt="Background" 
-      className="absolute w-full h-full"
-      resizeMode="cover"
-    />
-    <View className="relative max-w-[1490px] mx-auto px-4 py-16 mt-24">
-    {/* "Global Presence" Badge */}
-    <View className="flex flex-row justify-center">
-      <View className="w-[250px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] flex items-center justify-center">
-        <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
-          global presence
-        </Text>
-      </View>
-    </View>
 
-    {/* Main Heading */}
-    <Text className="text-center font-helvetica font-bold text-3xl lg:text-[64px] leading-tight lg:leading-[74px] text-black mt-16 max-w-[700px] mx-auto px-4">
-      List of nations we work with <Text className="text-[#C10016]">worldwide</Text>
-    </Text>
+        <section className="relative w-full bg-white overflow-hidden">
+          <div className="relative w-full px-4 md:px-6 lg:px-8 2xl:px-16 pt-16 pb-8">
+            <div className="flex justify-center">
+              <div className="w-[250px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] flex items-center justify-center">
+                <span className="font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
+                  global presence
+                </span>
+              </div>
+            </div>
 
-    {/* First Row of Countries */}
-    <View className="flex flex-row flex-wrap justify-center items-center gap-4 lg:gap-16 mt-20">
-      {/* United Kingdom */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-          <Image source={{ uri: "/UK.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">United Kingdom</Text>
-      </View>
- {/* United Kingdom */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-          <Image source={{ uri: "/US.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">California</Text>
-      </View>
-      
+            <h2 className="text-center font-bold text-4xl lg:text-[64px] leading-tight lg:leading-[74px] text-black mt-10 lg:mt-16 max-w-[700px] mx-auto px-2">
+              Our <span className="text-[#C10016]">Worldwide Network</span>
+            </h2>
 
-      {/* United States */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/US.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">United States</Text>
-      </View>
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-16 mt-10 lg:mt-20">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/UK.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">United Kingdom</span>
+              </div>
 
-      {/* San Francisco */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/US.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">Atlanta</Text>
-      </View>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/US.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">California</span>
+              </div>
 
-      {/* Georgia */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] border border-black/10 rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/NET.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">Netherlands</Text>
-      </View>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/US.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">United States</span>
+              </div>
 
-      {/* UAE */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/UAE.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">UAE</Text>
-      </View>
-    </View>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/US.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">Atlanta</span>
+              </div>
 
-    {/* Second Row of Countries */}
-    <View className="flex flex-row flex-wrap justify-center items-center gap-4 lg:gap-12 mt-8 mb-16">
-      {/* Saudi */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/Saudi.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">Saudi</Text>
-      </View>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] border border-black/10 bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/NET.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">Netherlands</span>
+              </div>
 
-      {/* Bahrain */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] border border-black/10 rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/B.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">Bahrain</Text>
-      </View>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/UAE.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">UAE</span>
+              </div>
+            </div>
 
-      {/* Australia */}
-      <View className="flex flex-row items-center gap-3">
-        <View className="w-[30px] h-[20px] rounded-[2px] overflow-hidden">
-           <Image source={{ uri: "/Aus.webp" }} className="w-full h-full" resizeMode="cover" />
-        </View>
-        <Text className="font-helvetica font-normal text-[18px] leading-[30px] text-black">Australia</Text>
-      </View>
-    </View>
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-12 mt-6 lg:mt-8">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/Saudi.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">Saudi</span>
+              </div>
 
-    </View>
-    {/* World Map Image */}
-    <View className="relative w-full h-[300px] lg:h-[698px]">
-      <Image 
-        source={{ uri: "/world-map.webp" }} 
-        alt="World map"
-        className="w-full h-full rounded-lg" 
-        resizeMode="contain" 
-      />
-{/* Location Markers - Positioned to match the flags list with hover tooltips */}
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] border border-black/10 bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/B.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">Bahrain</span>
+              </div>
 
-{/* United Kingdom */}
-<LocationMarker left="45%" top="13%">
-  <View className="group relative items-center">
-    <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
-      <Image source={{ uri: "/UK.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">United Kingdom</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
+                  style={{ backgroundImage: 'url(/Aus.webp)' }}
+                ></div>
+                <span className="font-normal text-[18px] leading-[30px] text-black">Australia</span>
+              </div>
+            </div>
 
-{/* California */}
-<LocationMarker left="12%" top="50%">
-  <View className="group relative items-center">
-    <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
-      <Image source={{ uri: "/US.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">California</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+            <div className="relative w-full mt-10 lg:mt-20">
+              <img src="/world-map.webp" alt="World map" className="w-full h-auto rounded-lg" />
 
-{/* United States */}
-<LocationMarker left="15%" top="39%">
-  <View className="group relative items-center">
-    <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
-      <Image source={{ uri: "/US.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">United States</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+              <div className="absolute inset-0" ref={mapOverlayRef}>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('uk').x}%`, top: `${getMarkerPos('uk').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/UK.webp" alt="UK Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">United Kingdom</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
 
-{/* Atlanta */}
-<LocationMarker left="22%" top="41%">
-  <View className="group relative items-center">
-    <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
-      <Image source={{ uri: "/US.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">Atlanta</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('ca').x}%`, top: `${getMarkerPos('ca').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/US.webp" alt="US Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">California</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
 
-{/* Netherlands */}
-<LocationMarker left="47%" top="16%">
-  <View className="group relative items-center">
-    <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
-      <Image source={{ uri: "/NET.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">Netherlands</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('us').x}%`, top: `${getMarkerPos('us').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/US.webp" alt="US Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">United States</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
 
-{/* UAE */}
-<LocationMarker left="64%" top="37%">
-  <View className="group relative items-center">
-    <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
-      <Image source={{ uri: "/UAE.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">UAE</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('atl').x}%`, top: `${getMarkerPos('atl').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/US.webp" alt="US Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">Atlanta</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
 
-{/* Saudi */}
-<LocationMarker left="61%" top="59%">
-  <View className="group relative items-center">
-    <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
-      <Image source={{ uri: "/Saudi.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">Saudi</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('nl').x}%`, top: `${getMarkerPos('nl').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/NET.webp" alt="Netherlands Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">Netherlands</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
 
-{/* Bahrain */}
-<LocationMarker left="63%" top="43%">
-  <View className="group relative items-center">
-    <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
-      <Image source={{ uri: "/B.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">Bahrain</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('uae').x}%`, top: `${getMarkerPos('uae').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/UAE.webp" alt="UAE Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">UAE</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
 
-{/* Australia */}
-<LocationMarker left="86%" top="76%">
-  <View className="group relative items-center">
-    <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
-      <Image source={{ uri: "/Aus.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
-      <Text className="text-black text-xs font-bold whitespace-nowrap">Australia</Text>
-    </View>
-    <View className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer">
-      <View className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
-        <View className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></View>
-      </View>
-    </View>
-  </View>
-</LocationMarker>
-    </View>
-  </View>
-</View>
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('bh').x}%`, top: `${getMarkerPos('bh').y}%` }}
+                >
+                  <div className="w-[40px] h-[40px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/B.webp" alt="Bahrain Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">Bahrain</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
+
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('au').x}%`, top: `${getMarkerPos('au').y}%` }}
+                >
+                  <div className="w-[48px] h-[48px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[32px] h-[32px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/Aus.webp" alt="AU Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">Australia</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
+
+                <div
+                  className="absolute group -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${getMarkerPos('sa').x}%`, top: `${getMarkerPos('sa').y}%` }}
+                >
+                  <div className="w-[40px] h-[40px] border border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110">
+                    <div className="w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full flex items-center justify-center">
+                      <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
+                      <img src="/Saudi.webp" alt="Saudi Flag" className="w-[16px] h-[12px]" />
+                      <p className="text-sm font-medium text-gray-800">Saudi Arabia</p>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Accomplishments Section */}
         <View className="relative w-full mt-4">

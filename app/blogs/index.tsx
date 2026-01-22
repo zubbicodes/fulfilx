@@ -5,7 +5,9 @@ import { ScrollView, Text, TouchableOpacity, View, useWindowDimensions } from 'r
 
 export default function BlogsScreen() {
     const { width } = useWindowDimensions();
-    const isMobile = width < 1024;
+    const isMobile = width < 768;
+    const isTablet = width >= 768 && width < 1280;
+    const gridItemBasis = isTablet ? '48%' : '31%';
     const router = useRouter();
 
     const blogs = [
@@ -91,6 +93,7 @@ export default function BlogsScreen() {
       <ScrollView 
         className="flex-1 bg-white"
         showsVerticalScrollIndicator={false}
+        style={{ scrollbarGutter: 'stable both-edges' } as any}
       >
         {/* Hero Section */}
         <View className="relative min-h-[60vh] lg:min-h-screen">
@@ -174,74 +177,62 @@ export default function BlogsScreen() {
             </View>
           </View>
         ) : (
-          // Desktop View - Original Absolute Positioning
-          <View className="relative w-full transform -translate-y-60" style={{ minHeight: 2550, marginBottom: -270 }}>
-            {/* Main Title */}
-            <Text 
-              className="font-helvetica font-bold text-[64px] leading-[84px] text-black text-center absolute"
-              style={{
-                left: 215,
-                top: 80
-              }}
-            >
-              Blogs
-            </Text>
-
-            {/* Blogs Grid */}
-            {blogs.map((blog) => (
+          // Desktop/Tablet View - Responsive Grid
+          <View className="relative w-full px-4 md:px-6 lg:px-10 2xl:px-16 -mt-20 lg:-mt-48 pb-24">
+            <View className="w-full max-w-[1500px] mx-auto">
+              <Text className="font-helvetica font-bold text-[44px] lg:text-[64px] leading-tight lg:leading-[84px] text-black text-center mb-12 lg:mb-16">
+                Blogs
+              </Text>
               <View
-                key={blog.id}
-                className="absolute"
-                style={{
-                  width: 453,
-                  left: blog.position.left,
-                  top: blog.position.top
-                }}
+                className="flex flex-row flex-wrap justify-center lg:justify-between"
+                style={{ rowGap: 48, columnGap: 32 } as any}
               >
-                {/* Image */}
-                <View 
-                  className="w-[450px] h-[350px] rounded-[24px] bg-cover bg-center"
-                  style={{ 
-                    backgroundImage: `url(${blog.image})`,
-                    backdropFilter: 'blur(12.5px)'
-                  } as any}
-                />
-                
-                {/* Content */}
-                <View className="mt-6">
-                  {/* Title */}
-                  <Text className="font-helvetica font-bold text-[28px] leading-[84px] text-black">
-                    {blog.title}
-                  </Text>
-                  
-                  {/* Description */}
-                  <Text className="font-helvetica font-normal text-[20px] leading-[38px] text-black mb-2">
-                    {blog.description}
-                  </Text>
-                  
-                  {/* Learn More Button */}
-                  {blog.id === 1 ? (
-                    // For The Power of Integration - with navigation
-                    <Link href="/blogs/power-of-integration" asChild>
-                      <TouchableOpacity className="flex flex-row items-center gap-[10px] cursor-pointer">
-                        <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
-                          Learn More
-                        </Text>
-                        <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
-                      </TouchableOpacity>
-                    </Link>
-                  ) : (
-                    // For other Blogs - without navigation
-                    <View className="flex flex-row items-center gap-[10px] cursor-pointer">
-                      <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
-                        Learn More
+                {blogs.map((blog) => (
+                  <View
+                    key={blog.id}
+                    className="w-full"
+                    style={{ flexBasis: gridItemBasis, maxWidth: 453, flexGrow: 1 }}
+                  >
+                    <View 
+                      className="w-full rounded-[24px] bg-cover bg-center"
+                      style={{ 
+                        backgroundImage: `url(${blog.image})`,
+                        aspectRatio: 9 / 7,
+                        backdropFilter: 'blur(12.5px)'
+                      } as any}
+                    />
+                    
+                    <View className="mt-6">
+                      <Text className="font-helvetica font-bold text-[24px] lg:text-[28px] leading-tight lg:leading-[84px] text-black">
+                        {blog.title}
                       </Text>
-                      <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
+                      
+                      <Text className="font-helvetica font-normal text-[18px] lg:text-[20px] leading-7 lg:leading-[38px] text-black mb-2">
+                        {blog.description}
+                      </Text>
+                      
+                      {blog.id === 1 ? (
+                        <Link href="/blogs/power-of-integration" asChild>
+                          <TouchableOpacity className="flex flex-row items-center gap-[10px] cursor-pointer">
+                            <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
+                              Learn More
+                            </Text>
+                            <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
+                          </TouchableOpacity>
+                        </Link>
+                      ) : (
+                        <View className="flex flex-row items-center gap-[10px] cursor-pointer">
+                          <Text className="font-helvetica font-bold text-[20px] leading-[36px] text-[#C10016]">
+                            Learn More
+                          </Text>
+                          <img src="/arrow-dark.svg" alt="arrow" className="w-[13px] h-[14px]" />
+                        </View>
+                      )}
                     </View>
-                  )}
-                </View>
+                  </View>
+                ))}
               </View>
-            ))}
+            </View>
           </View>
         )}
         {/* Accomplishments Section */}
