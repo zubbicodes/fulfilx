@@ -135,7 +135,7 @@ export default function LocationsScreen() {
   {/* Address */}
   <View className="absolute left-6 top-[270px] flex flex-row items-center gap-3 space-y-10">
     <View className="w-[42px] h-[42px] bg-[#C10016] rounded-full flex items-center justify-center mt-10">
-      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-full h-full" resizeMode="contain" />
+      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-4 h-4" resizeMode="contain" />
     </View>
     <Text className="font-helvetica font-normal text-[16px] leading-[22px] text-black">
       Manchester
@@ -189,7 +189,7 @@ export default function LocationsScreen() {
   {/* Address */}
   <View className="absolute left-6 top-[270px] flex flex-row items-center gap-3 space-y-10">
     <View className="w-[42px] h-[42px] bg-[#C10016] rounded-full flex items-center justify-center mt-10">
-      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-full h-full" resizeMode="contain" />
+      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-4 h-4" resizeMode="contain" />
     </View>
     <Text className="font-helvetica font-normal text-[16px] leading-[22px] text-black">
       California/Georgia
@@ -243,7 +243,7 @@ export default function LocationsScreen() {
   {/* Address */}
   <View className="absolute left-6 top-[270px] flex flex-row items-center gap-3 space-y-10">
     <View className="w-[42px] h-[42px] bg-[#C10016] rounded-full flex items-center justify-center mt-10">
-      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-full h-full" resizeMode="contain" />
+      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-4 h-4" resizeMode="contain" />
     </View>
     <Text className="font-helvetica font-normal text-[16px] leading-[22px] text-black">
       Dubai
@@ -301,7 +301,7 @@ export default function LocationsScreen() {
   {/* Address */}
   <View className="absolute left-6 top-[270px] flex flex-row items-center gap-3 space-y-10">
     <View className="w-[42px] h-[42px] bg-[#C10016] rounded-full flex items-center justify-center mt-10">
-      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-full h-full" resizeMode="contain" />
+      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-4 h-4" resizeMode="contain" />
     </View>
     <Text className="font-helvetica font-normal text-[16px] leading-[22px] text-black">
       Riyadh
@@ -409,7 +409,7 @@ export default function LocationsScreen() {
   {/* Address */}
   <View className="absolute left-6 top-[270px] flex flex-row items-center gap-3 space-y-10">
     <View className="w-[42px] h-[42px] bg-[#C10016] rounded-full flex items-center justify-center mt-10">
-      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-full h-full" resizeMode="contain" />
+      <Image source={{ uri: "/map.svg" }} alt="Location" className="w-4 h-4" resizeMode="contain" />
     </View>
     <Text className="font-helvetica font-normal text-[16px]  leading-[22px] text-black flex-1 justify-center items-center text-center">
       Melbourne
@@ -532,7 +532,7 @@ export default function LocationsScreen() {
 {/* Location Markers - Positioned to match the flags list with hover tooltips */}
 
 {/* United Kingdom */}
-<LocationMarker left="69.84%" top="16.59%">
+<LocationMarker left="45%" top="13%">
   <View className="group relative items-center">
     <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
       <Image source={{ uri: "/UK.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -547,7 +547,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* California */}
-<LocationMarker left="10.57%" top="53.58%">
+<LocationMarker left="12%" top="50%">
   <View className="group relative items-center">
     <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
       <Image source={{ uri: "/US.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -562,7 +562,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* United States */}
-<LocationMarker left="14.53%" top="41.47%">
+<LocationMarker left="15%" top="39%">
   <View className="group relative items-center">
     <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
       <Image source={{ uri: "/US.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -577,7 +577,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* Atlanta */}
-<LocationMarker left="21.68%" top="44.29%">
+<LocationMarker left="22%" top="41%">
   <View className="group relative items-center">
     <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
       <Image source={{ uri: "/US.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -592,7 +592,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* Netherlands */}
-<LocationMarker left="48.33%" top="19.41%">
+<LocationMarker left="47%" top="16%">
   <View className="group relative items-center">
     <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
       <Image source={{ uri: "/NET.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -607,7 +607,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* UAE */}
-<LocationMarker left="66.51%" top="42.13%">
+<LocationMarker left="64%" top="37%">
   <View className="group relative items-center">
     <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
       <Image source={{ uri: "/UAE.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -622,7 +622,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* Saudi */}
-<LocationMarker left="62.94%" top="36.49%">
+<LocationMarker left="61%" top="59%">
   <View className="group relative items-center">
     <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
       <Image source={{ uri: "/Saudi.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -637,7 +637,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* Bahrain */}
-<LocationMarker left="64.72%" top="36.16%">
+<LocationMarker left="63%" top="43%">
   <View className="group relative items-center">
     <View className="absolute left-14 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2 z-50">
       <Image source={{ uri: "/B.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
@@ -652,7 +652,7 @@ export default function LocationsScreen() {
 </LocationMarker>
 
 {/* Australia */}
-<LocationMarker left="85.55%" top="86.42%">
+<LocationMarker left="86%" top="76%">
   <View className="group relative items-center">
     <View className="absolute -top-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-3 py-1.5 rounded shadow-sm pointer-events-none flex flex-row items-center gap-2">
       <Image source={{ uri: "/Aus.webp" }} className="w-5 h-3 rounded-[1px]" resizeMode="cover" />
