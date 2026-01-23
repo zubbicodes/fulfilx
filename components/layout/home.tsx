@@ -744,7 +744,11 @@ focus on growing.    </p>
 <div className="flex items-center gap-4">
   <div className="w-[150px] h-[80px] bg-black/10 rounded-[10px] flex items-center justify-center">
     <span className="font-bold text-3xl lg:text-[40px] leading-[80px] tracking-tight text-black">
-      <img src="/reviews.webp" alt="" />
+      <img 
+      src="/google_rev.webp" 
+      onClick=  { () => window.open("https://www.google.com/search?sca_esv=20541e4f21a9d7f7&sxsrf=ANbL-n6la1mt9rMC2V7vLj6jDkpCGr-jEQ:1769008694039&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXwAv3YEXZKPsl-nUlT6wYhGXlXqsFVh-oyC0tyABjEyjZCBk0CoEdNhj27Sl2hsvpDFgHFs0bQGfY1mnSWew6jYRo_p8GX0AXTemkh_XqBhnnH1O0hKt0daRKCE0qah_J7B7GeROHFzzyEWMS5BWx0syl6v&q=FULFIL.X+-+Storage+and+3pl+For+E-commerce+Brands+Reviews&sa=X&ved=2ahUKEwilh8D29pySAxUXQ0EAHVezKAcQ0bkNegQIKBAH&biw=1536&bih=730&dpr=1.25&aic=0","_blank") }
+      alt="Google reviews"
+      className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[80px] h-auto object-contain mx-auto cursor-pointer transition-transform duration-300 hover:scale-105"/>
     </span>
   </div>
   <p className="font-normal text-lg lg:text-[20px] leading-[30px] lg:leading-[40px] text-[#C10016]">
