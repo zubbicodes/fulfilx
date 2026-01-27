@@ -16,11 +16,13 @@ const CheckIcon = () => <img src="/check.svg" alt="Check" width={14} height={14}
 const FulfillmentServicesSection = () => {
   const { width } = useWindowDimensions();
   const isMobile = width < 1024;
-  const services = [
+  
+  // Transform the services data to match VAS structure
+  const fulfillmentServicesItems = [
     {
-      id: 1,
-      title: 'D2C Fulfilment',
-      icon: D2CIcon,
+      title: ['D2C', 'Fulfilment'],
+      img: '/shiphappens1.jpg', // Reusing existing VAS image
+      logo: '/d2c.svg',
       features: [
         'Direct-to-consumer pick, pack & dispatch.',
         'Same-day dispatch cut-off options.',
@@ -29,9 +31,9 @@ const FulfillmentServicesSection = () => {
       ]
     },
     {
-      id: 2,
-      title: 'B2B Fulfilment',
-      icon: B2BIcon,
+      title: ['B2B', 'Fulfilment'],
+      img: '/qc.webp', // Reusing existing VAS image
+      logo: '/b2b.svg',
       features: [
         'Bulk & palletised shipments',
         'Retail-compliant carton & pallet prep',
@@ -40,9 +42,9 @@ const FulfillmentServicesSection = () => {
       ]
     },
     {
-      id: 3,
-      title: 'Amazon Fulfilment',
-      icon: AmazonIcon,
+      title: ['Amazon', 'Fulfilment'],
+      img: '/shiphappens3.webp', // Reusing existing VAS image
+      logo: '/amf.svg',
       features: [
         'FBA Prep: Labelling, polybagging, bundling, carton prep, pallet prep.',
         'FBM Fulfilment: Same-day pick & pack for Amazon orders.',
@@ -50,9 +52,9 @@ const FulfillmentServicesSection = () => {
       ]
     },
     {
-      id: 4,
-      title: 'Marketplace Fulfilment (FMS Orders)',
-      icon: MarketplaceIcon,
+      title: ['Marketplace', 'Fulfilment'],
+      img: '/shiphappens4.webp', // Reusing existing VAS image
+      logo: '/fms.svg',
       features: [
         'Fulfilled-by-Merchant support for TikTok Shop, Etsy, Instagram, etc.',
         'Compliance packaging if required.'
@@ -60,56 +62,132 @@ const FulfillmentServicesSection = () => {
     }
   ];
 
+  // Add state management for active service
+  const [activeFulfillmentIndex, setActiveFulfillmentIndex] = useState(0);
+  const [fulfillmentPrevIndex, setFulfillmentPrevIndex] = useState<number | null>(null);
+  const fulfillmentTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (fulfillmentTimerRef.current) clearTimeout(fulfillmentTimerRef.current);
+    };
+  }, []);
+
+  const activateFulfillment = (index: number) => {
+    if (index === activeFulfillmentIndex) return;
+    if (fulfillmentTimerRef.current) clearTimeout(fulfillmentTimerRef.current);
+    setFulfillmentPrevIndex(activeFulfillmentIndex);
+    setActiveFulfillmentIndex(index);
+    fulfillmentTimerRef.current = setTimeout(() => {
+      setFulfillmentPrevIndex(null);
+    }, 750);
+  };
+
   return (
-    <View className="w-full px-4 py-4 transform -translate-y-10">
-      <Text className="font-helvetica font-bold text-3xl lg:text-[54px] lg:leading-[84px] text-black text-center mb-6">
-        Core Fulfilment <Text className="text-[#C10016]">Services</Text>
-      </Text>
-      
-      <View className="flex-row flex-wrap justify-center gap-6 px-5 lg:px-20">
-        {services.map((service) => {
-          const IconComponent = service.icon;
-          return (
-            <View 
-              key={service.id}
-              className="w-[300px] lg:w-[350px] min-h-[430px] bg-white border border-[#D9D9D9] rounded-[20px] backdrop-blur-[12.5px] p-8 flex flex-col justify-between"
-            >
-              <View>
-                {/* Icon */}
-                <View className="mb-4">
-                  <IconComponent />
-                </View>
-                
-                {/* Title */}
-                <Text className="font-helvetica font-bold text-[20px] leading-snug text-black">
-                  {service.title}
-                </Text>
-                
-                {/* Features */}
-                <View className="mt-4 space-y-4">
-                  {service.features.map((feature, index) => (
-                    <View key={index} className="flex-row items-baseline gap-3">
-                      <CheckIcon />
-                      <Text className="font-helvetica text-[16px] leading-[22px] text-black flex-1">
-                        {feature}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-              </View>
-              
-              {/* Contact Sales Button */}
-              <TouchableOpacity className="flex-row items-center gap-2 mt-6">
-                <Text className="font-helvetica font-bold text-[16px] leading-normal text-[#C10016]">
-                  Contact Sales
-                </Text>
-                <ArrowIcon />
-              </TouchableOpacity>
-            </View>
-          );
-        })}
-      </View>
-    </View>
+    <section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-black/65"
+        style={{
+          backgroundImage: `url('/vas.webp')`, // Reusing existing VAS background image
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transform: 'scaleX(-1)'
+        }}
+      />
+
+      <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
+        <div className="mx-auto w-full max-w-[1490px]">
+          <style>{`
+            @keyframes servicesSlideIn {
+              0% { opacity: 0; transform: translateX(-36px); }
+              100% { opacity: 1; transform: translateX(0); }
+            }
+          `}</style>
+
+          <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+            Core Fulfilment <span className="text-[#C10016]">Services</span>
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+            <div className="lg:col-span-1">
+              <div className="flex flex-col gap-3">
+                {fulfillmentServicesItems.map((item, i) => {
+                  const isActive = i === activeFulfillmentIndex;
+                  return (
+                    <button
+                      key={item.title.join(' ')}
+                      type="button"
+                      onMouseEnter={() => activateFulfillment(i)}
+                      onFocus={() => activateFulfillment(i)}
+                      onClick={() => activateFulfillment(i)}
+                      className={[
+                        "w-full flex items-center gap-4 rounded-xl border px-5 py-4 text-left transition",
+                        "bg-white/5 hover:bg-white/10 border-white/20 hover:border-white/35",
+                        isActive ? "bg-white/12 border-white/45" : "",
+                      ].join(" ")}
+                    >
+                      <img src={item.logo} alt="" className="w-10 h-10 shrink-0" />
+                      <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                        <span className="block">{item.title[0]}</span>
+                        <span className="block">{item.title[1]}</span>
+                      </span>
+                      <img
+                        src="/arrow.svg"
+                        alt="arrow"
+                        className={[
+                          "w-5 h-5 object-contain opacity-70 transition",
+                          isActive ? "opacity-100 translate-x-0.5" : "",
+                        ].join(" ")}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="lg:col-span-2">
+              <div className="relative w-full h-[320px] sm:h-[420px] lg:h-full rounded-2xl overflow-hidden border border-white/15 bg-black/20">
+                {fulfillmentPrevIndex !== null && (
+                  <img
+                    src={fulfillmentServicesItems[fulfillmentPrevIndex]?.img}
+                    alt={fulfillmentServicesItems[fulfillmentPrevIndex]?.title.join(' ')}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                <img
+                  key={`${activeFulfillmentIndex}-${fulfillmentServicesItems[activeFulfillmentIndex]?.img}`}
+                  src={fulfillmentServicesItems[activeFulfillmentIndex]?.img}
+                  alt={fulfillmentServicesItems[activeFulfillmentIndex]?.title.join(' ')}
+                  className="absolute inset-0 w-full h-full object-cover z-10"
+                  style={{ animation: 'servicesSlideIn 750ms cubic-bezier(0.22, 1, 0.36, 1)', willChange: 'transform' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                <div className="absolute left-6 bottom-6 right-6 z-20">
+                  <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+                    {fulfillmentServicesItems[activeFulfillmentIndex]?.title[0]} {fulfillmentServicesItems[activeFulfillmentIndex]?.title[1]}
+                  </div>
+                  <div className="mt-6 space-y-3 max-w-[560px]">
+                    {(fulfillmentServicesItems[activeFulfillmentIndex]?.features ?? []).map((feature, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <img src="/checkw.svg" alt="Check" className="w-4 h-4 mt-1 flex-shrink-0" />
+                        <span className="text-white text-[16px] leading-[22px]">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <button className="flex items-center gap-3 bg-[#C10016] text-white px-8 py-4 rounded-md font-bold text-[18px]">
+              Contact Sales
+              <img src="/arrow.svg" className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 // Import your SVG icons
