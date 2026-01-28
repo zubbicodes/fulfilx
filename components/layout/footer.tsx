@@ -17,14 +17,14 @@ const Footer = () => {
         </div>
 
         <p className="text-[18px] font-normal text-white">
-          Subscribe to receive Fulfil.X updates
+          Subscribe to receive FULFIL.X updates
         </p>
 
         <div className="w-full border border-white/20 rounded-lg flex items-center px-4 h-14">
           <input
             className="bg-transparent text-white font-normal placeholder-white/40 outline-none flex-1"
             type="email"
-            placeholder="Enter your mail id"
+            placeholder="Enter your email"
           />
           <div className="h-6 w-6 rounded flex items-center justify-center cursor-pointer">
             <img src="/sub.svg" alt="plane" className='w-6 h-6 object-contain' />
@@ -186,6 +186,9 @@ const Footer = () => {
   <Link href="/locations" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Locations</a>
   </Link>
+    <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Sustainability</a>
+  </Link>
     <Link href="/contact" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Contact Us</a>
   </Link>
@@ -200,10 +203,13 @@ const Footer = () => {
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Shipping</a>
   </Link>
   <Link href="/" asChild>
-    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Returning Policy</a>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Returns Policy</a>
   </Link>
-  <Link href="/team" asChild>
-    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Career</a>
+  <Link href="/team#jobs" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Careers</a>
+  </Link>
+    <Link href="/" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Our Couriers</a>
   </Link>
 </div>
 

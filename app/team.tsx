@@ -2,13 +2,73 @@
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Stack, useRouter } from 'expo-router';
-import React, { useEffect, useState } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Image, Linking, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
+interface Job {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  theme: string;
+}
 
 export default function TeamScreen() {
   const router = useRouter();
+  const scrollViewRef = useRef<ScrollView>(null);
+  const [jobsOffset, setJobsOffset] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused] = useState(false);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (selectedJob) {
+      fadeAnim.setValue(0);
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: Platform.OS !== 'web', 
+      }).start();
+    }
+  }, [selectedJob, fadeAnim]);
+
+  const JOBS = [
+    {
+      id: 1,
+      title: "Fulfilment Associates (Pickers, Packers, Shippers)",
+      description: "Are you someone who takes pride in a job well done? Do you believe that careful, accurate work matters? At Fulfil.X, our warehouse team is the essential final step for our brand partners. We’re looking for reliable, detail-oriented individuals to join us as Fulfillment Associates. You’ll be the hands that directly deliver a brand’s promise to their customers.\n\nThis is a hands-on role where your focus and consistency directly impact customer satisfaction and brand loyalty.",
+      tags: ["Part Time", "Dubai"],
+      theme: "dark"
+    },
+    {
+      id: 2,
+      title: "Fulfilment Associates (Pickers, Packers, Shippers)",
+      description: "Are you someone who takes pride in a job well done? Do you believe that careful, accurate work matters? At Fulfil.X, our warehouse team is the essential final step for our brand partners. We’re looking for reliable, detail-oriented individuals to join us as Fulfillment Associates. You’ll be the hands that directly deliver a brand’s promise to their customers.\n\nThis is a hands-on role where your focus and consistency directly impact customer satisfaction and brand loyalty.",
+      tags: ["Full Time", "Dubai"],
+      theme: "light"
+    },
+    {
+      id: 3,
+      title: "Client Onboarding Specialist",
+      description: "We are looking for a meticulous and client-focused Client Onboarding Specialist to be the guiding force for our new brand partners. You will be the architect of their first impression and the project manager of their transition, ensuring their move to Fulfil.X is seamless, efficient, and sets the stage for a long-term, successful partnership.\n\nThis is a critical role where your organization and communication skills directly impact client retention, satisfaction, and our reputation for excellence.",
+      tags: ["Full Time", "Dubai"],
+      theme: "dark"
+    },
+    {
+      id: 4,
+      title: "Quality & Value-Added Services Specialist",
+      description: "At Fulfil.X, we are our brand partners' most trusted extension. We're looking for a meticulous, hands-on problem-solver to fill a vital hybrid role: the Quality & Value-Added Services Specialist. You will be the central hub of excellence on our fulfilment floor—serving as the final checkpoint for quality, the assembler of custom experiences, and the expert who recovers value. Your work directly protects our partners' reputation and elevates their customers' unboxing moments.\n\nThis role is perfect for someone who takes immense pride in precision, thrives on varied tasks, and understands that it’s the details that truly define a brand.",
+      tags: ["Full Time", "Dubai"],
+      theme: "light"
+    },
+    {
+      id: 5,
+      title: "Marketing Assistant",
+      description: "At Fulfil.X, we’re telling a new story in the logistics industry. We’re looking for a dynamic, creative, and organised Marketing Assistant to help us share it. This is a foundational role for someone eager to roll up their sleeves, learn the ins and outs of growth marketing, and play a key part in building awareness for a brand that’s changing the game.\n\nYou’ll support our marketing team across channels, turning strategy into action and helping us connect with the ambitious brands we serve. If you love variety, thrive on detail, and want to see your work have a direct impact, this is your opportunity.",
+      tags: ["Full Time", "Dubai"],
+      theme: "dark"
+    }
+  ];
   
   
   const images = [
@@ -19,18 +79,36 @@ export default function TeamScreen() {
     { id: 5, src: '/happy.webp' }
   ];
   useEffect(() => {
-  if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const nextSlide = prev + 1;
+        // Reset to 0 when we reach the end of original images for seamless loop
+        return nextSlide >= images.length ? 0 : nextSlide;
+      });
+    }, 3000);
 
-  const interval = setInterval(() => {
-    setCurrentSlide((prev) => {
-      const nextSlide = prev + 1;
-      // Reset to 0 when we reach the end of original images for seamless loop
-      return nextSlide >= images.length ? 0 : nextSlide;
-    });
-  }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
-  return () => clearInterval(interval);
-}, [isPaused, images.length]);
+  useEffect(() => {
+    if (Platform.OS === 'web') {
+      const handleScroll = () => {
+        if (window.location.hash === '#jobs' && jobsOffset > 0 && scrollViewRef.current) {
+          // Add a small delay to ensure content is ready
+          setTimeout(() => {
+            scrollViewRef.current?.scrollTo({ y: jobsOffset, animated: true });
+          }, 100);
+        }
+      };
+
+      // Check on mount/update
+      handleScroll();
+
+      // Listen for hash changes
+      window.addEventListener('hashchange', handleScroll);
+      return () => window.removeEventListener('hashchange', handleScroll);
+    }
+  }, [jobsOffset]);
 
   return (
     <>
@@ -44,6 +122,7 @@ export default function TeamScreen() {
       <Navbar />
       
       <ScrollView 
+        ref={scrollViewRef}
         className="flex-1 bg-white"
       >
         {/* Hero Section */}
@@ -79,215 +158,241 @@ export default function TeamScreen() {
 
         {/* Team Section */}
         <View className="w-full bg-white transform -translate-y-20 lg:-translate-y-48">
-          {/* Skilled Staff Badge */}
-          <View className="flex flex-row justify-center items-center mx-auto w-[240px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
-            <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
-              Skilled Staff
-            </Text>
-          </View>
 
           {/* Main Heading */}
           <Text className="text-center font-helvetica font-bold text-4xl lg:text-[64px] leading-tight lg:leading-[74px] tracking-[-0.01em] text-black mb-16 px-4">
-            Meet Our Qualified <Text className='text-[#C10016]'>Experts</Text>
+            The <Text className='text-[#C10016]'>Team</Text>
           </Text>
 
           {/* Team Members Grid */}
           <View className="flex flex-col gap-8 px-4 lg:px-8">
             
-            {/* First Row */}
-            <View className="flex flex-col lg:flex-row justify-center gap-8">
-              
-{/* Team Member 1 - Nas */}
-<View className="relative w-full lg:w-[720px] h-auto lg:h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:block p-4 lg:p-0">
-  {/* Member Image with Social Icons Popup */}
-  <View className="relative lg:absolute w-full lg:w-[300px] h-[300px] lg:h-[340px] lg:left-8 lg:top-4 rounded-[12px] overflow-hidden mb-6 lg:mb-0">
-    <Image
-      source={{ uri: "/nas.webp" }}
-      className="w-full h-full"
-      resizeMode="cover"
-    />
-  </View>
-  
-  {/* Member Info */}
-  <View className="relative lg:absolute lg:left-[360px] lg:top-8 w-full lg:w-[340px]">
-    <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight lg:leading-[80px] text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0">
-      Nas
-    </Text>
-    <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug lg:leading-[38px] text-black group-hover:text-white transition-colors duration-300 mb-4">
-      Co-Founder & CEO
-    </Text>
-    <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed lg:leading-[30px] text-black group-hover:text-white transition-colors duration-300">
-      In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-    </Text>
-  </View>
-  
-  {/* Email Icon */}
-  <TouchableOpacity className="relative lg:absolute lg:left-[360px] lg:bottom-8 w-12 h-12 bg-[#C10016] group-hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 mt-6 lg:mt-0">
-    <Image 
-      source={{ uri: "/mail.svg" }}
-      className="w-4 h-4"
-      resizeMode="contain"
-      style={{ tintColor: 'white' }}
-    />
-  </TouchableOpacity>
-</View>
+            {/* First Row - Nas (Centered & Standing Out) */}
+            <View className="flex flex-row justify-center">
+              {/* Team Member 1 - Nas */}
+              <View className="relative w-full lg:max-w-[900px] h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl z-10 scale-105">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image
+                    source={{ uri: "/nas.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[32px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Nas
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[20px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4 font-medium">
+                    Co-Founder & CEO
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
+            </View>
 
+            {/* Second Row - Anson & Natalie */}
+            <View className="flex flex-col lg:flex-row justify-center gap-8">
               {/* Team Member 2 - Anson */}
-<View className="relative w-full lg:w-[720px] h-auto lg:h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:block p-4 lg:p-0">
-  {/* Member Image with Social Icons Popup */}
-  <View className="relative lg:absolute w-full lg:w-[300px] h-[300px] lg:h-[340px] lg:left-8 lg:top-4 rounded-[12px] overflow-hidden mb-6 lg:mb-0">
-    <Image 
-      source={{ uri: "/Anson.webp" }}
-      className="w-full h-full"
-      resizeMode="cover"
-    />
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Anson.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Anson
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Operations Manager
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
 
-  </View>
-  
-  {/* Member Info */}
-  <View className="relative lg:absolute lg:left-[360px] lg:top-8 w-full lg:w-[340px]">
-    <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight lg:leading-[80px] text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0">
-      Anson
-    </Text>
-    <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug lg:leading-[38px] text-black group-hover:text-white transition-colors duration-300 mb-4">
-      Operations Manager
-    </Text>
-    <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed lg:leading-[30px] text-black group-hover:text-white transition-colors duration-300">
-      In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-    </Text>
-  </View>
-  
-  {/* Email Icon */}
-  <TouchableOpacity className="relative lg:absolute lg:left-[360px] lg:bottom-8 w-12 h-12 bg-[#C10016] group-hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 mt-6 lg:mt-0">
-    <Image 
-      source={{ uri: "/mail.svg" }}
-      className="w-4 h-4"
-      resizeMode="contain"
-      style={{ tintColor: 'white' }}
-    />
-  </TouchableOpacity>
-</View>
-
-            </View>
-
-            {/* Second Row */}
-            <View className="flex flex-col lg:flex-row justify-center gap-8">
-              
               {/* Team Member 3 - Nat */}
-              <View className="relative w-full lg:w-[720px] h-auto lg:h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:block p-4 lg:p-0">
-  {/* Member Image with Social Icons Popup */}
-  <View className="relative lg:absolute w-full lg:w-[300px] h-[300px] lg:h-[340px] lg:left-8 lg:top-4 rounded-[12px] overflow-hidden mb-6 lg:mb-0">
-    <Image 
-      source={{ uri: "/Nat.webp" }}
-      className="w-full h-full"
-      resizeMode="cover"
-    />
-  </View>
-  
-  {/* Member Info */}
-  <View className="relative lg:absolute lg:left-[360px] lg:top-8 w-full lg:w-[340px]">
-    <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight lg:leading-[80px] text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0">
-      Nat
-    </Text>
-    <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug lg:leading-[38px] text-black group-hover:text-white transition-colors duration-300 mb-4">
-      Team Leader - Ops
-    </Text>
-    <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed lg:leading-[30px] text-black group-hover:text-white transition-colors duration-300">
-      In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-    </Text>
-  </View>
-  
-  {/* Email Icon */}
-  <TouchableOpacity className="relative lg:absolute lg:left-[360px] lg:bottom-8 w-12 h-12 bg-[#C10016] group-hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 mt-6 lg:mt-0">
-    <Image 
-      source={{ uri: "/mail.svg" }}
-      className="w-4 h-4"
-      resizeMode="contain"
-      style={{ tintColor: 'white' }}
-    />
-  </TouchableOpacity>
-</View>
-
-              {/* Team Member 4 - Ste */}
-<View className="relative w-full lg:w-[720px] h-auto lg:h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:block p-4 lg:p-0">
-  {/* Member Image with Social Icons Popup */}
-  <View className="relative lg:absolute w-full lg:w-[300px] h-[300px] lg:h-[340px] lg:left-8 lg:top-4 rounded-[12px] overflow-hidden mb-6 lg:mb-0">
-    <Image 
-      source={{ uri: "/Ste.webp" }}
-      className="w-full h-full"
-      resizeMode="cover"
-    />
-  </View>
-  
-  {/* Member Info */}
-  <View className="relative lg:absolute lg:left-[360px] lg:top-8 w-full lg:w-[340px]">
-    <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight lg:leading-[80px] text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0">
-      Ste
-    </Text>
-    <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug lg:leading-[38px] text-black group-hover:text-white transition-colors duration-300 mb-4">
-      Team Leader - Warehouse
-    </Text>
-    <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed lg:leading-[30px] text-black group-hover:text-white transition-colors duration-300">
-      In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-    </Text>
-  </View>
-  
-  {/* Email Icon */}
-  <TouchableOpacity className="relative lg:absolute lg:left-[360px] lg:bottom-8 w-12 h-12 bg-[#C10016] group-hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 mt-6 lg:mt-0">
-    <Image 
-      source={{ uri: "/mail.svg" }}
-      className="w-4 h-4"
-      resizeMode="contain"
-      style={{ tintColor: 'white' }}
-    />
-  </TouchableOpacity>
-</View>
-
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Natalie.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Natalie
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Marketing Lead
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
             </View>
 
-            {/* Third Row - Centered */}
-            <View className="flex flex-col lg:flex-row justify-center">
-              
+            {/* Third Row - Stephen & Jordray */}
+            <View className="flex flex-col lg:flex-row justify-center gap-8">
+              {/* Team Member 4 - Ste */}
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Stephen.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Stephen
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Supervisor
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
+
               {/* Team Member 5 - Jordy */}
-<View className="relative w-full lg:w-[720px] h-auto lg:h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:block p-4 lg:p-0">
-  {/* Member Image with Social Icons Popup */}
-  <View className="relative lg:absolute w-full lg:w-[300px] h-[300px] lg:h-[340px] lg:left-8 lg:top-4 rounded-[12px] overflow-hidden mb-6 lg:mb-0">
-    <Image 
-      source={{ uri: "/jordy.webp" }}
-      className="w-full h-full"
-      resizeMode="cover"
-    />
-  </View>
-  
-  {/* Member Info */}
-  <View className="relative lg:absolute lg:left-[360px] lg:top-8 w-full lg:w-[340px]">
-    <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight lg:leading-[80px] text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0">
-      Jordy
-    </Text>
-    <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug lg:leading-[38px] text-black group-hover:text-white transition-colors duration-300 mb-4">
-      Warehouse Manager
-    </Text>
-    <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed lg:leading-[30px] text-black group-hover:text-white transition-colors duration-300">
-      In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-    </Text>
-  </View>
-  
-  {/* Email Icon */}
-  <TouchableOpacity className="relative lg:absolute lg:left-[360px] lg:bottom-8 w-12 h-12 bg-[#C10016] group-hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 mt-6 lg:mt-0">
-    <Image
-      source={{ uri: "/mail.svg" }}
-      className="w-4 h-4"
-      resizeMode="contain"
-      style={{ tintColor: 'white' }}
-    />
-  </TouchableOpacity>
-</View>
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Jordray.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Jordray
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Warehouse Manager
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
+            </View>
+
+            {/* Fourth Row - Paulina & Ralph J */}
+            <View className="flex flex-col lg:flex-row justify-center gap-8">
+              {/* Team Member 6 - Paulina */}
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Paulina.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Paulina
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Team Lead
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
+
+              {/* Team Member 7 - Ralph J */}
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Ralph Smith.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Ralph J
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Warehouse Team
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
+            </View>
+
+            {/* Fifth Row - Ralph A (Centered) */}
+            <View className="flex flex-row justify-center">
+              {/* Team Member 8 - Ralph A */}
+              <View className="relative w-full lg:max-w-[900px] h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Ralph Aquino.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Ralph A
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Warehouse Team
+                  </Text>
+                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
+                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
 
         {/* Career Opportunities Section */}
-        <View className="relative w-full min-h-auto lg:min-h-[900px] py-12 lg:py-20 overflow-hidden">
+        <View 
+          id="jobs" 
+          onLayout={(event) => {
+            const layout = event.nativeEvent.layout;
+            setJobsOffset(layout.y);
+          }}
+          className="relative w-full min-h-[600px] lg:min-h-[900px] py-12 lg:py-20 overflow-hidden"
+        >
           {/* Background Gradient Fix */}
           <View className="absolute inset-0">
             <Image 
@@ -311,11 +416,13 @@ export default function TeamScreen() {
                 </View>
 
                 <Text className="font-helvetica font-bold text-4xl lg:text-[60px] leading-tight lg:leading-[74px] text-white mb-8 text-center lg:text-left">
-                  Discover the <Text className="text-[#C10016]">Path</Text> to Your Dream <Text className="text-[#C10016]">Career</Text>
+                  Join The <Text className="text-[#C10016]">Dream Team</Text>
                 </Text>
 
                 <Text className="font-helvetica text-lg lg:text-[20px] leading-relaxed lg:leading-[38px] text-white/90 mb-12 max-w-full lg:max-w-[670px] text-center lg:text-left">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer.
+                  Join us as more than an employee. Become a builder, a problem-solver, and a brand
+                  advocate. Together, we’ll redefine an industry where exceptional teamwork drives
+                  exceptional outcomes.
                 </Text>
 
                 <TouchableOpacity className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-2 w-[200px] mx-auto lg:mx-0">
@@ -324,117 +431,125 @@ export default function TeamScreen() {
                 </TouchableOpacity>
               </View>
 
-              {/* RIGHT COLUMN - Fixed card dimensions */}
-              <View className="flex-1 flex flex-col justify-center w-full">
-                <View className="space-y-6 max-h-[700px] overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[#C10016] scrollbar-track-transparent hover:scrollbar-thumb-[#C10016] pr-2 w-full">
-    {/* CARD 1 — Dark (Top) */}
-    <View className="w-full lg:w-[680px] h-auto lg:h-[225px] bg-[rgba(255,255,255,0.1)] backdrop-blur-[5px] rounded-[20px] p-6 lg:p-8">
-      <Text className="font-helvetica font-bold text-xl lg:text-[22px] leading-tight lg:leading-[44px] text-white mb-2">
-        Warehouse Manager
-      </Text>
-      <View className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6 gap-4 lg:gap-0">
-        <Text className="font-helvetica text-sm lg:text-[16px] leading-[26px] text-white/90 max-w-full lg:max-w-[500px]">
-          Felis cursus ornare cubilia leo montes penatibus fermentum dapibus convallis. Nisl nunc quis senectus platea.
-        </Text>
-        <TouchableOpacity className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-3 w-full lg:w-auto justify-center lg:justify-start">
-          <Text className="font-helvetica text-[16px] text-white font-bold">View Job</Text>
-          <Image source={{ uri: "/arrow.svg" }} className="w-3 h-3" resizeMode="contain" style={{ tintColor: 'white' }} />
-        </TouchableOpacity>
-      </View>
-      <View className="flex flex-wrap gap-4">
-        <View className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-white">Remote</Text>
-        </View>
-        <View className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-white">Full Time</Text>
-        </View>
-        <View className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-white">Dubai</Text>
-        </View>
-      </View>
-    </View>
+              {/* RIGHT COLUMN - Dynamic with Overlay */}
+              <View className="flex-1 flex flex-col justify-center w-full relative h-[500px] lg:h-[700px]">
+                
+                {/* Job Detail Overlay */}
+                {selectedJob && (
+                  <Animated.View 
+                    style={{ 
+                      opacity: fadeAnim,
+                      transform: [{ scale: fadeAnim.interpolate({ inputRange: [0, 1], outputRange: [0.95, 1] }) }]
+                    }}
+                    className="absolute inset-0 z-50 bg-[#1A1A1A] rounded-[20px] p-6 lg:p-8 overflow-hidden border border-white/10"
+                  >
+                    <View className="flex flex-row justify-between items-start mb-6">
+                      <Text className="font-helvetica font-bold text-2xl lg:text-3xl text-white flex-1 pr-4">
+                        {selectedJob.title}
+                      </Text>
+                      <TouchableOpacity onPress={() => setSelectedJob(null)} className="p-2">
+                        <Text className="text-white text-lg font-bold">Hide</Text>
+                      </TouchableOpacity>
+                    </View>
+                    
+                    <ScrollView className="flex-1 pr-2 scrollbar-thin scrollbar-thumb-[#C10016]">
+                      <Text className="font-helvetica text-lg lg:text-xl text-white/90 leading-relaxed mb-8">
+                        {selectedJob.description || "No description available."}
+                      </Text>
+                      
+                      <View className="flex flex-row flex-wrap gap-4 mb-8">
+                        {selectedJob.tags.map((tag: string, index: number) => (
+                          <View key={index} className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
+                            <Text className="font-helvetica text-sm lg:text-[16px] text-white">{tag}</Text>
+                          </View>
+                        ))}
+                      </View>
 
-    {/* CARD 2 — WHITE (Middle) */}
-    <View className="w-full lg:w-[680px] h-auto lg:h-[225px] bg-white rounded-[20px] p-6 lg:p-8 shadow-2xl">
-      <Text className="font-helvetica font-bold text-xl lg:text-[22px] leading-tight lg:leading-[44px] text-black mb-2">
-        Warehouse Manager
-      </Text>
-      <View className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6 gap-4 lg:gap-0">
-        <Text className="font-helvetica text-sm lg:text-[16px] leading-[26px] text-black/80 max-w-full lg:max-w-[500px]">
-          Felis cursus ornare cubilia leo montes penatibus fermentum dapibus convallis. Nisl nunc quis senectus platea.
-        </Text>
-        <TouchableOpacity className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-3 w-full lg:w-auto justify-center lg:justify-start">
-          <Text className="font-helvetica text-[16px] text-white font-bold">View Job</Text>
-          <Image source={{ uri: "/arrow.svg" }} className="w-3 h-3" resizeMode="contain" style={{ tintColor: 'white' }} />
-        </TouchableOpacity>
-      </View>
-      <View className="flex flex-wrap gap-4">
-        <View className="bg-[rgba(193,0,22,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-[#C10016]">Remote</Text>
-        </View>
-        <View className="bg-[rgba(193,0,22,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-[#C10016]">Full Time</Text>
-        </View>
-        <View className="bg-[rgba(193,0,22,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-[#C10016]">Dubai</Text>
-        </View>
-      </View>
-    </View>
+                      <TouchableOpacity 
+                        onPress={() => Linking.openURL('mailto:Careers@fulfilx.co.uk')}
+                        className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-3 w-full justify-center"
+                      >
+                          <Text className="font-helvetica text-[16px] text-white font-bold">Apply Now</Text>
+                          <Image source={{ uri: "/arrow.svg" }} className="w-3 h-3" resizeMode="contain" style={{ tintColor: 'white' }} />
+                      </TouchableOpacity>
+                    </ScrollView>
+                  </Animated.View>
+                )}
 
-    {/* CARD 3 — Dark (Bottom) */}
-    <View className="w-full lg:w-[680px] h-auto lg:h-[225px] bg-[rgba(255,255,255,0.1)] backdrop-blur-[5px] rounded-[20px] p-6 lg:p-8">
-      <Text className="font-helvetica font-bold text-xl lg:text-[22px] leading-tight lg:leading-[44px] text-white mb-2">
-        Warehouse Manager
-      </Text>
-      <View className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6 gap-4 lg:gap-0">
-        <Text className="font-helvetica text-sm lg:text-[16px] leading-[26px] text-white/90 max-w-full lg:max-w-[500px]">
-          Felis cursus ornare cubilia leo montes penatibus fermentum dapibus convallis. Nisl nunc quis senectus platea.
-        </Text>
-        <TouchableOpacity className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-3 w-full lg:w-auto justify-center lg:justify-start">
-          <Text className="font-helvetica text-[16px] text-white font-bold">View Job</Text>
-          <Image source={{ uri: "/arrow.svg" }} className="w-3 h-3" resizeMode="contain" style={{ tintColor: 'white' }} />
-        </TouchableOpacity>
-      </View>
-      <View className="flex flex-wrap gap-4">
-        <View className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-white">Remote</Text>
-        </View>
-        <View className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-white">Full Time</Text>
-        </View>
-        <View className="bg-[rgba(255,255,255,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-white">Dubai</Text>
-        </View>
-      </View>
-    </View>
-    {/*CARD 4 - WHITE */}
-        <View className="w-full lg:w-[680px] h-auto lg:h-[225px] bg-white rounded-[20px] p-6 lg:p-8 shadow-2xl">
-      <Text className="font-helvetica font-bold text-xl lg:text-[22px] leading-tight lg:leading-[44px] text-black mb-2">
-        Warehouse Manager
-      </Text>
-      <View className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6 gap-4 lg:gap-0">
-        <Text className="font-helvetica text-sm lg:text-[16px] leading-[26px] text-black/80 max-w-full lg:max-w-[500px]">
-          Felis cursus ornare cubilia leo montes penatibus fermentum dapibus convallis. Nisl nunc quis senectus platea.
-        </Text>
-        <TouchableOpacity className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-3 w-full lg:w-auto justify-center lg:justify-start">
-          <Text className="font-helvetica text-[16px] text-white font-bold">View Job</Text>
-          <Image source={{ uri: "/arrow.svg" }} className="w-3 h-3" resizeMode="contain" style={{ tintColor: 'white' }} />
-        </TouchableOpacity>
-      </View>
-      <View className="flex flex-wrap gap-4">
-        <View className="bg-[rgba(193,0,22,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-[#C10016]">Remote</Text>
-        </View>
-        <View className="bg-[rgba(193,0,22,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-[#C10016]">Full Time</Text>
-        </View>
-        <View className="bg-[rgba(193,0,22,0.1)] rounded-[80px] px-6 py-2">
-          <Text className="font-helvetica text-sm lg:text-[16px] text-[#C10016]">Dubai</Text>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
+                {/* Job List */}
+                {!selectedJob && (
+                <ScrollView 
+                  className="w-full"
+                  contentContainerStyle={{ gap: 24, paddingBottom: 20 }}
+                  showsVerticalScrollIndicator={false}
+                >
+                  {JOBS.map((job) => (
+                    <View 
+                      key={job.id} 
+                      className={`w-full h-auto min-h-[225px] rounded-[20px] p-6 lg:p-8 ${
+                        job.theme === 'dark' 
+                          ? 'bg-[rgba(255,255,255,0.1)] backdrop-blur-[5px]' 
+                          : 'bg-white shadow-2xl'
+                      }`}
+                    >
+                      <Text className={`font-helvetica font-bold text-xl lg:text-[22px] leading-tight lg:leading-[44px] mb-2 ${
+                        job.theme === 'dark' ? 'text-white' : 'text-black'
+                      }`}>
+                        {job.title}
+                      </Text>
+
+                      <View className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6 gap-4 lg:gap-0">
+                        {/* Description / See More */}
+                        <View className="flex-1 pr-4">
+                          {job.description ? (
+                            <View>
+                              <Text className={`font-helvetica text-sm lg:text-[16px] leading-[26px] max-w-full lg:max-w-[500px] ${
+                                  job.theme === 'dark' ? 'text-white/90' : 'text-black/80'
+                              }`} numberOfLines={2}>
+                                {job.description}
+                              </Text>
+                              <TouchableOpacity onPress={() => setSelectedJob(job)}>
+                                <Text className="text-[#C10016] font-bold mt-1">See More..</Text>
+                              </TouchableOpacity>
+                            </View>
+                          ) : (
+                              <View />
+                          )}
+                        </View>
+
+                        <TouchableOpacity 
+                          onPress={() => setSelectedJob(job)}
+                          className="bg-[#C10016] rounded-[6px] px-8 py-4 flex flex-row items-center gap-3 w-full lg:w-auto justify-center lg:justify-start"
+                        >
+                          <Text className="font-helvetica text-[16px] text-white font-bold">View Job</Text>
+                          <Image source={{ uri: "/arrow.svg" }} className="w-3 h-3" resizeMode="contain" style={{ tintColor: 'white' }} />
+                        </TouchableOpacity>
+                      </View>
+
+                      {/* Tags - Horizontal Wrap */}
+                      <View className="flex flex-row flex-wrap gap-4">
+                        {job.tags.map((tag: string, index: number) => (
+                          <View 
+                            key={index} 
+                            className={`rounded-[80px] px-6 py-2 ${
+                              job.theme === 'dark' 
+                                ? 'bg-[rgba(255,255,255,0.1)]' 
+                                : 'bg-[rgba(193,0,22,0.1)]'
+                            }`}
+                          >
+                            <Text className={`font-helvetica text-sm lg:text-[16px] ${
+                              job.theme === 'dark' ? 'text-white' : 'text-[#C10016]'
+                            }`}>
+                              {tag}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  ))}
+                </ScrollView>
+                )}
+              </View>
             </View>
           </View>
         </View>
