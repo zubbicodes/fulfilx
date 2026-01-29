@@ -72,11 +72,12 @@ export default function TeamScreen() {
   
   
   const images = [
-    { id: 1, src: '/bike.webp' },
-    { id: 2, src: '/wh.webp' },
-    { id: 3, src: '/ct.webp' },
-    { id: 4, src: '/box.webp' },
-    { id: 5, src: '/happy.webp' }
+    { id: 1, src: '/9E2A9925.webp' },
+    { id: 2, src: '/9E2A0335.webp' },
+    { id: 3, src: '/9E2A0071-2.webp' },
+    { id: 4, src: '/9E2A0077.webp' },
+    { id: 5, src: '/9E2A0284.webp' },
+    { id: 6, src: '/9E2A9818.webp' }
   ];
   useEffect(() => {
     const interval = setInterval(() => {
