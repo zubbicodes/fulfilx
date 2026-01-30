@@ -1297,11 +1297,6 @@ export default function ServicesScreen(){
         {/* White Line - Centered */}
         <div className="w-[100px] h-[1px] bg-white mx-auto mb-12"></div>
 
-        {/* Subtitle - Centered */}
-        <p className="font-normal text-xl lg:text-[24px] leading-relaxed lg:leading-[44px] text-white mb-12">
-          Exceptional Quality Service
-        </p>
-
         {/* CTA Button - Centered */}
         <button 
           onClick={() => router.push('/contact')}
