@@ -58,6 +58,12 @@ export default function AboutUsScreen(){
           });
         }
       };
+      useEffect(() => {
+        const timer = setInterval(() => {
+          nextSlide();
+        }, 3000);
+        return () => clearInterval(timer);
+      }, [currentSlide]);
       const images = [
           { id: 1, src: '/bike.webp' },
           { id: 2, src: '/wh.webp' },
@@ -65,11 +71,12 @@ export default function AboutUsScreen(){
           { id: 4, src: '/box.webp' },
           { id: 5, src: '/happy.webp' }
         ];
+        const [gallerySlide, setGallerySlide] = useState(0);
         useEffect(() => {
         if (isPaused) return;
       
         const interval = setInterval(() => {
-          setCurrentSlide((prev) => {
+          setGallerySlide((prev) => {
             const nextSlide = prev + 1;
             // Reset to 0 when we reach the end of original images for seamless loop
             return nextSlide >= images.length ? 0 : nextSlide;
@@ -152,7 +159,7 @@ export default function AboutUsScreen(){
     <div className="space-y-4">
       {/* Content */}
       <p className="font-normal text-base sm:text-lg lg:text-[20px] leading-relaxed lg:leading-[48px] text-black">
-        Fulfil.X was born from a vision for something better. Our founders, veterans of the international brand world, grew frustrated with the status quo in fulfilment —the impersonal partnerships, the one-size-fits-all limitations. They knew brands deserved more.
+        FULFILX.X was born from a vision for something better. Our founders, veterans of the international brand world, grew frustrated with the status quo in fulfilment —the impersonal partnerships, the one-size-fits-all limitations. They knew brands deserved more.
 That’s why we exist: to disrupt the 3PL market by putting brands at the center
 of everything we do. We operate on a powerful belief, &quot;Your Success is our
 Success&quot;. You are not just a client; you are a partner in growth.
@@ -333,7 +340,7 @@ thrive.
         
         {/* Main Title */}
         <Text className="font-helvetica font-bold text-3xl lg:text-[54px] leading-tight lg:leading-[68px] tracking-tight text-black mb-6">
-          Why Choose FulfilX?
+          Why Choose FULFIL.X?
         </Text>
         {/* Features List */}
         <View className="">
@@ -771,7 +778,7 @@ can build a greener future while achieving your logistics goals.
     <View 
       className="flex flex-row absolute top-0 left-6 transition-transform duration-500 ease-in-out"
       style={{ 
-        transform: `translateX(-${currentSlide * galleryStep}px)` 
+        transform: `translateX(-${gallerySlide * galleryStep}px)` 
       }}
     >
       {/* Original images */}
@@ -837,11 +844,6 @@ can build a greener future while achieving your logistics goals.
 
                 {/* White Line - Centered */}
                 <div className="w-[100px] h-[1px] bg-white mx-auto mb-12"></div>
-
-                {/* Subtitle - Centered */}
-                <p className="font-normal text-xl lg:text-[24px] leading-relaxed lg:leading-[44px] text-white mb-12">
-                  Exceptional Quality Service
-                </p>
 
                 {/* CTA Button - Centered */}
                 <button className="border border-white rounded-[6px] flex items-center justify-center gap-[10px] px-8 py-4 transition-colors duration-300 mx-auto">

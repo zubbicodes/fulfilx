@@ -135,8 +135,22 @@ const row1Logos = [
       });
     }
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [currentSlide]);
     const primaryRed = 'bg-[#C10016]';
     const [activeDot, setActiveDot] = useState(1); // Start with middle dot active
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setActiveDot((prev) => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(timer);
+    }, [activeDot]);
     const [whyChooseTab, setWhyChooseTab] = useState<'history' | 'mission' | 'vision'>('history');
     const [activeShipHappensIndex, setActiveShipHappensIndex] = useState(0);
     const [shipHappensPrevIndex, setShipHappensPrevIndex] = useState<number | null>(null);
@@ -836,6 +850,16 @@ focus on growing.    </p>
     Brands<br/>Managed
   </p>
 </div>
+<div className="flex items-center gap-4">
+  <div className="w-[150px] h-[80px] bg-black/10 rounded-[10px] flex items-center justify-center">
+    <span className="font-bold text-3xl lg:text-[40px] leading-[80px] tracking-tight text-black">
+      99.5%
+    </span>
+  </div>
+  <p className="font-normal text-lg lg:text-[20px] leading-[30px] lg:leading-[40px] text-[#C10016]">
+    Accuracy<br/>Rate
+  </p>
+</div>
 
     </div>
 
@@ -845,45 +869,37 @@ focus on growing.    </p>
       {/* Right Content */}
       <div className="space-y-8">
         {/* Image with Pagination */}
-<div className="relative">
-  {/* Image that changes based on active dot */}
-  <div 
-    className="w-full h-[400px] lg:h-[900px] bg-cover bg-center rounded-[24px] backdrop-blur-[12.5px]"
-    style={{
-      backgroundImage: `url(${
-        activeDot === 0 ? '/box.webp' :
-        activeDot === 1 ? '/peep.webp' :
-        activeDot === 2 ? '/shipdone.webp' :
-        '/image3.jpg'
-      })`
-    }}
-  >
-  </div>
-  
-  {/* Pagination Dots */}
-  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-    <div className="w-[72px] h-[24px] bg-white rounded-[50px] flex items-center justify-center gap-3 shadow-lg">
-      <div 
-        className={`w-[10px] h-[10px] rounded-full cursor-pointer ${
-          activeDot === 0 ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
-        }`}
-        onClick={() => setActiveDot(0)}
-      ></div>
-      <div 
-        className={`w-[10px] h-[10px] rounded-full cursor-pointer ${
-          activeDot === 1 ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
-        }`}
-        onClick={() => setActiveDot(1)}
-      ></div>
-      <div 
-        className={`w-[10px] h-[10px] rounded-full cursor-pointer ${
-          activeDot === 2 ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
-        }`}
-        onClick={() => setActiveDot(2)}
-      ></div>
-    </div>
-  </div>
-</div>
+        <div className="relative w-full h-[400px] lg:h-[900px] rounded-[24px] overflow-hidden backdrop-blur-[12.5px]">
+          {/* Images with cross-fade animation */}
+          {[
+            '/box.webp',
+            '/peep.webp',
+            '/shipdone.webp'
+          ].map((img, index) => (
+            <div 
+              key={index}
+              className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+                activeDot === index ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          ))}
+          
+          {/* Pagination Dots */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+            <div className="w-[72px] h-[24px] bg-white rounded-[50px] flex items-center justify-center gap-3 shadow-lg">
+              {[0, 1, 2].map((index) => (
+                <div 
+                  key={index}
+                  className={`w-[10px] h-[10px] rounded-full cursor-pointer transition-all duration-300 ${
+                    activeDot === index ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
+                  }`}
+                  onClick={() => setActiveDot(index)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -919,12 +935,6 @@ focus on growing.    </p>
       <div className="flex items-center gap-3">
         <div className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]" style={{backgroundImage: 'url(/US.webp)'}}></div>
         <span className="font-normal text-[18px] leading-[30px] text-black">California</span>
-      </div>
-
-      {/* United States */}
-      <div className="flex items-center gap-3">
-        <div className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]" style={{backgroundImage: 'url(/US.webp)'}}></div>
-        <span className="font-normal text-[18px] leading-[30px] text-black">United States</span>
       </div>
 
       {/* San Francisco */}
@@ -1184,7 +1194,7 @@ focus on growing.    </p>
     
     {/* Main Heading */}
     <h2 className="text-center font-bold text-[74px] leading-[80px] tracking-tight text-white mt-16">
-      Meet the People we make happy
+      We Integrate With
     </h2>
 
 <div className="w-full overflow-hidden py-10">
@@ -1254,7 +1264,7 @@ focus on growing.    </p>
 
     {/* Main Heading */}
     <h2 className="text-left font-bold text-3xl sm:text-4xl lg:text-[64px] leading-tight lg:leading-[80px] tracking-tight text-white mt-10 lg:mt-16 max-w-[960px]">
-     We Integrate With
+     Meet the people we make happy
     </h2>
 
     {/* Navigation Arrows - Aligned with badge and heading */}
@@ -1318,13 +1328,6 @@ focus on growing.    </p>
         <div className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12"></div>
 
         {/* Image Grid - Centered */}
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-16 mb-12">
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award3.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award4.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award5.webp)'}}></div>
-        </div>
 
       </div>
     </div>
@@ -1341,11 +1344,6 @@ focus on growing.    </p>
 
         {/* White Line - Centered */}
         <div className="w-[100px] h-[1px] bg-white mx-auto mb-12"></div>
-
-        {/* Subtitle - Centered */}
-        <p className="font-normal text-xl lg:text-[24px] leading-relaxed lg:leading-[44px] text-white mb-12">
-          Exceptional Quality Service
-        </p>
 
         {/* CTA Button - Centered */}
         <button 

@@ -227,7 +227,7 @@ export default function LuxuryScreen() {
       title: ['Pick', '& Pack'],
       img: '/shiphappens1.jpg',
       logo: '/d2c.svg',
-      description: 'The essentials to provide with customisability for shipping.',
+      description: 'Lets start with basics.',
       price: '£1.27',
       priceUnit: '/package',
       pricePrefix: '*from',
@@ -245,7 +245,7 @@ export default function LuxuryScreen() {
       logo: '/amf.svg',
       badge: 'Most Popular',
       description: 'We offer next day shipping for all orders placed before 3pm.',
-      price: '£2.18',
+      price: '£3.00',
       priceUnit: '/shipment',
       pricePrefix: '*from',
       features: [
@@ -262,7 +262,6 @@ export default function LuxuryScreen() {
       logo: '/b2b.svg',
       description: 'Affordable storage scalable for your needs.',
       price: '£0.28',
-      priceUnit: '/0.20 per location',
       pricePrefix: '*from',
       features: [
         'Secure Warehousing',
@@ -274,25 +273,7 @@ export default function LuxuryScreen() {
     }
   ];
 
-  const [activePricingIndex, setActivePricingIndex] = useState(0);
-  const [pricingPrevIndex, setPricingPrevIndex] = useState<number | null>(null);
-  const pricingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    return () => {
-      if (pricingTimerRef.current) clearTimeout(pricingTimerRef.current);
-    };
-  }, []);
-
-  const activatePricing = (index: number) => {
-    if (index === activePricingIndex) return;
-    if (pricingTimerRef.current) clearTimeout(pricingTimerRef.current);
-    setPricingPrevIndex(activePricingIndex);
-    setActivePricingIndex(index);
-    pricingTimerRef.current = setTimeout(() => {
-      setPricingPrevIndex(null);
-    }, 750);
-  };
 
   return (
     <>
@@ -354,8 +335,8 @@ export default function LuxuryScreen() {
           <Text className="text-center font-helvetica font-bold text-3xl lg:text-[64px] leading-tight lg:leading-[74px] tracking-[-0.01em] text-black mb-8 lg:mb-16">
             Pricing <Text className='text-[#C10016]'>plans</Text> for companies{'\n'}of all <Text className='text-[#C10016]'>sizes</Text>
           </Text>
-          <Text className="text-center font-helvetica font-normal text-lg lg:text-[22px] leading-relaxed lg:leading-[36px] tracking-[-0.01em] text-black mb-72 max-w-[800px] mx-auto">
-            We offer competitive pricing plans to fit your organization&apos;s needs as well as your budget. For custom pricing, please <Text 
+          <Text className="text-center font-helvetica font-normal text-lg lg:text-[22px] leading-relaxed lg:leading-[36px] tracking-[-0.01em] text-black mb-8 max-w-[800px] mx-auto">
+            We offer competitive pricing plans to fit your organisation&apos;s needs as well as your budget. For custom pricing, please <Text 
             className='font-bold text-[#C10016]'
             onPress={() => router.push('/contact')}
         >contact us.
@@ -364,112 +345,82 @@ export default function LuxuryScreen() {
         </View>
 
     {/* Pricing Cards Section */}
-    <View className="relative w-full py-10">
+    <View className="relative w-full">
       {/* Content Container */}
-      <View className="max-w-[1400px] mx-auto px-4" style={{ marginTop: isDesktop ? -160 : -40 }}>
-        {/* List View Container */}
-        <View className="mt-10 flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
-          
-          {/* Sidebar (Left Column) */}
-          <View className="w-full lg:w-[350px] flex flex-col gap-3">
-            {pricingItems.map((item, i) => {
-              const isActive = i === activePricingIndex;
-              return (
-                <TouchableOpacity
-                  key={i}
-                  onPress={() => activatePricing(i)}
-                  className={`w-full flex-row items-center gap-4 rounded-xl border px-5 py-4 text-left transition ${
-                    isActive ? "bg-[#C10016]/10 border-[#C10016]" : "bg-white border-[#D9D9D9]"
-                  }`}
-                >
-                  <Image source={{ uri: item.logo }} className="w-10 h-10" resizeMode="contain" />
-                  <View className="flex-1">
-                    <Text className={`font-helvetica font-medium text-[20px] ${isActive ? "text-[#C10016]" : "text-black"}`}>
-                      {item.title.join(' ')}
-                    </Text>
-                  </View>
-                  <Image
-                    source={require('../public/arrow-dark.svg')}
-                    className={`w-5 h-5 opacity-70 ${isActive ? "opacity-100" : ""}`}
-                    resizeMode="contain"
-                  />
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+      <View className="max-w-[1400px] mx-auto px-4">
+      {/* Card Stack Container */}
+      <View className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-center items-end">
+        {pricingItems.map((item, i) => {
+          const isMiddle = i === 1;
+          const isFirst = i === 0;
+          const isLast = i === pricingItems.length - 1;
 
-          {/* Active Content (Right Column) */}
-          <View className="flex-1">
-            <View className="relative w-full min-h-[500px] lg:h-full rounded-2xl overflow-hidden border border-[#D9D9D9] bg-white">
-               {/* Background Image - Prev */}
-               {pricingPrevIndex !== null && (
-                  <Image
-                    source={{ uri: pricingItems[pricingPrevIndex]?.img }}
-                    className="absolute inset-0 w-full h-full"
-                    resizeMode="cover"
-                  />
-                )}
-               {/* Background Image - Current */}
-               <Image 
-                source={{ uri: pricingItems[activePricingIndex].img }}
-                className="absolute inset-0 w-full h-full z-10"
-                resizeMode="cover"
-               />
-               
-               {/* Overlay */}
-               <View className="absolute inset-0 bg-black/60 z-20" /> 
+          return (
+            <View 
+              key={i} 
+              className={`flex-1 bg-white border border-[#D9D9D9] flex flex-col overflow-hidden ${
+                isMiddle ? 'rounded-t-2xl z-20' : 'lg:mt-4'
+              } ${isFirst ? 'lg:rounded-tl-2xl lg:rounded-bl-2xl' : ''} ${
+                isLast ? 'lg:rounded-tr-2xl lg:rounded-br-2xl' : ''
+              } ${!isDesktop ? 'rounded-2xl' : ''}`}
+              style={{
+                 // Handle borders to avoid double borders
+                 borderRightWidth: isLast || !isDesktop || isMiddle ? 1 : 0,
+              }}
+            >
+              <View className={`flex-1 flex flex-col ${isMiddle ? 'px-8 pt-16 pb-8' : 'p-8'}`}>
+                 {/* Header */}
+                 <View className="flex-row items-center justify-between mb-6">
+                   <View className="w-12 h-12 bg-gray-50 rounded-full items-center justify-center">
+                     <Image source={{ uri: item.logo }} className="w-8 h-8" resizeMode="contain" />
+                   </View>
+                 </View>
 
-               {/* Badge */}
-               {pricingItems[activePricingIndex].badge && (
-                  <View className="absolute top-6 right-6 z-40 bg-[#C10016] px-4 py-2 rounded-full">
-                    <Text className="text-white font-helvetica font-bold text-xs uppercase tracking-wider">
-                      {pricingItems[activePricingIndex].badge}
-                    </Text>
-                  </View>
-               )}
+                 <Text className="font-helvetica font-bold text-2xl text-black mb-2">
+                   {item.title.join(' ')}
+                 </Text>
+                 <Text className="font-helvetica text-gray-500 text-sm mb-6 min-h-[40px]">
+                   {item.description}
+                 </Text>
 
-               {/* Content */}
-               <View className="relative z-30 h-full flex flex-col justify-end p-8">
-                  <Text className="text-white font-helvetica font-bold text-3xl lg:text-4xl mb-4">
-                    {pricingItems[activePricingIndex].title.join(' ')}
-                  </Text>
-                  <Text className="text-white/80 font-helvetica text-lg mb-6 max-w-[600px]">
-                    {pricingItems[activePricingIndex].description}
-                  </Text>
+                 {/* Price */}
+                 <View className="flex-row items-baseline gap-1 mb-8">
+                    <Text className="text-gray-400 font-helvetica text-xs">{item.pricePrefix}</Text>
+                    <Text className="text-[#C10016] font-helvetica font-bold text-4xl">{item.price}</Text>
+                    <Text className="text-gray-400 font-helvetica text-xs">{item.priceUnit}</Text>
+                 </View>
 
-                  {/* Price */}
-                  <View className="flex flex-row items-baseline gap-2 mb-6">
-                    <Text className="text-white/60 font-helvetica text-sm">{pricingItems[activePricingIndex].pricePrefix}</Text>
-                    <Text className="text-white font-helvetica font-bold text-4xl">{pricingItems[activePricingIndex].price}</Text>
-                    <Text className="text-white/60 font-helvetica text-sm">{pricingItems[activePricingIndex].priceUnit}</Text>
-                  </View>
+                 {/* Divider */}
+                 <View className="h-[1px] bg-gray-100 w-full mb-8" />
 
-                  {/* Features */}
-                  <View className="gap-3 mb-8">
-                    {pricingItems[activePricingIndex].features.map((feature, i) => (
-                      <View key={i} className="flex-row items-center gap-3">
-                        <View className="w-4 h-4">
-                           <Image source={require('../public/checkw.svg')} className="w-full h-full" resizeMode="contain" />
+                 {/* Features */}
+                 <View className="flex-col gap-4 mb-8 flex-1">
+                    {item.features.map((feature, idx) => (
+                      <View key={idx} className="flex-row items-start gap-3">
+                        <View className="w-5 h-5 mt-0.5">
+                           <Image source={require('../public/check.svg')} className="w-full h-full" resizeMode="contain" />
                         </View>
-                        <Text className="text-white font-helvetica text-base">{feature}</Text>
+                        <Text className="font-helvetica text-gray-700 text-sm leading-5 flex-1">{feature}</Text>
                       </View>
                     ))}
-                  </View>
+                 </View>
 
-                  {/* Contact Button */}
-                  <TouchableOpacity 
-                    onPress={() => router.push('/contact')}
-                    className="bg-[#C10016] py-3 px-6 rounded-md self-start flex-row items-center gap-3"
-                  >
-                    <Text className="text-white font-helvetica font-bold text-lg">Contact Sales</Text>
-                    <View className="w-3 h-3">
-                      <Image source={require('../public/arrow.svg')} className="w-full h-full" resizeMode="contain" />
-                    </View>
-                  </TouchableOpacity>
-               </View>
+              </View>
             </View>
-          </View>
-        </View>
+          );
+        })}
+      </View>
+
+      {/* Contact Sales Button */}
+      <View className="w-full flex items-center justify-center mt-12">
+        <TouchableOpacity 
+          onPress={() => router.push('/contact')}
+          className="w-[250px] max-w-[400px] py-4 rounded-xl flex-row items-center justify-center gap-2 bg-[#C10016]"
+        >
+          <Text className="text-white font-helvetica font-bold text-base">Contact Sales</Text>
+          <Image source={require('../public/arrow.svg')} className="w-4 h-4" resizeMode="contain" />
+        </TouchableOpacity>
+      </View>
       </View>
 
       {/* Key Benefits */}
@@ -523,7 +474,7 @@ export default function LuxuryScreen() {
                 </Text>
                 
                 {/* Package Weight Section */}
-                <View className="mb-16 mt-6 lg:mt-12 w-full max-w-[600px]">
+                <View className="mb-6 mt-6 lg:mt-12 w-full max-w-[600px]">
                   <View className="flex flex-row items-center justify-between w-full mb-4">
                     <Text className="font-helvetica font-bold text-[20px] lg:text-[22px] leading-[44px] text-white">
                       Package Weight
@@ -574,7 +525,7 @@ export default function LuxuryScreen() {
                 </View>
 
                 {/* Destination Country Section */}
-                <View className="mt-4 lg:mt-12 w-full max-w-[600px]">
+                <View className="mt-2 lg:mt-4 w-full max-w-[600px]">
                   <Text className="font-helvetica font-bold text-[20px] lg:text-[22px] leading-[44px] text-white mb-4">
                     Destination Country
                   </Text>
@@ -696,7 +647,7 @@ export default function LuxuryScreen() {
                   </Text>
                   
                   <Text className="font-helvetica font-normal text-[16px] lg:text-[18px] leading-[28px] lg:leading-[44px] text-black opacity-50 justify-start mb-8 lg:mb-10">
-                    Ready to ship? Complete your order by confirming the details.
+                    Ready to ship?
                   </Text>
                   
                   <TouchableOpacity 
@@ -704,7 +655,7 @@ export default function LuxuryScreen() {
                     activeOpacity={0.8}
                   >
                     <Text className="font-helvetica font-bold text-[16px] lg:text-[18px] leading-[36px] text-white">
-                      Proceed to Checkout
+                      Get in Touch
                     </Text>
                     <View className="w-3 h-3">
                       <Image source={require('../public/arrow.svg')} className="w-full h-full" resizeMode="contain" />

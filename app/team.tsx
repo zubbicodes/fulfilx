@@ -37,35 +37,35 @@ export default function TeamScreen() {
       id: 1,
       title: "Fulfilment Associates (Pickers, Packers, Shippers)",
       description: "Are you someone who takes pride in a job well done? Do you believe that careful, accurate work matters? At Fulfil.X, our warehouse team is the essential final step for our brand partners. We’re looking for reliable, detail-oriented individuals to join us as Fulfillment Associates. You’ll be the hands that directly deliver a brand’s promise to their customers.\n\nThis is a hands-on role where your focus and consistency directly impact customer satisfaction and brand loyalty.",
-      tags: ["Part Time", "Dubai"],
+      tags: ["Part Time", "UK"],
       theme: "dark"
     },
     {
       id: 2,
       title: "Fulfilment Associates (Pickers, Packers, Shippers)",
       description: "Are you someone who takes pride in a job well done? Do you believe that careful, accurate work matters? At Fulfil.X, our warehouse team is the essential final step for our brand partners. We’re looking for reliable, detail-oriented individuals to join us as Fulfillment Associates. You’ll be the hands that directly deliver a brand’s promise to their customers.\n\nThis is a hands-on role where your focus and consistency directly impact customer satisfaction and brand loyalty.",
-      tags: ["Full Time", "Dubai"],
+      tags: ["Full Time", "UK"],
       theme: "light"
     },
     {
       id: 3,
       title: "Client Onboarding Specialist",
       description: "We are looking for a meticulous and client-focused Client Onboarding Specialist to be the guiding force for our new brand partners. You will be the architect of their first impression and the project manager of their transition, ensuring their move to Fulfil.X is seamless, efficient, and sets the stage for a long-term, successful partnership.\n\nThis is a critical role where your organization and communication skills directly impact client retention, satisfaction, and our reputation for excellence.",
-      tags: ["Full Time", "Dubai"],
+      tags: ["Full Time", "UK"],
       theme: "dark"
     },
     {
       id: 4,
       title: "Quality & Value-Added Services Specialist",
       description: "At Fulfil.X, we are our brand partners' most trusted extension. We're looking for a meticulous, hands-on problem-solver to fill a vital hybrid role: the Quality & Value-Added Services Specialist. You will be the central hub of excellence on our fulfilment floor—serving as the final checkpoint for quality, the assembler of custom experiences, and the expert who recovers value. Your work directly protects our partners' reputation and elevates their customers' unboxing moments.\n\nThis role is perfect for someone who takes immense pride in precision, thrives on varied tasks, and understands that it’s the details that truly define a brand.",
-      tags: ["Full Time", "Dubai"],
+      tags: ["Full Time", "UK"],
       theme: "light"
     },
     {
       id: 5,
       title: "Marketing Assistant",
       description: "At Fulfil.X, we’re telling a new story in the logistics industry. We’re looking for a dynamic, creative, and organised Marketing Assistant to help us share it. This is a foundational role for someone eager to roll up their sleeves, learn the ins and outs of growth marketing, and play a key part in building awareness for a brand that’s changing the game.\n\nYou’ll support our marketing team across channels, turning strategy into action and helping us connect with the ambitious brands we serve. If you love variety, thrive on detail, and want to see your work have a direct impact, this is your opportunity.",
-      tags: ["Full Time", "Dubai"],
+      tags: ["Full Time", "UK"],
       theme: "dark"
     }
   ];
@@ -187,11 +187,9 @@ export default function TeamScreen() {
                     Nas
                   </Text>
                   <Text className="font-helvetica font-normal text-lg lg:text-[20px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4 font-medium">
-                    Co-Founder & CEO
+                    CEO & CO-Founder
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
             </View>
@@ -217,9 +215,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Operations Manager
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
 
@@ -242,9 +238,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Marketing Lead
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
             </View>
@@ -270,9 +264,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Supervisor
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
 
@@ -295,9 +287,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Warehouse Manager
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
             </View>
@@ -323,9 +313,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Team Lead
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
 
@@ -348,9 +336,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Warehouse Team
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
             </View>
@@ -376,9 +362,7 @@ export default function TeamScreen() {
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Warehouse Team
                   </Text>
-                  <Text className="font-helvetica font-normal text-base lg:text-[18px] leading-relaxed text-black group-hover:text-white transition-colors duration-300">
-                    In the realm of luxury goods, where the value lies not only in the product itself but in the entire customer experience, the importance.
-                  </Text>
+
                 </View>
               </View>
             </View>
@@ -626,11 +610,6 @@ export default function TeamScreen() {
 
                 {/* White Line - Centered */}
                 <View className="w-[100px] h-[1px] bg-white mx-auto mb-12"></View>
-
-                {/* Subtitle - Centered */}
-                <Text className="font-normal text-[20px] lg:text-[24px] leading-[36px] lg:leading-[44px] text-center text-white mb-12">
-                  Exceptional Quality Service
-                </Text>
 
                 {/* CTA Button - Centered */}
                 <TouchableOpacity 

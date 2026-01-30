@@ -61,19 +61,19 @@ export default function OurCouriersScreen() {
                     </View>
 
                     {/* Hero Content */}
-                    <View className="relative z-10 flex items-center justify-center pt-32 lg:pt-60 px-4">
+                    <View className="relative z-10 flex items-center justify-center pt-20 lg:pt-60 px-4">
                         {/* Main Title */}
-                        <Text className="font-helvetica font-bold text-4xl lg:text-[84px] lg:leading-[84px] text-black text-center mb-8">
+                        <Text className="font-helvetica font-bold text-3xl lg:text-[84px] lg:leading-[84px] text-black text-center mb-6">
                             Our Couriers
                         </Text>
                         
                         {/* Breadcrumb Navigation */}
-                        <View className="flex flex-row items-center justify-center mt-4 flex-wrap">
-                            <Text className="font-helvetica font-normal text-base lg:text-[20px] lg:leading-[40px] text-black">
+                        <View className="flex flex-row items-center justify-center mt-2 flex-wrap">
+                            <Text className="font-helvetica font-normal text-sm lg:text-[20px] lg:leading-[40px] text-black">
                                 Home
                             </Text>
                             <View className="w-1 h-1 bg-black rounded-full mx-2 lg:mx-4" />
-                            <Text className="font-helvetica font-medium text-base lg:text-[20px] lg:leading-[40px] text-[#C10016]">
+                            <Text className="font-helvetica font-medium text-sm lg:text-[20px] lg:leading-[40px] text-[#C10016]">
                                 Our Couriers
                             </Text>
                         </View>
@@ -81,16 +81,16 @@ export default function OurCouriersScreen() {
                 </View>
 
                 {/* Text Content Section */}
-                <View className="relative z-20 bg-white pt-16 lg:pt-32 px-4 pb-20">
+                <View className="relative z-20 bg-white pt-10 lg:pt-32 px-4 pb-10">
                     {/* Paragraph */}
                     <View className="w-full lg:max-w-[1296px] mx-auto">
-                        <Text className="font-helvetica font-normal text-lg lg:text-[22px] lg:leading-[44px] text-black text-left mb-8">
+                        <Text className="font-helvetica font-normal text-base lg:text-[22px] lg:leading-[44px] text-black text-left mb-6">
                             At FULFIL.X, your growth is our priority and that includes protecting your bottom line. We don’t just connect you to carriers, we build strategic partnerships that translate into real savings and superior service for your brand.
                         </Text>
-                        <Text className="font-helvetica font-normal text-lg lg:text-[22px] lg:leading-[44px] text-black text-left mb-8">
+                        <Text className="font-helvetica font-normal text-base lg:text-[22px] lg:leading-[44px] text-black text-left mb-6">
                             Through our collective shipping volume and dedicated carrier management, we negotiate preferential commercial rates with every major carrier. These savings are automatically built into your fulfilment pricing, so you benefit without the hassle of lengthy negotiations or hidden fees.
                         </Text>
-                        <Text className="font-helvetica font-bold text-lg lg:text-[22px] lg:leading-[44px] text-black text-left">
+                        <Text className="font-helvetica font-bold text-base lg:text-[22px] lg:leading-[44px] text-black text-left">
                             Your brand deserves a logistics advantage. With FULFILX, you have it.
                         </Text>
                     </View>

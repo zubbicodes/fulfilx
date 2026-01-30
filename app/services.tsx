@@ -85,7 +85,7 @@ const FulfillmentServicesSection = () => {
   };
 
   return (
-    <section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
+    <section className="relative w-full h-auto pt-4 pb-14 lg:pt-8 lg:pb-16 overflow-hidden">
       <div
         className="absolute inset-0 bg-black/65"
         style={{
@@ -96,7 +96,7 @@ const FulfillmentServicesSection = () => {
         }}
       />
 
-      <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
+      <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 pt-2 pb-10 lg:pt-4 lg:pb-12">
         <div className="mx-auto w-full max-w-[1490px]">
           <style>{`
             @keyframes servicesSlideIn {
@@ -635,19 +635,13 @@ export default function ServicesScreen(){
           { id: 4, src: '/box.webp' },
           { id: 5, src: '/happy.webp' }
         ];
-        useEffect(() => {
-        if (isPaused) return;
-      
-        const interval = setInterval(() => {
-          setCurrentSlide((prev) => {
-            const nextSlide = prev + 1;
-            // Reset to 0 when we reach the end of original images for seamless loop
-            return nextSlide >= images.length ? 0 : nextSlide;
-          });
+      useEffect(() => {
+        const timer = setInterval(() => {
+          nextSlide();
         }, 3000);
       
-        return () => clearInterval(interval);
-      }, [isPaused, images.length]);
+        return () => clearInterval(timer);
+      }, [currentSlide]);
           const [activeDot, setActiveDot] = useState(1); // Start with middle dot active
           const [activeReview, setActiveReview] = useState(0);
       
@@ -782,8 +776,8 @@ export default function ServicesScreen(){
         </View>
    
    {/* Marquee Text with Colored Words and Separator Circles */}
-  <div className="relative overflow-hidden whitespace-nowrap py-4 -mt-24 md:-mt-40 lg:-mt-56">
-    <div className="animate-marquee text-[28px] md:text-[40px] font-bold tracking-tight flex items-center mb-12 gap-16 md:gap-24 text-black">
+  <div className="relative overflow-hidden whitespace-nowrap py-1 -mt-24 md:-mt-40 lg:-mt-56">
+    <div className="animate-marquee text-[28px] md:text-[40px] font-bold tracking-tight flex items-center mb-1 gap-16 md:gap-24 text-black">
       {/* First set */}
       <div className="flex items-center gap-16 md:gap-24">
         <span className="flex items-center gap-2">
@@ -1152,7 +1146,7 @@ export default function ServicesScreen(){
 
     {/* Main Heading */}
     <h2 className="text-center font-bold text-4xl lg:text-[74px] leading-tight lg:leading-[80px] tracking-tight text-white mt-8 lg:mt-16">
-      Meet the People we make happy
+      We Integrate With
     </h2>
 
 <div className="w-full overflow-hidden py-10">
@@ -1210,19 +1204,10 @@ export default function ServicesScreen(){
 
   </div>
   <div className="relative max-w-[1490px] mx-auto px-4 pt-24 z-10">
-    
-    {/* "our partners" Badge */}
-    <div className="flex justify-start">
-      <div className="w-[220px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] flex items-center justify-center">
-        <span className="font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
-          our partners
-        </span>
-      </div>
-    </div>
 
     {/* Main Heading */}
     <h2 className="text-left font-bold text-3xl lg:text-[64px] leading-tight lg:leading-[80px] tracking-tight text-white mt-8 lg:mt-16 max-w-[960px]">
-      We Integrate With
+      Meet the People we make happy
     </h2>
 
     {/* Navigation Arrows - Aligned with badge and heading */}

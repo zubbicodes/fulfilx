@@ -261,7 +261,7 @@ export default function ContactScreen() {
 
               {/* Email Address */}
               <Text className="absolute left-6 top-[160px] font-helvetica font-bold text-[18px] leading-[74px] tracking-[-0.01em] text-black">
-                +44 161 399 2348
+                +44 745 742 8760
               </Text>
             </View>
             
@@ -288,7 +288,7 @@ export default function ContactScreen() {
               </Text>
 
               {/* Email Address */}
-              <Text className="absolute left-6 top-[160px] font-helvetica font-bold text-[14px] leading-tight lg:leading-[74px] tracking-[-0.01em] text-black pr-2">
+              <Text className="absolute left-6 top-[165px] font-helvetica font-bold text-[16px] leading-tight tracking-[-0.01em] text-black pr-2">
                 Nile Mill, Oldham, Greater Manchester, OL9 8NT
               </Text>
             </View>

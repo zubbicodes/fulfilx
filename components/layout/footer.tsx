@@ -266,7 +266,9 @@ const Footer = () => {
   <Link href="/locations" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Locations</a>
   </Link>
-    <a href="/Sustainability.pdf" target="_blank" rel="noopener noreferrer" className="block hover:text-[#C10016] transition-colors cursor-pointer">Sustainability</a>
+    <Link href="/sustainability" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Sustainability</a>
+  </Link>
     <Link href="/contact" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Contact Us</a>
   </Link>
@@ -280,7 +282,9 @@ const Footer = () => {
   <Link href="/" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Shipping</a>
   </Link>
-  <a href="/RETURN%20POLICY%20FOR%20PACKAGING%20SUPPLIES.pdf" target="_blank" rel="noopener noreferrer" className="block hover:text-[#C10016] transition-colors cursor-pointer">Returns Policy</a>
+  <Link href="/return-policy" asChild>
+    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Returns Policy</a>
+  </Link>
   <Link href="/team#jobs" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Careers</a>
   </Link>

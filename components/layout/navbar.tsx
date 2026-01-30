@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
                         </NavItem>
                         <NavItem onPress={() => router.push('/services')}>Services</NavItem>
                         <NavItem onPress={() => router.push('/pricing')}>Pricing</NavItem>
-                        <NavItem onPress={() => router.push ('/locations')}>Store</NavItem>
+                        <NavItem onPress={() => router.push ('/locations')}>Locations</NavItem>
                         <NavItem onPress={() => router.push ('/sectors')}>Sectors</NavItem>
                     </nav>
                 </div>
@@ -177,7 +177,7 @@ const Navbar: React.FC = () => {
                      <NavItem mobile onPress={() => { router.push('/'); setIsMenuOpen(false); }}>Home</NavItem>
                      <NavItem mobile onPress={() => { router.push('/services'); setIsMenuOpen(false); }}>Services</NavItem>
                      <NavItem mobile onPress={() => { router.push('/pricing'); setIsMenuOpen(false); }}>Pricing</NavItem>
-                     <NavItem mobile onPress={() => { router.push('/locations'); setIsMenuOpen(false); }}>Store</NavItem>
+                     <NavItem mobile onPress={() => { router.push('/locations'); setIsMenuOpen(false); }}>Locations</NavItem>
                      <NavItem mobile onPress={() => { router.push('/sectors'); setIsMenuOpen(false); }}>Sectors</NavItem>
                      <div className="mt-6 w-full flex justify-center">
                         <TouchableOpacity 

@@ -82,13 +82,13 @@ export default function LocationsScreen() {
               </Text>
               <View className="w-1 h-1 bg-[#C10016] rounded-full mx-4" />
               <Text className="font-helvetica font-medium text-base lg:text-[20px] leading-[40px] text-[#C10016]">
-                Store Locations
+                Locations
               </Text>
             </View>
           </View>
         </View>
         {/* Get in Touch Section */}
-        <View className="w-full bg-white transform -translate-y-48">
+        <View className="w-full bg-white transform -translate-y-48 pt-4 -mb-40">
           {/* Contact Us Badge */}
           <View className="flex flex-row justify-center items-center mx-auto w-[200px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
             <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
@@ -435,7 +435,7 @@ export default function LocationsScreen() {
         </View>
 
         <section className="relative w-full bg-white overflow-hidden">
-          <div className="relative w-full px-4 md:px-6 lg:px-8 2xl:px-16 pt-16 pb-8">
+          <div className="relative w-full px-4 md:px-6 lg:px-8 2xl:px-16">
             <div className="flex justify-center">
               <div className="w-[250px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] flex items-center justify-center">
                 <span className="font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
@@ -463,14 +463,6 @@ export default function LocationsScreen() {
                   style={{ backgroundImage: 'url(/US.webp)' }}
                 ></div>
                 <span className="font-normal text-[18px] leading-[30px] text-black">California</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-[30px] h-[20px] bg-cover bg-center rounded-[2px]"
-                  style={{ backgroundImage: 'url(/US.webp)' }}
-                ></div>
-                <span className="font-normal text-[18px] leading-[30px] text-black">United States</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -747,10 +739,6 @@ export default function LocationsScreen() {
                 {/* White Line - Centered */}
                 <View className="w-[100px] h-[1px] bg-white mx-auto mb-12"></View>
 
-                {/* Subtitle - Centered */}
-                <Text className="font-helvetica font-normal text-xl lg:text-[24px] leading-relaxed lg:leading-[44px] text-white mb-12 text-center">
-                  Exceptional Quality Service
-                </Text>
 
                 {/* CTA Button - Centered */}
                 <TouchableOpacity 
