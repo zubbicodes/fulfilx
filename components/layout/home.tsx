@@ -580,7 +580,7 @@ focus on growing.    </p>
     <div className="mx-auto w-full max-w-[1490px]">
       <h3 className="text-center text-black font-bold text-[28px] md:text-[40px]">Easy <span className="text-[#C10016]">Setup</span></h3>
 
- <div className="relative mt-12 md:mt-20 pt-16 md:pt-20 w-full md:-translate-y-6">
+ <div className="relative mt-12 md:mt-20 pt-16 md:pt-20 w-full md:-translate-y-6 md:-mb-6">
       
       {/* Curved connecting line - hidden on mobile/tablet */}
       <div className="hidden lg:block absolute top-[60px] left-0 right-0 w-full pointer-events-none">

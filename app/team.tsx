@@ -158,7 +158,7 @@ export default function TeamScreen() {
         </View>
 
         {/* Team Section */}
-        <View className="w-full bg-white transform -translate-y-20 lg:-translate-y-48">
+        <View className="w-full bg-white transform -translate-y-20 lg:-translate-y-48 -mb-20 lg:-mb-48 pb-8">
 
           {/* Main Heading */}
           <Text className="text-center font-helvetica font-bold text-4xl lg:text-[64px] leading-tight lg:leading-[74px] tracking-[-0.01em] text-black mb-16 px-4">
@@ -197,7 +197,7 @@ export default function TeamScreen() {
             {/* Second Row - Anson & Natalie */}
             <View className="flex flex-col lg:flex-row justify-center gap-8">
               {/* Team Member 2 - Anson */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 
@@ -220,7 +220,7 @@ export default function TeamScreen() {
               </View>
 
               {/* Team Member 3 - Nat */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 
@@ -246,7 +246,7 @@ export default function TeamScreen() {
             {/* Third Row - Stephen & Jordray */}
             <View className="flex flex-col lg:flex-row justify-center gap-8">
               {/* Team Member 4 - Ste */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 
@@ -269,7 +269,7 @@ export default function TeamScreen() {
               </View>
 
               {/* Team Member 5 - Jordy */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 
@@ -295,7 +295,7 @@ export default function TeamScreen() {
             {/* Fourth Row - Paulina & Ralph J */}
             <View className="flex flex-col lg:flex-row justify-center gap-8">
               {/* Team Member 6 - Paulina */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 
@@ -318,7 +318,7 @@ export default function TeamScreen() {
               </View>
 
               {/* Team Member 7 - Ralph J */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 
@@ -344,7 +344,7 @@ export default function TeamScreen() {
             {/* Fifth Row - Ralph A (Centered) */}
             <View className="flex flex-row justify-center">
               {/* Team Member 8 - Ralph A */}
-              <View className="relative w-full lg:max-w-[900px] h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8">
+              <View className="relative w-full lg:max-w-[900px] h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
                   <Image 

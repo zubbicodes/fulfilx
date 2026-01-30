@@ -167,7 +167,7 @@ export default function ContactScreen() {
         </View>
 
         {/* Get in Touch Section */}
-        <View className="w-full bg-white transform -translate-y-20 lg:-translate-y-48">
+        <View className="w-full bg-white transform -translate-y-20 lg:-translate-y-48 -mb-20 lg:-mb-48">
           {/* Contact Us Badge */}
           <View className="flex flex-row justify-center items-center mx-auto w-[200px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
             <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
@@ -296,21 +296,25 @@ export default function ContactScreen() {
         </View>
 
         {/* Contact Form Section */}
-        <div className="relative w-full bg-white transform -translate-y-12 lg:-translate-y-24">
+        <div className="relative w-full bg-white py-12">
           {/* Two Column Layout */}
-          <div className="flex flex-col lg:flex-row justify-center items-start gap-10 lg:gap-16 px-4 lg:px-8">
+          <div className="flex flex-col lg:flex-row justify-center items-stretch gap-10 lg:gap-16 px-4 lg:px-8">
             
-            {/* Left Column - Image */}
-            <div className="w-full lg:w-[720px] h-[300px] sm:h-[420px] lg:h-[936px] rounded-[30px] overflow-hidden">
-              <img 
-                src="/locate.webp" 
-                alt="Contact"
-                className="w-full h-full object-cover"
-              />
+            {/* Left Column - Map */}
+            <div className="w-full lg:flex-1 h-[300px] sm:h-[420px] lg:h-auto rounded-[30px] overflow-hidden relative">
+              <iframe
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                src="https://maps.google.com/maps?q=Nile+Mill%2C+Oldham%2C+Greater+Manchester%2C+OL9+8NT&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                className="absolute inset-0 w-full h-full"
+              ></iframe>
             </div>
 
             {/* Right Column - Contact Form */}
-            <div className="w-full lg:w-[720px] h-auto lg:min-h-[936px] bg-white border border-black/10 rounded-[30px] flex flex-col">
+            <div className="w-full lg:flex-1 h-auto bg-white border border-black/10 rounded-[30px] flex flex-col">
               
               {/* Form Content with proper padding */}
               <div className="flex-1 px-6 sm:px-8 lg:px-12 pt-10 lg:pt-12 pb-6">

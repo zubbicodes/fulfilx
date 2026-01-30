@@ -88,7 +88,7 @@ export default function LocationsScreen() {
           </View>
         </View>
         {/* Get in Touch Section */}
-        <View className="w-full bg-white transform -translate-y-48 pt-4 -mb-40">
+        <View className="w-full bg-white transform -translate-y-48 pt-4 -mb-48">
           {/* Contact Us Badge */}
           <View className="flex flex-row justify-center items-center mx-auto w-[200px] h-[48px] bg-[rgba(193,0,22,0.1)] rounded-[120px] mb-8">
             <Text className="font-helvetica font-medium text-[16px] leading-[40px] tracking-[0.2em] uppercase text-[#C10016]">
