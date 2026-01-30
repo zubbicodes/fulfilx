@@ -10,11 +10,17 @@ export default function AboutUsScreen(){
     const carouselRef = useRef<HTMLDivElement>(null);
     const { width } = useWindowDimensions();
     const testimonials = [
-      { image: '/audenza.webp', alt: 'Testimonial 1' },
-      { image: '/hot.webp', alt: 'Testimonial 2' },
-      { image: '/milk.webp', alt: 'Testimonial 3' },
-      { image: '/pops.webp', alt: 'Testimonial 4' },
-      { image: '/har.webp', alt: 'Testimonial 5' }
+      { image: '/partners/5.png', alt: 'Partner 5' },
+      { image: '/partners/6.png', alt: 'Partner 6' },
+      { image: '/partners/7.png', alt: 'Partner 7' },
+      { image: '/partners/8.png', alt: 'Partner 8' },
+      { image: '/partners/9.png', alt: 'Partner 9' },
+      { image: '/partners/11.png', alt: 'Partner 11' },
+      { image: '/partners/12.png', alt: 'Partner 12' },
+      { image: '/partners/13.png', alt: 'Partner 13' },
+      { image: '/partners/14.png', alt: 'Partner 14' },
+      { image: '/partners/15.png', alt: 'Partner 15' },
+      { image: '/partners/16.png', alt: 'Partner 16' }
     ];
     const row1Logos = [
         { src: "/amazon.webp", alt: "Amazon" },
@@ -97,6 +103,13 @@ export default function AboutUsScreen(){
       }, [gallerySlide, images.length]);
           const [activeDot, setActiveDot] = useState(1); // Start with middle dot active
       
+      useEffect(() => {
+        const timer = setInterval(() => {
+          setActiveDot((prev) => (prev + 1) % 3);
+        }, 3000);
+        return () => clearInterval(timer);
+      }, [activeDot]);
+      
   
   return (
     <>
@@ -147,7 +160,7 @@ export default function AboutUsScreen(){
   <div className="relative max-w-[1490px] mx-auto px-4 py-16">
     
    <div
-    className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:transform lg:-translate-y-60 lg:-mb-60"
+    className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:transform lg:-translate-y-60 lg:-mb-60"
    >
   
   {/* Left Content */}
@@ -187,42 +200,34 @@ thrive.
       {/* Right Content */}
       <div className="space-y-8">
         {/* Image with Pagination */}
-<div className="relative">
-  {/* Image that changes based on active dot */}
-  <div 
-    className="w-full h-[400px] lg:h-[700px] bg-cover bg-center rounded-[24px] backdrop-blur-[12.5px]"
-    style={{
-      backgroundImage: `url(${
-        activeDot === 0 ? '/box.webp' :
-        activeDot === 1 ? '/peep.webp' :
-        activeDot === 2 ? 'shipdone.webp' :
-        '/image3.jpg'
-      })`
-    }}
-  >
-  </div>
+<div className="relative w-full h-[400px] lg:h-[700px] rounded-[24px] overflow-hidden backdrop-blur-[12.5px]">
+  {/* Images with cross-fade animation */}
+  {[
+    '/box.webp',
+    '/peep.webp',
+    '/shipdone.webp'
+  ].map((img, index) => (
+    <div 
+      key={index}
+      className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+        activeDot === index ? 'opacity-100' : 'opacity-0'
+      }`}
+      style={{ backgroundImage: `url(${img})` }}
+    />
+  ))}
   
   {/* Pagination Dots */}
-  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
     <div className="w-[72px] h-[24px] bg-white rounded-[50px] flex items-center justify-center gap-3 shadow-lg">
-      <div 
-        className={`w-[10px] h-[10px] rounded-full cursor-pointer ${
-          activeDot === 0 ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
-        }`}
-        onClick={() => setActiveDot(0)}
-      ></div>
-      <div 
-        className={`w-[10px] h-[10px] rounded-full cursor-pointer ${
-          activeDot === 1 ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
-        }`}
-        onClick={() => setActiveDot(1)}
-      ></div>
-      <div 
-        className={`w-[10px] h-[10px] rounded-full cursor-pointer ${
-          activeDot === 2 ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
-        }`}
-        onClick={() => setActiveDot(2)}
-      ></div>
+      {[0, 1, 2].map((index) => (
+        <div 
+          key={index}
+          className={`w-[10px] h-[10px] rounded-full cursor-pointer transition-all duration-300 ${
+            activeDot === index ? 'border border-[#C10016]' : 'bg-[#C10016] opacity-20 w-[6px] h-[6px]'
+          }`}
+          onClick={() => setActiveDot(index)}
+        />
+      ))}
     </div>
   </div>
 </div>
