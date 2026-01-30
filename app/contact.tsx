@@ -405,7 +405,6 @@ export default function ContactScreen() {
                         <option value="">Select your time</option>
                         <option value="morning">Morning (9AM - 12PM)</option>
                         <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                        <option value="evening">Evening (5PM - 8PM)</option>
                       </select>
 
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
