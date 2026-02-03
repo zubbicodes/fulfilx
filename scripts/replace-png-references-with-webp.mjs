@@ -36,7 +36,12 @@ async function replaceInFile(filePath) {
   if (!allowedExtensions.has(ext)) return { changed: false };
 
   const original = await fs.readFile(filePath, "utf8");
-  const updated = original.split(".png").join(".webp");
+  let updated = original.split(".png").join(".webp");
+  updated = updated.split(".jpg").join(".webp");
+  updated = updated.split(".jpeg").join(".webp");
+  updated = updated.split(".PNG").join(".webp");
+  updated = updated.split(".JPG").join(".webp");
+  updated = updated.split(".JPEG").join(".webp");
   if (updated === original) return { changed: false };
 
   await fs.writeFile(filePath, updated, "utf8");
@@ -60,7 +65,7 @@ async function main() {
     }
   }
 
-  console.log(`Updated PNG references in ${changedFiles} files.`);
+  console.log(`Updated PNG/JPG references in ${changedFiles} files.`);
 }
 
 await main();

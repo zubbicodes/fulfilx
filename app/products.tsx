@@ -259,11 +259,9 @@ export default function ProductsScreen() {
 
               <View className="w-[100px] h-[1px] bg-[#C10016] mb-12" />
 
-              <View className="flex-row flex-wrap justify-center gap-4 lg:gap-16 mb-12">
+              <View className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
                  {[1, 2, 3, 4, 5].map((i) => (
-                    <View key={i} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                       <Image source={{ uri: `/award${i}.webp` }} className="w-full h-full" resizeMode="contain" />
-                    </View>
+                    <Image key={i} source={{ uri: `/award${i}.webp` }} className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]" resizeMode="contain" />
                  ))}
               </View>
             </View>

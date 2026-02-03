@@ -1,3 +1,4 @@
+import AwardsAccreditations from '@/components/layout/awards-accreditations';
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Link, Stack, useRouter } from 'expo-router';
@@ -235,76 +236,7 @@ export default function BlogsScreen() {
           </View>
         )}
         {/* Accomplishments Section */}
-        <View className="relative w-full">
-          {/* Two Column Layout */}
-          <View className="flex flex-col lg:flex-row">
-            
-            {/* Left Section - White Background */}
-            <View className="w-full lg:w-1/2 bg-white relative min-h-[400px] lg:min-h-[520px] flex items-center justify-center py-12 lg:py-0">
-              <View className="absolute inset-0">
-                <img src="/bg.webp" alt="" className="w-full h-full object-cover" />
-              </View>
-              {/* Left Section Content - Centered */}
-              <View className="max-w-[740px] w-full items-center px-8 z-10">
-                
-                {/* Heading */}
-                <Text className="font-helvetica font-bold text-3xl lg:text-[42px] leading-tight lg:leading-[54px] tracking-tight text-black mb-8 text-center">
-                  Our Awards
-                </Text>
-
-                {/* Red Line - Centered */}
-                <View className="w-[100px] h-[1px] bg-[#C10016] mb-12" />
-
-                {/* Image Grid - Centered */}
-                <View className="flex flex-row flex-wrap justify-center gap-4 lg:gap-16 mb-12">
-                  {/*
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                    <img src="/award1.webp" className="w-full h-full object-contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                    <img src="/award2.webp" className="w-full h-full object-contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                    <img src="/award3.webp" className="w-full h-full object-contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                    <img src="/award4.webp" className="w-full h-full object-contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                    <img src="/award5.webp" className="w-full h-full object-contain" />
-                  </View>
-                  */}
-                </View>
-              </View>
-            </View>
-
-            {/* Right Section - Red Background */}
-            <View className="w-full lg:w-1/2 bg-[#DA192F] relative min-h-[400px] lg:min-h-[520px] flex items-center justify-center py-12 lg:py-0">
-              {/* Right Section Content - Centered */}
-              <View className="max-w-[650px] w-full items-center px-8">
-                
-                {/* Heading */}
-                <Text className="font-helvetica font-bold text-3xl lg:text-[42px] leading-tight lg:leading-[54px] tracking-tight text-white mb-8 text-center">
-                  Accreditations
-                </Text>
-
-                {/* White Line - Centered */}
-                <View className="w-[100px] h-[1px] bg-white mb-12" />
-
-                {/* CTA Button - Centered */}
-                <TouchableOpacity 
-                  className="border border-white rounded-[6px] flex flex-row items-center justify-center gap-[10px] px-8 py-4"
-                  onPress={() => router.push('/contact')}
-                >
-                  <Text className="font-helvetica font-bold text-[18px] leading-[36px] text-white">Let&apos;s Talk</Text>
-                  <View className="w-4 h-4">
-                    <img src="/arrow.svg" alt="arrow" className="w-full h-full object-contain" />
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
+        <AwardsAccreditations />
         <Footer />
       </ScrollView>
     </>

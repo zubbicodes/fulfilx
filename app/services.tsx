@@ -22,7 +22,7 @@ const FulfillmentServicesSection = () => {
   const fulfillmentServicesItems = [
     {
       title: ['D2C', 'Fulfilment'],
-      img: '/shiphappens1.jpg', // Reusing existing VAS image
+      img: '/9E2A9873.webp', // Reusing existing VAS image
       logo: '/d2c.svg',
       features: [
         'Direct-to-consumer pick, pack & dispatch.',
@@ -33,7 +33,7 @@ const FulfillmentServicesSection = () => {
     },
     {
       title: ['B2B', 'Fulfilment'],
-      img: '/qc.webp', // Reusing existing VAS image
+      img: '/9E2A9996.webp', // Reusing existing VAS image
       logo: '/b2b.svg',
       features: [
         'Bulk & palletised shipments',
@@ -44,7 +44,7 @@ const FulfillmentServicesSection = () => {
     },
     {
       title: ['Amazon', 'Fulfilment'],
-      img: '/shiphappens3.webp', // Reusing existing VAS image
+      img: '/9E2A9850.webp', // Reusing existing VAS image
       logo: '/amf.svg',
       features: [
         'FBA Prep: Labelling, polybagging, bundling, carton prep, pallet prep.',
@@ -54,7 +54,7 @@ const FulfillmentServicesSection = () => {
     },
     {
       title: ['Marketplace', 'Fulfilment'],
-      img: '/shiphappens4.webp', // Reusing existing VAS image
+      img: '/9E2A0285.webp', // Reusing existing VAS image
       logo: '/fms.svg',
       features: [
         'Fulfilled-by-Merchant support for TikTok Shop, Etsy, Instagram, etc.',
@@ -89,7 +89,7 @@ const FulfillmentServicesSection = () => {
       <div
         className="absolute inset-0 bg-black/65"
         style={{
-          backgroundImage: `url('/vas.webp')`, // Reusing existing VAS background image
+          backgroundImage: `url('/9E2A9843.webp')`, // Reusing existing VAS background image
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transform: 'scaleX(-1)'
@@ -301,7 +301,7 @@ const LogisticsServicesSection = () => {
       id: 1,
       title: 'Import & Export Handling',
       icon: ImportExportIcon,
-      imageUrl: '/ie.webp', // Add your image URLs here
+      imageUrl: '/pexels-michael-petersen-360409216-14400831-2.webp', // Add your image URLs here
       features: [
         'UK import management (port-to-warehouse)',
         'Export shipping to global destinations',
@@ -316,7 +316,7 @@ const LogisticsServicesSection = () => {
       id: 2,
       title: 'Pallet Handling & Transport',
       icon: PalletTransportIcon,
-      imageUrl: '/ph.webp', // Add your image URLs here
+      imageUrl: '/9E2A0054.webp', // Add your image URLs here
       features: [
         'Pallet collections',
         'Pallet deliveries',
@@ -328,7 +328,7 @@ const LogisticsServicesSection = () => {
       id: 3,
       title: 'International Shipping',
       icon: InternationalShippingIcon,
-      imageUrl: '/is.jpg', // Add your image URLs here
+      imageUrl: '/unnamed-2.webp', // Add your image URLs here
       features: [
         'DDU',
         'DDP',
@@ -570,21 +570,21 @@ export default function ServicesScreen(){
     const [isPaused, setIsPaused] = useState(false);
     const carouselRef = useRef<HTMLDivElement>(null);
     const testimonials = [
-      { image: '/services/amazon.png', alt: 'Amazon' },
-      { image: '/services/Argos.png', alt: 'Argos' },
-      { image: '/services/bloomingdales.png', alt: 'Bloomingdales' },
-      { image: '/services/Boots.png', alt: 'Boots' },
-      { image: '/services/costco.png', alt: 'Costco' },
-      { image: '/services/curry.png', alt: 'Currys' },
-      { image: '/services/fenwick.png', alt: 'Fenwick' },
-      { image: '/services/Harrods.png', alt: 'Harrods' },
-      { image: '/services/nordstorm.png', alt: 'Nordstrom' },
-      { image: '/services/pets at home.png', alt: 'Pets at Home' },
-      { image: '/services/qvc.png', alt: 'QVC' },
-      { image: '/services/sAKS.png', alt: 'Saks Fifth Avenue' },
-      { image: '/services/selfridges.png', alt: 'Selfridges' },
-      { image: '/services/sephora.png', alt: 'Sephora' },
-      { image: '/services/superdrug.png', alt: 'Superdrug' }
+      { image: '/services/amazon.webp', alt: 'Amazon' },
+      { image: '/services/Argos.webp', alt: 'Argos' },
+      { image: '/services/bloomingdales.webp', alt: 'Bloomingdales' },
+      { image: '/services/Boots.webp', alt: 'Boots' },
+      { image: '/services/costco.webp', alt: 'Costco' },
+      { image: '/services/curry.webp', alt: 'Currys' },
+      { image: '/services/fenwick.webp', alt: 'Fenwick' },
+      { image: '/services/Harrods.webp', alt: 'Harrods' },
+      { image: '/services/nordstorm.webp', alt: 'Nordstrom' },
+      { image: '/services/pets at home.webp', alt: 'Pets at Home' },
+      { image: '/services/qvc.webp', alt: 'QVC' },
+      { image: '/services/sAKS.webp', alt: 'Saks Fifth Avenue' },
+      { image: '/services/selfridges.webp', alt: 'Selfridges' },
+      { image: '/services/sephora.webp', alt: 'Sephora' },
+      { image: '/services/superdrug.webp', alt: 'Superdrug' }
     ];
     const row1Logos = [
     { src: "/amazon.webp", alt: "" },
@@ -648,25 +648,25 @@ export default function ServicesScreen(){
     const valueAddedServicesItems = [
       {
         title: ['Kitting', '& Assembly'],
-        img: '/shiphappens1.jpg',
+        img: '/9E2A0114.webp',
         logo: '/k.svg',
         features: ['Custom product bundling', 'Multi-SKU assembly', 'Promotional packaging', 'Retail-ready kits'],
       },
       {
         title: ['Quality Control', '(QC)'],
-        img: '/qc.webp',
+        img: '/9E2A0067.webp',
         logo: '/q.svg',
         features: ['Inspection & verification', 'Product sampling', 'Defect analysis', 'Compliance checks'],
       },
       {
         title: ['Recommence', 'Services'],
-        img: '/shiphappens3.webp',
+        img: '/9E2A0040.webp',
         logo: '/r.svg',
         features: ['Returns processing', 'Product refurbishment', 'Quality inspection', 'Restocking services'],
       },
       {
         title: ['Product', 'Personalisation'],
-        img: '/shiphappens4.webp',
+        img: '/DSC00100-2.webp',
         logo: '/p.svg',
         features: ['Custom engraving', 'Laser etching', 'Branded packaging', 'Gift message inserts'],
       },
@@ -675,19 +675,19 @@ export default function ServicesScreen(){
     const brandCreativeServicesItems = [
       {
         title: ['Content', 'Creation'],
-        img: '/shiphappens1.jpg',
+        img: '/DSC00010-2.webp',
         logo: '/cc.svg',
         features: ['Product photography', 'Lifestyle shoots', 'Short-form video content', 'Editing, retouching, creative direction'],
       },
       {
         title: ['Brand Launch &', 'Growth Support'],
-        img: '/blgs.webp',
+        img: '/9E2A9902.webp',
         logo: '/blgs.svg',
         features: ['Shopify store setup (basic)', 'Packaging coordination', 'Logistic planning', 'International expansion scaling support'],
       },
       {
         title: ['Custom Packaging', 'Supply'],
-        img: '/shiphappens3.webp',
+        img: '/DSC00038-2.webp',
         logo: '/r.svg',
         features: ['Branded boxes', 'Stickers', 'Tissue papers', 'Bulk ordering options for clients'],
       },
@@ -890,7 +890,7 @@ export default function ServicesScreen(){
   <div
     className="absolute inset-0 bg-black/65"
     style={{
-      backgroundImage: `url('/vas.webp')`,
+      backgroundImage: `url('/9E2A0310.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       transform: 'scaleX(-1)'
@@ -1012,7 +1012,7 @@ export default function ServicesScreen(){
   <div
     className="absolute inset-0 bg-black/65"
     style={{
-      backgroundImage: `url('/bcs.webp')`,
+      backgroundImage: `url('9E2A0267.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       transform: 'scaleX(-1)'
@@ -1271,14 +1271,9 @@ export default function ServicesScreen(){
         <div className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12"></div>
 
         {/* Image Grid - Centered */}
-        <div className="flex flex-wrap justify-center gap-8 lg:gap-16 mb-12">
-          {/*
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award3.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award4.webp)'}}></div>
-          <div className="w-[84px] h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award5.webp)'}}></div>
-          */}
+        <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.png)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.png)'}}></div>
         </div>
 
       </div>

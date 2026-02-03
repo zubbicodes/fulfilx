@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, Image, Pressable, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
+import React from 'react';
+import { Image, Pressable, Text, View } from 'react-native';
 
 export default function AwardsAccreditations() {
   const router = useRouter();
@@ -29,14 +29,9 @@ export default function AwardsAccreditations() {
             <View className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12" />
 
             {/* Image Grid - Centered */}
-        <View className="flex flex-row flex-wrap justify-center gap-6 lg:gap-16 mb-12">
-          {/*
-          <Image source={{ uri: '/award1.webp' }} className="w-[84px] h-[84px]" resizeMode="contain" />
-          <Image source={{ uri: '/award2.webp' }} className="w-[84px] h-[84px]" resizeMode="contain" />
-          <Image source={{ uri: '/award3.webp' }} className="w-[84px] h-[84px]" resizeMode="contain" />
-          <Image source={{ uri: '/award4.webp' }} className="w-[84px] h-[84px]" resizeMode="contain" />
-          <Image source={{ uri: '/award5.webp' }} className="w-[84px] h-[84px]" resizeMode="contain" />
-          */}
+        <View className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
+          <Image source={{ uri: '/award1.png' }} className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]" resizeMode="contain" />
+          <Image source={{ uri: '/award2.png' }} className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]" resizeMode="contain" />
         </View>
 
           </View>
@@ -54,11 +49,6 @@ export default function AwardsAccreditations() {
 
             {/* White Line - Centered */}
             <View className="w-[100px] h-[1px] bg-white mx-auto mb-12" />
-
-            {/* Subtitle - Centered */}
-            <Text className="font-normal text-xl lg:text-[24px] leading-relaxed lg:leading-[44px] text-white mb-12 text-center">
-              Exceptional Quality Service
-            </Text>
 
             {/* CTA Button - Centered */}
             <Pressable 

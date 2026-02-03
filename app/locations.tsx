@@ -1,9 +1,10 @@
 // app/locations.tsx
+import AwardsAccreditations from '@/components/layout/awards-accreditations';
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Stack, useRouter } from 'expo-router';
 import { useRef, useState } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 
 const defaultMarkerPositions: Record<string, { x: number; y: number }> = {
  uk: { x: 47.84, y: 15.59 },
@@ -525,7 +526,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('uk').x}%`, top: `${getMarkerPos('uk').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -544,7 +545,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('ca').x}%`, top: `${getMarkerPos('ca').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -565,7 +566,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('atl').x}%`, top: `${getMarkerPos('atl').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -584,7 +585,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('nl').x}%`, top: `${getMarkerPos('nl').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -603,7 +604,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('uae').x}%`, top: `${getMarkerPos('uae').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -622,7 +623,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('bh').x}%`, top: `${getMarkerPos('bh').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[40px] sm:h-[40px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -641,7 +642,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('au').x}%`, top: `${getMarkerPos('au').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -660,7 +661,7 @@ export default function LocationsScreen() {
                   style={{ left: `${getMarkerPos('sa').x}%`, top: `${getMarkerPos('sa').y}%` }}
                 >
                   <div className="w-[24px] h-[24px] sm:w-[40px] sm:h-[40px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-                    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+                    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
                     <div className="hidden sm:flex w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full items-center justify-center">
                       <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
                     </div>
@@ -679,73 +680,7 @@ export default function LocationsScreen() {
         </section>
 
         {/* Accomplishments Section */}
-        <View className="relative w-full mt-4">
-          {/* Two Column Layout */}
-          <View className="flex flex-col lg:flex-row ">
-            
-            {/* Left Section - White Background */}
-            <View className="w-full lg:w-1/2 bg-white relative min-h-[400px] lg:min-h-[520px] flex items-center justify-center py-12 lg:py-0">
-              <Image source={{ uri: "/bg.webp" }} className="absolute inset-0 w-full h-full" resizeMode="cover" />
-              {/* Left Section Content - Centered */}
-              <View className="max-w-[740px] w-full items-center px-8">
-                
-                {/* Heading */}
-                <Text className="font-helvetica font-bold text-3xl lg:text-[42px] leading-tight lg:leading-[54px] tracking-tight text-black mb-8 text-center">
-                  Our Awards
-                </Text>
-
-                {/* Red Line - Centered */}
-                <View className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12"></View>
-
-                {/* Image Grid - Centered */}
-                <View className="flex flex-row flex-wrap justify-center gap-4 lg:gap-16 mb-12">
-                  {/*
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] overflow-hidden">
-                     <Image source={{ uri: "/award1.webp" }} className="w-full h-full" resizeMode="contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] overflow-hidden">
-                     <Image source={{ uri: "/award2.webp" }} className="w-full h-full" resizeMode="contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] overflow-hidden">
-                     <Image source={{ uri: "/award3.webp" }} className="w-full h-full" resizeMode="contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] overflow-hidden">
-                     <Image source={{ uri: "/award4.webp" }} className="w-full h-full" resizeMode="contain" />
-                  </View>
-                  <View className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] overflow-hidden">
-                     <Image source={{ uri: "/award5.webp" }} className="w-full h-full" resizeMode="contain" />
-                  </View>
-                  */}
-                </View>
-              </View>
-            </View>
-
-            {/* Right Section - Red Background */}
-            <View className="w-full lg:w-1/2 bg-[#DA192F] relative min-h-[400px] lg:min-h-[520px] flex items-center justify-center py-12 lg:py-0">
-              {/* Right Section Content - Centered */}
-              <View className="max-w-[650px] w-full items-center px-8">
-                
-                {/* Heading */}
-                <Text className="font-helvetica font-bold text-3xl lg:text-[42px] leading-tight lg:leading-[54px] tracking-tight text-white mb-8 text-center">
-                  Accreditations
-                </Text>
-
-                {/* White Line - Centered */}
-                <View className="w-[100px] h-[1px] bg-white mx-auto mb-12"></View>
-
-
-                {/* CTA Button - Centered */}
-                <TouchableOpacity 
-                  onPress={() => router.push('/contact')}
-                  className="border border-white rounded-[6px] flex flex-row items-center justify-center gap-[10px] px-8 py-4"
-                >
-                  <Text className="text-white font-helvetica font-bold text-[18px] leading-[36px]">Let&apos;s Talk</Text>
-                  <Image source={{ uri: "/arrow.svg" }} alt="arrow" className="w-4 h-4" resizeMode="contain" />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
+        <AwardsAccreditations />
         <Footer/>
       </ScrollView>
     </>

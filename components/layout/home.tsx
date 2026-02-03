@@ -73,20 +73,20 @@ const mapOverlayRef = useRef<HTMLDivElement>(null);
 const getMarkerPos = (id: string) => defaultMarkerPositions[id] ?? { x: 0, y: 0 };
 
 const testimonials = [
-  { image: '/partners/5.png', alt: 'Partner 5' },
-  { image: '/partners/6.png', alt: 'Partner 6' },
-  { image: '/partners/7.png', alt: 'Partner 7' },
-  { image: '/partners/8.png', alt: 'Partner 8' },
-  { image: '/partners/9.png', alt: 'Partner 9' },
-  { image: '/partners/11.png', alt: 'Partner 11' },
-  { image: '/partners/12.png', alt: 'Partner 12' },
-  { image: '/partners/13.png', alt: 'Partner 13' },
-  { image: '/partners/14.png', alt: 'Partner 14' },
-  { image: '/partners/15.png', alt: 'Partner 15' },
-  { image: '/partners/16.png', alt: 'Partner 16' }
+  { image: '/partners/5.webp', alt: 'Partner 5' },
+  { image: '/partners/6.webp', alt: 'Partner 6' },
+  { image: '/partners/7.webp', alt: 'Partner 7' },
+  { image: '/partners/8.webp', alt: 'Partner 8' },
+  { image: '/partners/9.webp', alt: 'Partner 9' },
+  { image: '/partners/11.webp', alt: 'Partner 11' },
+  { image: '/partners/12.webp', alt: 'Partner 12' },
+  { image: '/partners/13.webp', alt: 'Partner 13' },
+  { image: '/partners/14.webp', alt: 'Partner 14' },
+  { image: '/partners/15.webp', alt: 'Partner 15' },
+  { image: '/partners/16.webp', alt: 'Partner 16' }
 ];
 const row1Logos = [
-    { src: "/amazon.webp", alt: "" },
+    { src: "/couires/amazon.webp", alt: "" },
     { src: "/shopify.webp", alt: "" },
     { src: "/woo.webp", alt: "" }
     
@@ -131,11 +131,11 @@ const row1Logos = [
     };
 
     const shipHappensItems = [
-      { title: "Fulfilment Services", img: "/shiphappens1.jpg" },
-      { title: "Amazon FBA & SFP", img: "/shiphappens2.webp" },
-      { title: "Packaging Solutions", img: "/shiphappens3.webp" },
-      { title: "Freight Services", img: "/shiphappens4.webp" },
-      { title: "Rework & Quality Control", img: "/shiphappens5.webp" },
+      { title: "Fulfilment Services", img: "/9E2A9875.webp" },
+      { title: "Amazon FBA & SFP", img: "/9E2A9857.webp" },
+      { title: "Packaging Solutions", img: "/9E2A0286.webp" },
+      { title: "Freight Services", img: "/9E2A9943.webp" },
+      { title: "Rework & Quality Control", img: "/9E2A0085.webp" },
     ];
 
     useEffect(() => {
@@ -339,7 +339,7 @@ const row1Logos = [
     backdropFilter: 'blur(12.5px)'
   }}>
   <img 
-    src="/px.webp" 
+    src="/9E2A9962.webp" 
     alt="Decorative square" 
     className="w-full h-full rounded-[34px] object-cover"
   />
@@ -390,10 +390,9 @@ focus on growing.    </p>
   <div
     className="absolute inset-0 bg-black/65"
     style={{
-      backgroundImage: `url('/shiphome.webp')`,
+      backgroundImage: `url('/9E2A9826.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      transform: 'scaleX(-1)'
     }}
   />
 
@@ -453,18 +452,18 @@ focus on growing.    </p>
               <img
                 src={shipHappensItems[shipHappensPrevIndex]?.img}
                 alt={shipHappensItems[shipHappensPrevIndex]?.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover z-0"
               />
             )}
             <img
               key={`${activeShipHappensIndex}-${shipHappensItems[activeShipHappensIndex]?.img}`}
               src={shipHappensItems[activeShipHappensIndex]?.img}
               alt={shipHappensItems[activeShipHappensIndex]?.title}
-              className="absolute inset-0 w-full h-full object-cover z-10"
+              className="absolute inset-0 w-full h-full object-cover z-0"
               style={{ animation: 'shipHappensSlideIn 750ms cubic-bezier(0.22, 1, 0.36, 1)', willChange: 'transform' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent" />
-            <div className="absolute left-6 bottom-6 right-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent z-10" />
+            <div className="absolute left-6 bottom-6 right-6 z-20">
               <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
                 {shipHappensItems[activeShipHappensIndex]?.title}
               </div>
@@ -659,30 +658,30 @@ focus on growing.    </p>
   <div 
     className="absolute inset-0 w-full h-full"
     style={{
-      background: 'linear-gradient(0deg, rgba(193, 0, 22, 0.4), rgba(193, 0, 22, 0.4)), url(/respond.webp)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
+      background: 'url(/9E2A9909.webp)',
+      backgroundSize: '100%',
+      backgroundPosition: 'right'
     }}
   >
   </div>
 
   <div ref={chatSectionRef} className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-16 py-16 lg:py-24">
     <div className="flex flex-col items-center text-center">
-      <h1 className="font-bold text-4xl lg:text-[74px] leading-tight lg:leading-[80px] tracking-tight text-white min-h-[48px] lg:min-h-[80px]">
+      <h1 className="font-bold text-4xl lg:text-[74px] text-[#C10016] leading-tight lg:leading-[80px] tracking-tight min-h-[48px] lg:min-h-[80px]">
         <Typewriter text="Ready to have a Chat?" start={startTyping} onComplete={() => setFirstLineDone(true)} speed={70} />
       </h1>
 
-      <p className="font-normal text-xl lg:text-[28px] leading-relaxed lg:leading-[44px] text-white mt-6 min-h-[28px] lg:min-h-[44px]">
+      <p className="font-normal text-xl lg:text-[28px] leading-relaxed lg:leading-[44px] text-[#C10016] mt-6 min-h-[28px] lg:min-h-[44px]">
         <Typewriter text="Do not hesitate to say Nǐn hǎo" start={firstLineDone} speed={50} />
       </p>
 
       <button 
         onClick={() => router.push('/contact')}
-        className="mt-10 border border-white rounded-[6px] flex items-center justify-center gap-[10px] px-8 py-4 transition duration-300"
+        className="mt-10 border border-[#C10016] rounded-[6px] flex items-center justify-center gap-[10px] px-8 py-4 transition duration-300"
       >
-        <span className="text-white font-normal text-[18px] leading-[36px]">Let&apos;s Talk</span>
+        <span className="text-[#C10016] font-normal text-[18px] leading-[36px]">Let&apos;s Talk</span>
         <img 
-          src="/arrow.svg" 
+          src="/arrow-dark.svg" 
           alt="Arrow icon" 
           className="w-4 h-4 object-contain"
         />
@@ -783,9 +782,9 @@ focus on growing.    </p>
         <div className="relative w-full h-[400px] lg:h-[900px] rounded-[24px] overflow-hidden backdrop-blur-[12.5px]">
           {/* Images with cross-fade animation */}
           {[
-            '/box.webp',
-            '/peep.webp',
-            '/shipdone.webp'
+            '/9E2A9845-2.webp',
+            '/9E2A9900.webp',
+            '/9E2A9816.webp'
           ].map((img, index) => (
             <div 
               key={index}
@@ -970,7 +969,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('uk').x}%`, top: `${getMarkerPos('uk').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -992,7 +991,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('ca').x}%`, top: `${getMarkerPos('ca').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1014,7 +1013,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('atl').x}%`, top: `${getMarkerPos('atl').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1034,7 +1033,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('nl').x}%`, top: `${getMarkerPos('nl').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1054,7 +1053,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('uae').x}%`, top: `${getMarkerPos('uae').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1076,7 +1075,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('bh').x}%`, top: `${getMarkerPos('bh').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[40px] sm:h-[40px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1096,7 +1095,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('au').x}%`, top: `${getMarkerPos('au').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[32px] h-[32px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1118,7 +1117,7 @@ focus on growing.    </p>
   style={{ left: `${getMarkerPos('sa').x}%`, top: `${getMarkerPos('sa').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[40px] sm:h-[40px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
-    <img src="/location.png" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
+    <img src="/location.webp" alt="Location marker" className="w-[18px] h-[18px] object-contain sm:hidden" />
     <div className="hidden sm:flex w-[26.67px] h-[26.67px] border border-[#C10016] rounded-full items-center justify-center">
       <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
     </div>
@@ -1272,7 +1271,10 @@ focus on growing.    </p>
         <div className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12"></div>
 
         {/* Image Grid - Centered */}
-
+        <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-8">
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.png)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.png)'}}></div>
+        </div>
       </div>
     </div>
 

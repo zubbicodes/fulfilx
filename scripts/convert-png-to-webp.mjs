@@ -33,12 +33,14 @@ async function listFilesRecursively(dir) {
   return files;
 }
 
-function isPng(filePath) {
-  return filePath.toLowerCase().endsWith(".png");
+function isImage(filePath) {
+  const lower = filePath.toLowerCase();
+  return lower.endsWith(".png") || lower.endsWith(".jpg") || lower.endsWith(".jpeg");
 }
 
-function toWebpPath(pngPath) {
-  return pngPath.slice(0, -4) + ".webp";
+function toWebpPath(inputPath) {
+  const ext = path.extname(inputPath);
+  return inputPath.slice(0, -ext.length) + ".webp";
 }
 
 async function fileExists(filePath) {
@@ -50,9 +52,9 @@ async function fileExists(filePath) {
   }
 }
 
-async function convertOne(pngPath, deleteOriginals) {
-  const webpPath = toWebpPath(pngPath);
-  await sharp(pngPath).webp({ quality: 85, effort: 6 }).toFile(webpPath);
+async function convertOne(inputPath, deleteOriginals) {
+  const webpPath = toWebpPath(inputPath);
+  await sharp(inputPath).webp({ quality: 85, effort: 6 }).toFile(webpPath);
 
   const outExists = await fileExists(webpPath);
   if (!outExists) {
@@ -60,43 +62,43 @@ async function convertOne(pngPath, deleteOriginals) {
   }
 
   if (deleteOriginals) {
-    await fs.unlink(pngPath);
+    await fs.unlink(inputPath);
   }
 }
 
 async function main() {
   const { deleteOriginals, roots } = parseArgs(process.argv.slice(2));
 
-  const pngFiles = [];
+  const imageFiles = [];
   for (const root of roots) {
     const stat = await fs.stat(root).catch(() => null);
     if (!stat?.isDirectory()) continue;
     const files = await listFilesRecursively(root);
-    pngFiles.push(...files.filter(isPng));
+    imageFiles.push(...files.filter(isImage));
   }
 
-  if (pngFiles.length === 0) {
-    console.log("No PNG files found.");
+  if (imageFiles.length === 0) {
+    console.log("No PNG/JPG files found.");
     return;
   }
 
   let converted = 0;
   const failures = [];
 
-  for (const pngPath of pngFiles) {
+  for (const inputPath of imageFiles) {
     try {
-      await convertOne(pngPath, deleteOriginals);
+      await convertOne(inputPath, deleteOriginals);
       converted += 1;
     } catch (err) {
-      failures.push({ pngPath, message: err instanceof Error ? err.message : String(err) });
+      failures.push({ inputPath, message: err instanceof Error ? err.message : String(err) });
     }
   }
 
-  console.log(`Converted ${converted}/${pngFiles.length} PNG files to WebP.`);
+  console.log(`Converted ${converted}/${imageFiles.length} images to WebP.`);
 
   if (failures.length > 0) {
     for (const f of failures) {
-      console.error(`${f.pngPath}: ${f.message}`);
+      console.error(`${f.inputPath}: ${f.message}`);
     }
     process.exitCode = 1;
   }

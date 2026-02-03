@@ -1,17 +1,18 @@
+import AwardsAccreditations from '@/components/layout/awards-accreditations';
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import Slider from '@react-native-community/slider';
 import { Stack, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  FlatList,
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
+    FlatList,
+    Image,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    useWindowDimensions,
 } from 'react-native';
 
 const DEFAULT_WEIGHT_STEPS = [
@@ -225,7 +226,7 @@ export default function LuxuryScreen() {
   const pricingItems = [
     {
       title: ['Pick', '& Pack'],
-      img: '/shiphappens1.jpg',
+      img: '/shiphappens1.webp',
       logo: '/d2c.svg',
       description: 'Lets start with basics.',
       price: '£1.27',
@@ -673,49 +674,7 @@ export default function LuxuryScreen() {
         </View>
 
         {/* Accomplishments Section */}
-        <View className="w-full flex-col lg:flex-row">
-          
-          {/* Left Section - White Background */}
-          <View className="w-full lg:w-1/2 bg-white relative min-h-[400px] lg:min-h-[520px] items-center justify-center py-12 lg:py-0">
-             <View className="absolute inset-0">
-                <Image source={require('../public/bg.webp')} className="w-full h-full" resizeMode="cover" />
-             </View>
-            {/* Left Section Content */}
-            <View className="max-w-[740px] w-full items-center px-8 z-10">
-              <Text className="font-bold text-3xl lg:text-[42px] leading-tight lg:leading-[54px] text-black mb-8 text-center">
-                Our Awards
-              </Text>
-
-              <View className="w-[100px] h-[1px] bg-[#C10016] mb-12" />
-
-              <View className="flex-row flex-wrap justify-center gap-4 lg:gap-16 mb-12">
-                 {/*
-                 {[1, 2, 3, 4, 5].map((i) => (
-                    <View key={i} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]">
-                       <Image source={{ uri: `/award${i}.webp` }} className="w-full h-full" resizeMode="contain" />
-                    </View>
-                 ))}
-                 */}
-              </View>
-            </View>
-          </View>
-
-          {/* Right Section - Red Background */}
-          <View className="w-full lg:w-1/2 bg-[#DA192F] relative min-h-[400px] lg:min-h-[520px] items-center justify-center py-12 lg:py-0">
-            <View className="max-w-[650px] w-full items-center px-8">
-              <Text className="font-bold text-3xl lg:text-[42px] leading-tight lg:leading-[54px] text-white mb-8 text-center">
-                Accreditations
-              </Text>
-
-              <View className="w-[100px] h-[1px] bg-white mb-12" />
-
-              <TouchableOpacity className="border border-white rounded-[6px] flex-row items-center justify-center gap-[10px] px-8 py-4">
-                <Text className="text-white font-bold text-[18px] leading-[36px]">Let&apos;s Talk</Text>
-                <Image source={require('../public/arrow.svg')} className="w-4 h-4" resizeMode="contain" style={{ tintColor: 'white' }} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+        <AwardsAccreditations />
         <Footer />
       </ScrollView>
     </>

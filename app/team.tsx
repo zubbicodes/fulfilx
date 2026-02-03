@@ -1,4 +1,5 @@
 // app/team.tsx
+import AwardsAccreditations from '@/components/layout/awards-accreditations';
 import Footer from '@/components/layout/footer';
 import Navbar from '@/components/layout/navbar';
 import { Stack, useRouter } from 'expo-router';
@@ -73,11 +74,11 @@ export default function TeamScreen() {
   
   
   const images = [
-    { id: 1, src: '/instagram/frame_4_00-04.png' },
-    { id: 2, src: '/instagram/frame_5_00-27.png' },
-    { id: 3, src: '/instagram/frame_12_01-54.png' },
-    { id: 4, src: '/instagram/frame_15_00-17.png' },
-    { id: 5, src: '/instagram/fulflix%20image.png' }
+    { id: 1, src: '/instagram/frame_4_00-04.webp' },
+    { id: 2, src: '/instagram/frame_5_00-27.webp' },
+    { id: 3, src: '/instagram/frame_12_01-54.webp' },
+    { id: 4, src: '/instagram/frame_15_00-17.webp' },
+    { id: 5, src: '/instagram/fulflix%20image.webp' }
   ];
   useEffect(() => {
     const interval = setInterval(() => {
@@ -584,62 +585,7 @@ export default function TeamScreen() {
           </View>
         </View>
         {/* Accomplishments Section */}
-        <View className="relative w-full">
-          {/* Two Column Layout */}
-          <View className="flex flex-col lg:flex-row">
-            
-            {/* Left Section - White Background */}
-            <View className="w-full lg:w-1/2 bg-white relative min-h-[520px] flex items-center justify-center py-12 lg:py-0">
-              <Image source={{ uri: "/bg.webp" }} className="absolute inset-0 w-full h-full" resizeMode="cover" />
-              {/* Left Section Content - Centered */}
-              <View className="max-w-[740px] w-full text-center px-8">
-                
-                {/* Heading */}
-                <Text className="font-bold text-[32px] lg:text-[42px] leading-[44px] lg:leading-[54px] tracking-tight text-center text-black mb-8">
-                  Our Awards
-                </Text>
-
-                {/* Red Line - Centered */}
-                <View className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12"></View>
-
-                {/* Image Grid - Centered */}
-                <View className="flex flex-row justify-center gap-4 lg:gap-16 mb-12 flex-wrap">
-                  {/*
-                  <Image source={{ uri: "/aaward1.webp" }} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]" resizeMode="cover" />
-                  <Image source={{ uri: "/aaward2.webp" }} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]" resizeMode="cover" />
-                  <Image source={{ uri: "/aaward3.webp" }} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]" resizeMode="cover" />
-                  <Image source={{ uri: "/aaward4.webp" }} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]" resizeMode="cover" />
-                  <Image source={{ uri: "/aaward5.webp" }} className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px]" resizeMode="cover" />
-                  */}
-                </View>
-              </View>
-            </View>
-
-            {/* Right Section - Red Background */}
-            <View className="w-full lg:w-1/2 bg-[#DA192F] relative min-h-[520px] flex items-center justify-center py-12 lg:py-0">
-              {/* Right Section Content - Centered */}
-              <View className="max-w-[650px] w-full text-center px-8">
-                
-                {/* Heading */}
-                <Text className="font-bold text-[32px] lg:text-[42px] leading-[44px] lg:leading-[54px] tracking-tight text-center text-white mb-8">
-                  Accreditations
-                </Text>
-
-                {/* White Line - Centered */}
-                <View className="w-[100px] h-[1px] bg-white mx-auto mb-12"></View>
-
-                {/* CTA Button - Centered */}
-                <TouchableOpacity 
-                  onPress={() => router.push('/contact')}
-                  className="border border-white rounded-[6px] flex flex-row items-center justify-center gap-[10px] px-8 py-4 mx-auto"
-                >
-                  <Text className="text-white font-bold text-[18px] leading-[36px]">Let’s Talk</Text>
-                  <Image source={{ uri: "/arrow.svg" }} className="w-4 h-4" resizeMode="contain" style={{ tintColor: 'white' }} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
+        <AwardsAccreditations />
         <Footer/>
 
       </ScrollView>

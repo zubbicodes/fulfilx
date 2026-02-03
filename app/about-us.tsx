@@ -10,20 +10,20 @@ export default function AboutUsScreen(){
     const carouselRef = useRef<HTMLDivElement>(null);
     const { width } = useWindowDimensions();
     const testimonials = [
-      { image: '/partners/5.png', alt: 'Partner 5' },
-      { image: '/partners/6.png', alt: 'Partner 6' },
-      { image: '/partners/7.png', alt: 'Partner 7' },
-      { image: '/partners/8.png', alt: 'Partner 8' },
-      { image: '/partners/9.png', alt: 'Partner 9' },
-      { image: '/partners/11.png', alt: 'Partner 11' },
-      { image: '/partners/12.png', alt: 'Partner 12' },
-      { image: '/partners/13.png', alt: 'Partner 13' },
-      { image: '/partners/14.png', alt: 'Partner 14' },
-      { image: '/partners/15.png', alt: 'Partner 15' },
-      { image: '/partners/16.png', alt: 'Partner 16' }
+      { image: '/partners/5.webp', alt: 'Partner 5' },
+      { image: '/partners/6.webp', alt: 'Partner 6' },
+      { image: '/partners/7.webp', alt: 'Partner 7' },
+      { image: '/partners/8.webp', alt: 'Partner 8' },
+      { image: '/partners/9.webp', alt: 'Partner 9' },
+      { image: '/partners/11.webp', alt: 'Partner 11' },
+      { image: '/partners/12.webp', alt: 'Partner 12' },
+      { image: '/partners/13.webp', alt: 'Partner 13' },
+      { image: '/partners/14.webp', alt: 'Partner 14' },
+      { image: '/partners/15.webp', alt: 'Partner 15' },
+      { image: '/partners/16.webp', alt: 'Partner 16' }
     ];
     const row1Logos = [
-        { src: "/amazon.webp", alt: "Amazon" },
+        { src: "/couires/amazon.webp", alt: "Amazon" },
         { src: "/shopify.webp", alt: "Shopify" },
         { src: "/tiktok.webp", alt: "TikTok" }
       ];
@@ -70,11 +70,11 @@ export default function AboutUsScreen(){
         return () => clearInterval(timer);
       }, [currentSlide]);
       const images = [
-          { id: 1, src: '/instagram/frame_4_00-04.png' },
-          { id: 2, src: '/instagram/frame_5_00-27.png' },
-          { id: 3, src: '/instagram/frame_12_01-54.png' },
-          { id: 4, src: '/instagram/frame_15_00-17.png' },
-          { id: 5, src: '/instagram/fulflix%20image.png' }
+          { id: 1, src: '/instagram/frame_4_00-04.webp' },
+          { id: 2, src: '/instagram/frame_5_00-27.webp' },
+          { id: 3, src: '/instagram/frame_12_01-54.webp' },
+          { id: 4, src: '/instagram/frame_15_00-17.webp' },
+          { id: 5, src: '/instagram/fulflix%20image.webp' }
         ];
         const [gallerySlide, setGallerySlide] = useState(0);
         const [isGalleryTransitionEnabled, setIsGalleryTransitionEnabled] = useState(true);
@@ -203,9 +203,9 @@ thrive.
 <div className="relative w-full h-[400px] lg:h-[700px] rounded-[24px] overflow-hidden backdrop-blur-[12.5px]">
   {/* Images with cross-fade animation */}
   {[
-    '/box.webp',
-    '/peep.webp',
-    '/shipdone.webp'
+    '/9E2A9900.webp',
+    '/9E2A9900.webp',
+    '/9E2A9845.webp'
   ].map((img, index) => (
     <div 
       key={index}
@@ -240,7 +240,7 @@ thrive.
   {/* Background Image */}
   <View className="absolute inset-0">
     <img 
-      src="/shiphome.webp" 
+      src="/9E2A0155.webp" 
       alt="Background" 
       className="w-full h-full object-cover"
     />
@@ -300,7 +300,7 @@ thrive.
 <View className="flex flex-col lg:flex-row items-center justify-between w-full">
   {/* Left Side - Image */}
   <View className="w-full h-[300px] lg:w-[500px] lg:h-[500px] rounded-[32px] backdrop-blur-[12.5px] bg-cover bg-center lg:transform lg:-translate-x-40 mb-8 lg:mb-0" 
-    style={{backgroundImage: 'url(/trolley.webp)'} as any} />
+    style={{backgroundImage: 'url(/fulfilq.webp)'} as any} />
   
   {/* Center Dot */}
   <View className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-[40px] h-[40px] bg-[#C10016] rounded-full" />
@@ -343,7 +343,7 @@ Australia and the EU.
         <View 
           className="w-full h-[320px] sm:h-[460px] lg:w-[600px] lg:h-[940px] rounded-[30px] bg-cover bg-center"
           style={{ 
-            backgroundImage: 'url(/same.webp)',
+            backgroundImage: 'url(/9E2A0153.webp)',
             backdropFilter: 'blur(12.5px)'
           } as any}
         />
@@ -663,19 +663,19 @@ can build a greener future while achieving your logistics goals.
         {
           name: 'Sabir Rajpoot',
           date: 'November 11, 2025',
-          avatar: '/Sabir-Rajpoot.png',
+          avatar: '/Sabir-Rajpoot.webp',
           text: "Excellent Services, Fast Delivery and Cooperative Support We are working with FULFIL.X since last 6 months and it's really a good experience with them. Staff is really good and cooperative environment. Fulfil.x is super fast in Inventory tracking, orders management and fast delivery.",
         },
         {
           name: 'Jeanel Dangilan',
           date: 'November 21, 2025',
-          avatar: '/Jeanel-Dangilan.png',
+          avatar: '/Jeanel-Dangilan.webp',
           text: 'Really happy with the service from FulfilX. They make fulfilment super easy and stress-free. Orders are always handled on time and the team is friendly and quick to respond whenever I have questions. It’s been such a big help for my business knowing I can rely on them. Definitely recommend them if you need a fulfilment partner you can trust.',
         },
         {
           name: 'Milcah Cortez',
           date: 'November 11, 2025',
-          avatar: '/Milcah-Cortez.png',
+          avatar: '/Milcah-Cortez.webp',
           text: 'I’ve been really impressed with the service. The team at Fulfil.X is helpful, responsive, and always gets things done on time. My business runs a lot easier with them handling fulfilment. Definitely a trusted partner.',
         },
       ];
@@ -900,15 +900,10 @@ can build a greener future while achieving your logistics goals.
                 <div className="w-[100px] h-[1px] bg-[#C10016] mx-auto mb-12"></div>
 
                 {/* Image Grid - Centered */}
-                <div className="flex flex-row flex-wrap justify-center gap-8 lg:gap-16 mb-12">
-                  {/*
-                  <div className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
-                  <div className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
-                  <div className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award3.webp)'}}></div>
-                  <div className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award4.webp)'}}></div>
-                  <div className="w-[60px] h-[60px] lg:w-[84px] lg:h-[84px] bg-cover bg-center" style={{backgroundImage: 'url(/award5.webp)'}}></div>
-                  */}
-clear                </div>
+                <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.png)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.png)'}}></div>
+               </div>
               </div>
             </div>
 
