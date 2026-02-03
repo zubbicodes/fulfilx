@@ -87,14 +87,16 @@ const FulfillmentServicesSection = () => {
   return (
     <section className="relative w-full h-auto pt-2 pb-10 lg:pt-4 lg:pb-12 overflow-hidden">
       <div
-        className="absolute inset-0 bg-black/65"
+        className="absolute inset-0"
         style={{
           backgroundImage: `url('/9E2A9843.webp')`, // Reusing existing VAS background image
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
           transform: 'scaleX(-1)'
         }}
       />
+      <div className="absolute inset-0 bg-black/65" />
 
       <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 pt-1 pb-8 lg:pt-2 lg:pb-8">
         <div className="mx-auto w-full max-w-[1490px]">
@@ -105,7 +107,10 @@ const FulfillmentServicesSection = () => {
             }
           `}</style>
 
-          <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+          <h2
+            className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]"
+            style={{ textShadow: '0 4px 16px rgba(0,0,0,0.6)' }}
+          >
             Core Fulfilment <span className="text-[#C10016]">Services</span>
           </h2>
 
@@ -128,7 +133,10 @@ const FulfillmentServicesSection = () => {
                       ].join(" ")}
                     >
                       <img src={item.logo} alt="" className="w-10 h-10 shrink-0" />
-                      <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                      <span
+                        className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight"
+                        style={{ textShadow: '0 3px 12px rgba(0,0,0,0.6)' }}
+                      >
                         <span className="block">{item.title[0]}</span>
                         <span className="block">{item.title[1]}</span>
                       </span>
@@ -164,14 +172,22 @@ const FulfillmentServicesSection = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
                 <div className="absolute left-6 bottom-6 right-6 z-20">
-                  <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+                  <div
+                    className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]"
+                    style={{ textShadow: '0 4px 16px rgba(0,0,0,0.7)' }}
+                  >
                     {fulfillmentServicesItems[activeFulfillmentIndex]?.title[0]} {fulfillmentServicesItems[activeFulfillmentIndex]?.title[1]}
                   </div>
                   <div className="mt-6 space-y-3 max-w-[560px]">
                     {(fulfillmentServicesItems[activeFulfillmentIndex]?.features ?? []).map((feature, index) => (
                       <div key={index} className="flex items-start gap-3">
                         <img src="/checkw.svg" alt="Check" className="w-4 h-4 mt-1 flex-shrink-0" />
-                        <span className="text-white text-[16px] leading-[22px]">{feature}</span>
+                        <span
+                          className="text-white text-[16px] leading-[22px]"
+                          style={{ textShadow: '0 3px 10px rgba(0,0,0,0.65)' }}
+                        >
+                          {feature}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -887,14 +903,16 @@ export default function ServicesScreen(){
 </View>
 <section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
   <div
-    className="absolute inset-0 bg-black/65"
+    className="absolute inset-0"
     style={{
       backgroundImage: `url('/9E2A0310.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
       transform: 'scaleX(-1)'
     }}
   />
+  <div className="absolute inset-0 bg-black/65" />
 
   <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
     <div className="mx-auto w-full max-w-[1490px]">
@@ -905,7 +923,10 @@ export default function ServicesScreen(){
         }
       `}</style>
 
-      <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+      <h2
+        className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]"
+        style={{ textShadow: '0 4px 16px rgba(0,0,0,0.6)' }}
+      >
         Value Added <span className="text-[#C10016]">Services (VAS)</span>
       </h2>
 
@@ -928,7 +949,10 @@ export default function ServicesScreen(){
                   ].join(" ")}
                 >
                   <img src={item.logo} alt="" className="w-10 h-10 shrink-0" />
-                  <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                  <span
+                    className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight"
+                    style={{ textShadow: '0 3px 12px rgba(0,0,0,0.6)' }}
+                  >
                     <span className="block">{item.title[0]}</span>
                     <span className="block">{item.title[1]}</span>
                   </span>
@@ -964,14 +988,22 @@ export default function ServicesScreen(){
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
             <div className="absolute left-6 bottom-6 right-6 z-20">
-              <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+              <div
+                className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]"
+                style={{ textShadow: '0 4px 16px rgba(0,0,0,0.7)' }}
+              >
                 {valueAddedServicesItems[activeVasIndex]?.title[0]} {valueAddedServicesItems[activeVasIndex]?.title[1]}
               </div>
               <div className="mt-6 space-y-3 max-w-[560px]">
                 {(valueAddedServicesItems[activeVasIndex]?.features ?? []).map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <img src="/checkw.svg" alt="Check" className="w-4 h-4 mt-1 flex-shrink-0" />
-                    <span className="text-white text-[16px] leading-[22px]">{feature}</span>
+                    <span
+                      className="text-white text-[16px] leading-[22px]"
+                      style={{ textShadow: '0 3px 10px rgba(0,0,0,0.65)' }}
+                    >
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -1009,18 +1041,23 @@ export default function ServicesScreen(){
 </View>
 <section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
   <div
-    className="absolute inset-0 bg-black/65"
+    className="absolute inset-0"
     style={{
       backgroundImage: `url('/9E2A0267.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
       transform: 'scaleX(-1)'
     }}
   />
+  <div className="absolute inset-0 bg-black/65" />
 
   <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
     <div className="mx-auto w-full max-w-[1490px]">
-      <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+      <h2
+        className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]"
+        style={{ textShadow: '0 4px 16px rgba(0,0,0,0.6)' }}
+      >
         Brand & Creative <span className="text-[#C10016]">Services</span>
       </h2>
 
@@ -1043,7 +1080,10 @@ export default function ServicesScreen(){
                   ].join(" ")}
                 >
                   <img src={item.logo} alt="" className="w-10 h-10 shrink-0" />
-                  <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                  <span
+                    className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight"
+                    style={{ textShadow: '0 3px 12px rgba(0,0,0,0.6)' }}
+                  >
                     <span className="block">{item.title[0]}</span>
                     <span className="block">{item.title[1]}</span>
                   </span>
@@ -1079,14 +1119,22 @@ export default function ServicesScreen(){
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
             <div className="absolute left-6 bottom-6 right-6 z-20">
-              <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+              <div
+                className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]"
+                style={{ textShadow: '0 4px 16px rgba(0,0,0,0.7)' }}
+              >
                 {brandCreativeServicesItems[activeBrandCreativeIndex]?.title[0]} {brandCreativeServicesItems[activeBrandCreativeIndex]?.title[1]}
               </div>
               <div className="mt-6 space-y-3 max-w-[560px]">
                 {(brandCreativeServicesItems[activeBrandCreativeIndex]?.features ?? []).map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <img src="/checkw.svg" alt="Check" className="w-4 h-4 mt-1 flex-shrink-0" />
-                    <span className="text-white text-[16px] leading-[22px]">{feature}</span>
+                    <span
+                      className="text-white text-[16px] leading-[22px]"
+                      style={{ textShadow: '0 3px 10px rgba(0,0,0,0.65)' }}
+                    >
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -1271,8 +1319,8 @@ export default function ServicesScreen(){
 
         {/* Image Grid - Centered */}
         <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
+            <div className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
+            <div className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
         </div>
 
       </div>

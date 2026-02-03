@@ -442,11 +442,11 @@ export default function LuxuryScreen() {
 
                                 {/* Image Grid - Centered */}
                                 <View className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
-                                    <View className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'} as any} />
-                                    <View className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'} as any} />
-                                    <View className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award3.webp)'} as any} />
-                                    <View className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award4.webp)'} as any} />
-                                    <View className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award5.webp)'} as any} />
+                                    <View className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'} as any} />
+                                    <View className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'} as any} />
+                                    <View className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award3.webp)'} as any} />
+                                    <View className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award4.webp)'} as any} />
+                                    <View className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award5.webp)'} as any} />
                                 </View>
                             </View>
                         </View>
