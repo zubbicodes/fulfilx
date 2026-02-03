@@ -44,7 +44,7 @@ export default function SectorsScreen() {
     {
       id: 1,
       title: "Cosmetics",
-      description: "Discover how FulFilx revolutionizes cosmetics fulfillment, offering tailored services, multiple courier options & seamless e-commerce platform integrations to deliver your beauty products flawlessly to clients worldwide.",
+      description: "In the dynamic world of cosmetics, where product integrity, brand perception, and regulatory compliance are just as important as speed and accuracy, specialized fulfillment is essential. FULFIL.X is a trusted fulfillment partner for cosmetic and beauty brands, offering purpose-built solutions that protect product quality while enhancing the end-customer experience.",
       image: "/foundation-containers-advertising-assortment.webp",
       link: "/sectors/cosmetics",
       position: { left: 215, top: 200 }
@@ -52,7 +52,7 @@ export default function SectorsScreen() {
     {
       id: 2,
       title: "Supplements & Health",
-      description: "Uncover how FulFilx transforms the fulfillment process for supplements and health products through comprehensive services, leveraging an extensive courier network & seamless e-commerce platform integrations.",
+      description: "In the fast-growing supplements and health products industry, where consumer trust, product safety, and regulatory compliance are paramount, specialized fulfillment plays a critical role in brand success. FULFIL.X is a leading fulfillment partner for supplement and health brands, offering expert solutions designed to protect product integrity while delivering a seamless customer experience.",
       image: "/closeup-athletic-woman-adding-strawberries-while-making-fruit-salad-kitchen.webp",
       link: "/sectors/supplements-health",
       position: { left: 215, top: 982 }
@@ -60,7 +60,7 @@ export default function SectorsScreen() {
     {
       id: 3,
       title: "Fragrances",
-      description: "Explore our specialized fulfillment for fragrances, ensuring safe handling, compliant shipping, and premium delivery experiences for your perfumes and scents worldwide.",
+      description: "In fragrance, every detail matters—from formulation to presentation to final delivery. FULFIL.X specializes in fragrance fulfillment for brands that value precision, protection, and premium customer experience.",
       image: "/still-life-cosmetic-products.webp",
       link: "/sectors/fragrances",
       position: { left: 215, top: 1764 }
@@ -68,7 +68,7 @@ export default function SectorsScreen() {
     {
       id: 4,
       title: "Luxury Fulfilment",
-      description: "Explore how FulFilx elevates luxury fulfillment, offering bespoke services to manage & deliver high-end goods through an extensive courier network & seamless e-commerce platform integrations.",
+      description: "In the world of luxury goods, where value is defined as much by experience as by the product itself, specialist fulfillment is essential. FULFIL.X is a leading provider in luxury fulfillment, delivering services designed to protect brand integrity at every touchpoint. We understand that luxury brands demand absolute consistency—from the moment an order is placed to the final unboxing.",
       image: "/lux.webp",
       link: "/sectors/luxury-fulfilment",
       position: { left: 215, top: 2546 }
@@ -77,7 +77,7 @@ export default function SectorsScreen() {
     {
       id: 5,
       title: "Electronics",
-      description: "Discover FulFilx's cutting-edge approach to electronics fulfillment, leveraging an extensive courier network and seamless e-commerce platform integrations to ensure efficient management & delivery.",
+      description: "FULFIL.X provides the essential fulfilment partnership for electronics brands, where product integrity, customer trust, and flawless delivery are fundamental to commercial success. We deliver precision-engineered logistics solutions designed to secure sensitive inventory and uphold brand reputation.",
       image: "/modern-stationary-collection-arrangement.webp",
       link: "/sectors/electronics",
       position: { left: 735, top: 140 }
@@ -85,7 +85,7 @@ export default function SectorsScreen() {
     {
       id: 6,
       title: "Pet Supplies",
-      description: "From food to accessories, FulFilx ensures your pet supply business runs smoothly with efficient inventory management and reliable delivery services for pet owners everywhere.",
+      description: "FULFIL.X specializes in pet supply fulfillment, supporting brands that provide everything from premium pet food and treats to toys, accessories, and wellness products. We understand that pet owners expect consistency, safety, and speed—and that pet brands must uphold these expectations with every order.",
       image: "/vecteezy_charming-pampered-pets-play-side-by-side-looking-alert_24653630.webp",
       link: "/sectors/pet-supplies",
       position: { left: 735, top: 922 }
@@ -93,7 +93,7 @@ export default function SectorsScreen() {
     {
       id: 7,
       title: "Stationery & Gifts",
-      description: "Ensure your stationery and gift products are handled with care and delivered on time. FulFilx offers precise picking and packing for delicate and seasonal items.",
+      description: "FULFIL.X provides dedicated fulfilment for stationery and gift brands, where presentation, customer delight, and seasonal agility define commercial success. We deliver tailored logistics solutions designed to protect delicate products and elevate the unboxing experience.",
       image: "/school-supplies-drawing-instruments-composition.webp",
       link: "/sectors/stationary-gifts",
       position: { left: 735, top: 1704 }
@@ -101,7 +101,7 @@ export default function SectorsScreen() {
     {
       id: 8,
       title: "Toys & Games",
-      description: "Discover how FulFilx elevates the management and delivery of toys and games through its robust network of couriers and seamless integrations with major e-commerce platforms.",
+      description: "Deliver wonder, without the worry. FULFIL.X is the fulfilment partner for dynamic toys and games brands. We combine secure, compliant logistics with an understanding that every parcel should fuel excitement. From action figures and board games to plush and educational kits, we ensure your products are handled with care, packed for protection, and shipped with the speed that keeps the magic alive from cart to customer.",
       image: "/kids-playing-dirty-house.webp",
       link: "/sectors/toys-games",
       position: { left: 735, top: 2486 }
@@ -110,7 +110,7 @@ export default function SectorsScreen() {
     {
       id: 9,
       title: "Homeware & Accessories",
-      description: "Discover how FulFilx elevates the fulfillment process for homeware and accessories through specialized services, ensuring your products enrich homes worldwide.",
+      description: "Where beautiful products meet flawless delivery. FULFIL.X is the fulfilment partner for homeware and accessories brands that understand details matter. From ceramics and linens to decorative objects and practical essentials, we treat your products with the same care your customers expect, ensuring they arrive in perfect condition and presentation-ready.",
       image: "/homeware.webp",
       link: "/sectors/homeware-accessories",
       position: { left: 1255, top: 80 }
@@ -118,7 +118,7 @@ export default function SectorsScreen() {
     {
       id: 10,
       title: "Chilled Products",
-      description: "FulFilx offers specialized cold chain solutions for chilled products, ensuring your perishable goods arrive fresh and in perfect condition to your customers.",
+      description: "Precision-controlled logistics for climate-dependent brands. FULFIL.X provides the essential cold chain fulfilment for products where specific temperature ranges are critical to integrity and performance. For temperature-sensitive supplements, lab samples, specialised chemicals, or premium beverages, we deliver more than storage—we guarantee a meticulously monitored environment.",
       image: "/15985a04-f9ed-40d4-8710-158299688474.webp",
       link: "/sectors/chilled-products",
       position: { left: 1255, top: 862 }
@@ -126,7 +126,7 @@ export default function SectorsScreen() {
     {
       id: 11,
       title: "Fashion & Apparel",
-      description: "Explore how FulFilx revolutionizes fashion fulfillment with comprehensive services, including managing and delivering fashion goods through an extensive courier network.",
+      description: "Where brand image meets impeccable execution. FULFIL.X is the strategic fulfilment partner for fashion and apparel brands that value presentation as much as performance. From luxury garments and seasonal collections to high-volume activewear and accessories, we understand that the unboxing experience is a direct reflection of your label.",
       image: "/row-fashionable-clothing-hangers.webp",
       link: "/sectors/fashion-apparel",
       position: { left: 1255, top: 1644 }
@@ -134,7 +134,7 @@ export default function SectorsScreen() {
     {
       id: 12,
       title: "Subscription Boxes",
-      description: "Maximize your subscription box business with our kitting and assembly services, delivering a delightful and consistent unboxing experience every month.",
+      description: "Curate the excitement, we’ll deliver the experience. FULFIL.X is the dedicated fulfilment partner for subscription box brands that thrive on consistency, surprise, and seamless execution. From curated beauty crates and gourmet selections to niche hobby kits and monthly essentials, we transform complex assembly into a streamlined operation. We manage the intricate logistics of multi-item kitting, tailored packaging, and scaled shipping, so you can focus on crafting the perfect unboxing moment that keeps subscribers delighted and loyal.",
       image: "/what-are-subscription-boxes_8b98e234-fd74-452f-83d0-e2c4c43cb5c8.webp",
       link: "/sectors/subscription-boxes",
       position: { left: 1255, top: 2426 }
