@@ -240,13 +240,23 @@ const row1Logos = [
 
                     </div>
                     <div className=" flex justify-end w-full " >
-                      
-                                    <img 
-                                        src="/google_rev.webp" 
-                                        onClick=  { () => window.open("https://www.google.com/search?sca_esv=20541e4f21a9d7f7&sxsrf=ANbL-n6la1mt9rMC2V7vLj6jDkpCGr-jEQ:1769008694039&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXwAv3YEXZKPsl-nUlT6wYhGXlXqsFVh-oyC0tyABjEyjZCBk0CoEdNhj27Sl2hsvpDFgHFs0bQGfY1mnSWew6jYRo_p8GX0AXTemkh_XqBhnnH1O0hKt0daRKCE0qah_J7B7GeROHFzzyEWMS5BWx0syl6v&q=FULFIL.X+-+Storage+and+3pl+For+E-commerce+Brands+Reviews&sa=X&ved=2ahUKEwilh8D29pySAxUXQ0EAHVezKAcQ0bkNegQIKBAH&biw=1536&bih=730&dpr=1.25&aic=0","_blank") }
-                                        alt="Google reviews" 
-                                        className="w-full max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[200px] xl:max-w-[200px] h-auto object-contain mx-auto cursor-pointer transition-transform duration-300 hover:scale-105"
-                                    />
+                                    <button
+                                      type="button"
+                                      aria-label="Open Google reviews"
+                                      onClick={() =>
+                                        window.open(
+                                          "https://www.google.com/search?sca_esv=20541e4f21a9d7f7&sxsrf=ANbL-n6la1mt9rMC2V7vLj6jDkpCGr-jEQ:1769008694039&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXwAv3YEXZKPsl-nUlT6wYhGXlXqsFVh-oyC0tyABjEyjZCBk0CoEdNhj27Sl2hsvpDFgHFs0bQGfY1mnSWew6jYRo_p8GX0AXTemkh_XqBhnnH1O0hKt0daRKCE0qah_J7B7GeROHFzzyEWMS5BWx0syl6v&q=FULFIL.X+-+Storage+and+3pl+For+E-commerce+Brands+Reviews&sa=X&ved=2ahUKEwilh8D29pySAxUXQ0EAHVezKAcQ0bkNegQIKBAH&biw=1536&bih=730&dpr=1.25&aic=0",
+                                          "_blank"
+                                        )
+                                      }
+                                      className="w-full max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[200px] xl:max-w-[200px] h-auto mx-auto cursor-pointer transition-transform duration-300 hover:scale-105"
+                                    >
+                                      <img
+                                        src="/google_rev.webp"
+                                        alt="Google reviews"
+                                        className="w-full h-auto object-contain"
+                                      />
+                                    </button>
                                 </div>
                 </div>
                 {/* Stats Section */}
@@ -261,7 +271,7 @@ const row1Logos = [
   </div>
 
   {/* Content Container aligned with hero section */}
-  <div className="relative z-10 pt-16 lg:pt-32 pb-24">
+  <div className="relative z-10 pt-16 lg:pt-28 pb-24">
     <div className="w-full px-4 md:px-6 lg:px-8 2xl:px-16">
 
       {/* Main Heading */}
@@ -372,7 +382,7 @@ focus on growing.    </p>
     {/* CTA Button with icon */}
     <button 
       onClick={() => router.push('/contact')}
-      className="inline-flex items-center px-6 py-2 gap-2.5 rounded-md bg-[#C10016] cursor-pointer transition duration-300 hover:brightness-110 mt-12"
+      className="inline-flex items-center px-6 py-2 gap-2.5 rounded-md bg-[#C10016] cursor-pointer transition duration-300 hover:brightness-110 mt-8"
     >
       <span className="text-white font-normal text-[18px] leading-[36px]">Let&apos;s Talk</span>
       <img 
@@ -396,7 +406,7 @@ focus on growing.    </p>
     }}
   />
 
-  <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-12 py-10 lg:py-12">
+  <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-16 py-10 lg:py-12">
     <div className="mx-auto w-full max-w-[1490px]">
       <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
         We Make Ship Happen
@@ -653,7 +663,7 @@ focus on growing.    </p>
   </div>
 </div>
 </section>
-<section className="relative w-full h-auto py-20 lg:h-[512px]">
+<section className="relative w-full h-auto py-20 lg:min-h-[512px]">
   {/* Background Image with Gradient Overlay */}
   <div 
     className="absolute inset-0 w-full h-full"
@@ -814,22 +824,28 @@ focus on growing.    </p>
 
       <div className="lg:col-start-1 lg:row-start-2">
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 pt-10 lg:pt-20">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 pt-10 lg:pt-16">
           {/* Orders Shipped */}
           <div className="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-center sm:text-left sm:gap-4">
             <div className="w-[120px] h-[70px] sm:w-[150px] sm:h-[80px] bg-black/10 rounded-[10px] flex items-center justify-center">
               <span className="font-bold text-3xl lg:text-[40px] leading-[80px] tracking-tight text-black">
-                <img
-                  src="/google_rev.webp"
+                <button
+                  type="button"
+                  aria-label="Open Google reviews"
                   onClick={() =>
                     window.open(
                       "https://www.google.com/search?sca_esv=20541e4f21a9d7f7&sxsrf=ANbL-n6la1mt9rMC2V7vLj6jDkpCGr-jEQ:1769008694039&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXwAv3YEXZKPsl-nUlT6wYhGXlXqsFVh-oyC0tyABjEyjZCBk0CoEdNhj27Sl2hsvpDFgHFs0bQGfY1mnSWew6jYRo_p8GX0AXTemkh_XqBhnnH1O0hKt0daRKCE0qah_J7B7GeROHFzzyEWMS5BWx0syl6v&q=FULFIL.X+-+Storage+and+3pl+For+E-commerce+Brands+Reviews&sa=X&ved=2ahUKEwilh8D29pySAxUXQ0EAHVezKAcQ0bkNegQIKBAH&biw=1536&bih=730&dpr=1.25&aic=0",
                       "_blank"
                     )
                   }
-                  alt="Google reviews"
-                  className="w-full max-w-[90px] sm:max-w-[120px] lg:max-w-[80px] h-auto object-contain mx-auto cursor-pointer transition-transform duration-300 hover:scale-105"
-                />
+                  className="w-full max-w-[90px] sm:max-w-[120px] lg:max-w-[80px] h-auto mx-auto cursor-pointer transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src="/google_rev.webp"
+                    alt="Google reviews"
+                    className="w-full h-auto object-contain"
+                  />
+                </button>
               </span>
             </div>
             <p className="font-normal text-sm sm:text-lg lg:text-[20px] leading-[20px] sm:leading-[30px] lg:leading-[40px] text-[#C10016]">
@@ -966,6 +982,8 @@ focus on growing.    </p>
 {/* UK Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="United Kingdom location"
   style={{ left: `${getMarkerPos('uk').x}%`, top: `${getMarkerPos('uk').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -975,7 +993,7 @@ focus on growing.    </p>
     </div>
   </div>
   {/* Hover Popup */}
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
     <img src="/UK.webp" alt="UK Flag" className="w-[16px] h-[12px]" />
     <p className="text-sm font-medium text-gray-800">United Kingdom</p>
@@ -988,6 +1006,8 @@ focus on growing.    </p>
 {/* California Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="California location"
   style={{ left: `${getMarkerPos('ca').x}%`, top: `${getMarkerPos('ca').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -996,7 +1016,7 @@ focus on growing.    </p>
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
   </div>
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
       <img src="/US.webp" alt="US Flag" className="w-[16px] h-[12px]" />
       <p className="text-sm font-medium text-gray-800">California</p>
@@ -1010,6 +1030,8 @@ focus on growing.    </p>
 {/* Atlanta Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="Atlanta location"
   style={{ left: `${getMarkerPos('atl').x}%`, top: `${getMarkerPos('atl').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -1018,7 +1040,7 @@ focus on growing.    </p>
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
   </div>
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
       <img src="/US.webp" alt="US Flag" className="w-[16px] h-[12px]" />
       <p className="text-sm font-medium text-gray-800">Atlanta</p>
@@ -1030,6 +1052,8 @@ focus on growing.    </p>
 {/* Netherlands Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="Netherlands location"
   style={{ left: `${getMarkerPos('nl').x}%`, top: `${getMarkerPos('nl').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -1038,7 +1062,7 @@ focus on growing.    </p>
       <div className="w-[16px] h-[16px] bg-[#C10016] rounded-full"></div>
     </div>
   </div>
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
       <img src="/NET.webp" alt="Netherlands Flag" className="w-[16px] h-[12px]" />
       <p className="text-sm font-medium text-gray-800">Netherlands</p>
@@ -1050,6 +1074,8 @@ focus on growing.    </p>
 {/* UAE Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="UAE location"
   style={{ left: `${getMarkerPos('uae').x}%`, top: `${getMarkerPos('uae').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -1059,7 +1085,7 @@ focus on growing.    </p>
     </div>
   </div>
   {/* Hover Popup */}
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
       <img src="/UAE.webp" alt="UAE Flag" className="w-[16px] h-[12px]" />
       <p className="text-sm font-medium text-gray-800">UAE</p>
@@ -1072,6 +1098,8 @@ focus on growing.    </p>
 {/* Bahrain Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="Bahrain location"
   style={{ left: `${getMarkerPos('bh').x}%`, top: `${getMarkerPos('bh').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[40px] sm:h-[40px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -1080,7 +1108,7 @@ focus on growing.    </p>
       <div className="w-[13.33px] h-[13.33px] bg-[#C10016] rounded-full"></div>
     </div>
   </div>
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
       <img src="/B.webp" alt="Bahrain Flag" className="w-[16px] h-[12px]" />
       <p className="text-sm font-medium text-gray-800">Bahrain</p>
@@ -1092,6 +1120,8 @@ focus on growing.    </p>
 {/* Australia Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="Australia location"
   style={{ left: `${getMarkerPos('au').x}%`, top: `${getMarkerPos('au').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[48px] sm:h-[48px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -1101,7 +1131,7 @@ focus on growing.    </p>
     </div>
   </div>
   {/* Hover Popup */}
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
     <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
       <img src="/Aus.webp" alt="AU Flag" className="w-[16px] h-[12px]" />
       <p className="text-sm font-medium text-gray-800">Australia</p>
@@ -1114,6 +1144,8 @@ focus on growing.    </p>
 {/* Saudi Arabia Marker */}
 <div
   className="absolute group -translate-x-1/2 -translate-y-1/2"
+  tabIndex={0}
+  aria-label="Saudi Arabia location"
   style={{ left: `${getMarkerPos('sa').x}%`, top: `${getMarkerPos('sa').y}%` }}
 >
   <div className="w-[24px] h-[24px] sm:w-[40px] sm:h-[40px] sm:border sm:border-[#C10016] rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 sm:hover:scale-110">
@@ -1123,7 +1155,7 @@ focus on growing.    </p>
     </div>
   </div>
   {/* Hover Popup */}
-  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
    <div className="bg-white px-6 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap flex items-center gap-2">
     <img src="/Saudi.webp" alt="Saudi Flag" className="w-[16px] h-[12px]" />
     <p className="text-sm font-medium text-gray-800">Saudi Arabia</p>
