@@ -517,8 +517,8 @@ export default function ContactScreen() {
 
                 {/* Image Grid - Centered */}
                 <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.png)'}}></div>
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.png)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
                </div>
               </div>
             </div>

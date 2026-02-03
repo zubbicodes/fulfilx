@@ -587,7 +587,7 @@ export default function ServicesScreen(){
       { image: '/services/superdrug.webp', alt: 'Superdrug' }
     ];
     const row1Logos = [
-    { src: "/amazon.webp", alt: "" },
+    { src: "/couires/amazon.webp", alt: "" },
     { src: "/shopify.webp", alt: "" },
     { src: "/woo.webp", alt: "" }
     
@@ -1012,7 +1012,7 @@ export default function ServicesScreen(){
   <div
     className="absolute inset-0 bg-black/65"
     style={{
-      backgroundImage: `url('9E2A0267.webp')`,
+      backgroundImage: `url('/9E2A0267.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       transform: 'scaleX(-1)'
@@ -1272,8 +1272,8 @@ export default function ServicesScreen(){
 
         {/* Image Grid - Centered */}
         <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-12">
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.png)'}}></div>
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.png)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
+            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
         </div>
 
       </div>

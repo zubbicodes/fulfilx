@@ -19,8 +19,8 @@ export default function RootLayout() {
       {/* Add Head component for favicon and meta tags */}
       <Head>
         <title>FulfilX - Your Logistics Partner</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <meta name="description" content="Professional logistics and fulfillment services" />
         <meta name="theme-color" content="#C10016" />
       </Head>
