@@ -375,7 +375,7 @@ const row1Logos = [
 We work with startup and scale up brands, our bespoke fulfilment services are a
 game changer in the 3PL market. We help brands get their logistics right so you can
 focus on growing.    </p>
-    <p className="text-lg lg:text-[22px] font-normal leading-loose lg:leading-[44px] text-black max-w-3xl mb-10">
+    <p className="text-lg lg:text-[22px]  font-normal leading-loose lg:leading-[44px] text-black max-w-3xl mb-10">
     Ready to have <span className="text-[#C10016]">Stress-Free Logistics?</span>
     </p>
 
@@ -396,19 +396,22 @@ focus on growing.    </p>
 </section>
 
 <section className="relative w-full h-auto py-14 lg:py-16 overflow-hidden">
-  {/* Background with overlay */}
   <div
-    className="absolute inset-0 bg-black/65"
+    className="absolute inset-0"
     style={{
       backgroundImage: `url('/9E2A9826.webp')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}
   />
+  <div className="absolute inset-0 bg-black/60" />
 
   <div className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-16 py-10 lg:py-12">
     <div className="mx-auto w-full max-w-[1490px]">
-      <h2 className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]">
+      <h2
+        className="text-center text-white text-4xl lg:text-[64px] font-bold leading-tight lg:leading-[80px] tracking-[-0.01em]"
+        style={{ textShadow: '0 4px 16px rgba(0,0,0,0.55)' }}
+      >
         We Make Ship Happen
       </h2>
 
@@ -433,7 +436,10 @@ focus on growing.    </p>
                   <span className="text-white/70 font-medium text-base tabular-nums w-10 shrink-0">
                     {(i + 1).toString().padStart(2, "0")}
                   </span>
-                  <span className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight">
+                  <span
+                    className="flex-1 text-white font-normal text-[20px] lg:text-[22px] leading-tight"
+                    style={{ textShadow: '0 3px 12px rgba(0,0,0,0.6)' }}
+                  >
                     {item.title}
                   </span>
                   <img
@@ -474,7 +480,10 @@ focus on growing.    </p>
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent z-10" />
             <div className="absolute left-6 bottom-6 right-6 z-20">
-              <div className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]">
+              <div
+                className="text-white font-normal text-2xl lg:text-[32px] tracking-[-0.01em]"
+                style={{ textShadow: '0 4px 16px rgba(0,0,0,0.7)' }}
+              >
                 {shipHappensItems[activeShipHappensIndex]?.title}
               </div>
             </div>
@@ -664,7 +673,6 @@ focus on growing.    </p>
 </div>
 </section>
 <section className="relative w-full h-auto py-20 lg:min-h-[512px]">
-  {/* Background Image with Gradient Overlay */}
   <div 
     className="absolute inset-0 w-full h-full"
     style={{
@@ -672,26 +680,32 @@ focus on growing.    </p>
       backgroundSize: '100%',
       backgroundPosition: 'right'
     }}
-  >
-  </div>
+  />
+  <div className="absolute inset-0 bg-black/45" />
 
   <div ref={chatSectionRef} className="relative z-10 w-full px-4 md:px-6 lg:px-8 2xl:px-16 py-16 lg:py-24">
     <div className="flex flex-col items-center text-center">
-      <h1 className="font-bold text-4xl lg:text-[74px] text-[#C10016] leading-tight lg:leading-[80px] tracking-tight min-h-[48px] lg:min-h-[80px]">
+      <h1
+        className="font-bold text-4xl lg:text-[74px] text-white leading-tight lg:leading-[80px] tracking-tight min-h-[48px] lg:min-h-[80px]"
+        style={{ textShadow: '0 4px 16px rgba(0,0,0,0.65)' }}
+      >
         <Typewriter text="Ready to have a Chat?" start={startTyping} onComplete={() => setFirstLineDone(true)} speed={70} />
       </h1>
 
-      <p className="font-normal text-xl lg:text-[28px] leading-relaxed lg:leading-[44px] text-[#C10016] mt-6 min-h-[28px] lg:min-h-[44px]">
+      <p
+        className="font-normal text-xl lg:text-[28px] leading-relaxed lg:leading-[44px] text-white mt-6 min-h-[28px] lg:min-h-[44px]"
+        style={{ textShadow: '0 3px 12px rgba(0,0,0,0.6)' }}
+      >
         <Typewriter text="Do not hesitate to say Nǐn hǎo" start={firstLineDone} speed={50} />
       </p>
 
       <button 
         onClick={() => router.push('/contact')}
-        className="mt-10 border border-[#C10016] rounded-[6px] flex items-center justify-center gap-[10px] px-8 py-4 transition duration-300"
+        className="mt-10 bg-[#C10016]/90 rounded-[10px] flex items-center justify-center gap-[10px] px-8 py-4 transition duration-300 hover:bg-[#C10016] hover:scale-[1.03]"
       >
-        <span className="text-[#C10016] font-normal text-[18px] leading-[36px]">Let&apos;s Talk</span>
+        <span className="text-white font-normal text-[18px] leading-[36px]">Let&apos;s Talk</span>
         <img 
-          src="/arrow-dark.svg" 
+          src="/arrow.svg" 
           alt="Arrow icon" 
           className="w-4 h-4 object-contain"
         />
@@ -1304,8 +1318,8 @@ focus on growing.    </p>
 
         {/* Image Grid - Centered */}
         <div className="flex flex-row flex-wrap justify-center gap-6 lg:gap-8 mb-8">
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
-            <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
+            <div className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award1.webp)'}}></div>
+            <div className="w-[96px] h-[96px] lg:w-[120px] lg:h-[120px] bg-cover bg-center" style={{backgroundImage: 'url(/award2.webp)'}}></div>
         </div>
       </div>
     </div>
