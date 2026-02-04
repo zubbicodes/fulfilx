@@ -210,7 +210,7 @@ export default function TeamScreen() {
               </View>
             </View>
 
-            {/* Second Row - Anson & Natalie */}
+            {/* Second Row - Anson & Jordray */}
             <View className="flex flex-col lg:flex-row justify-center gap-8">
               {/* Team Member 2 - Anson */}
               <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
@@ -235,7 +235,33 @@ export default function TeamScreen() {
                 </View>
               </View>
 
-              {/* Team Member 3 - Nat */}
+              {/* Team Member 3 - Jordray */}
+              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
+                {/* Member Image with Social Icons Popup */}
+                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
+                  <Image 
+                    source={{ uri: "/Jordray.webp" }}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                  />
+                </View>
+                
+                {/* Member Info */}
+                <View className="relative w-full lg:flex-1">
+                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
+                    Jordray
+                  </Text>
+                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
+                    Warehouse Manager
+                  </Text>
+
+                </View>
+              </View>
+            </View>
+
+            {/* Third Row - Natalie & Stephen */}
+            <View className="flex flex-col lg:flex-row justify-center gap-8">
+              {/* Team Member 4 - Natalie */}
               <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
@@ -257,11 +283,8 @@ export default function TeamScreen() {
 
                 </View>
               </View>
-            </View>
 
-            {/* Third Row - Stephen & Jordray */}
-            <View className="flex flex-col lg:flex-row justify-center gap-8">
-              {/* Team Member 4 - Ste */}
+              {/* Team Member 5 - Stephen */}
               <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
                 {/* Member Image with Social Icons Popup */}
                 <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
@@ -279,29 +302,6 @@ export default function TeamScreen() {
                   </Text>
                   <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
                     Supervisor
-                  </Text>
-
-                </View>
-              </View>
-
-              {/* Team Member 5 - Jordy */}
-              <View className="relative w-full lg:flex-1 h-auto min-h-[380px] bg-white border border-black/10 backdrop-blur-[12.5px] rounded-[20px] overflow-hidden group hover:bg-[#C10016] transition-colors duration-300 flex flex-col lg:flex-row items-center p-4 lg:p-8 gap-8 shadow-xl">
-                {/* Member Image with Social Icons Popup */}
-                <View className="relative w-full lg:w-[300px] h-[300px] lg:h-[340px] rounded-[12px] overflow-hidden shrink-0 mb-6 lg:mb-0">
-                  <Image 
-                    source={{ uri: "/Jordray.webp" }}
-                    className="w-full h-full"
-                    resizeMode="cover"
-                  />
-                </View>
-                
-                {/* Member Info */}
-                <View className="relative w-full lg:flex-1">
-                  <Text className="font-helvetica font-bold text-2xl lg:text-[26px] leading-tight text-black group-hover:text-white transition-colors duration-300 mt-2 lg:mt-0 mb-2">
-                    Jordray
-                  </Text>
-                  <Text className="font-helvetica font-normal text-lg lg:text-[18px] leading-snug text-black group-hover:text-white transition-colors duration-300 mb-4">
-                    Warehouse Manager
                   </Text>
 
                 </View>
