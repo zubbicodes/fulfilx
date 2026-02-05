@@ -36,10 +36,10 @@ const FulfillmentServicesSection = () => {
       img: '/9E2A9996.webp', // Reusing existing VAS image
       logo: '/b2b.svg',
       features: [
-        'Bulk & palletised shipments',
-        'Retail-compliant carton & pallet prep',
-        'ASN / EDI support',
-        'Wholesale distribution fulfilment - Argos, Currys, Harrods, Selfridges, QVC, Macy\'s, Bloomingdale\'s, Nordstrom, Costco, Saks Fifth Avenue, Fenwick, Pets at Home, Sephora'
+        'Bulk & palletised shipments.',
+        'Retail-compliant carton & pallet prep.',
+        'ASN / EDI support.',
+        'Wholesale distribution fulfilment - Argos, Currys, Harrods, Selfridges, QVC, Macy\'s, Bloomingdale\'s, Nordstrom, Costco, Saks Fifth Avenue, Fenwick, Pets at Home, Sephora.'
       ]
     },
     {
