@@ -309,9 +309,14 @@ const Footer = () => {
   className="text-white font-normal text-left text-base sm:text-[18px] leading-9 sm:leading-[52px]"
 >
 
-  <Link href="/" asChild>
-    <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Shipping</a>
-  </Link>
+  <a 
+    href="https://fulfilx-access-control.replit.app/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="block hover:text-[#C10016] transition-colors cursor-pointer"
+  >
+    Shipping
+  </a>
   <Link href="/return-policy" asChild>
     <a className="block hover:text-[#C10016] transition-colors cursor-pointer">Returns Policy</a>
   </Link>
